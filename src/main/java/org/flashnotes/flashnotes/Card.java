@@ -1,5 +1,5 @@
 package org.flashnotes.flashnotes;
 
-public class CreateCard {
+public class Card {
 
 }
