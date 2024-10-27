@@ -24,31 +24,54 @@ public class User {
     }
 
 
-    public void  SetUsername(String username){}
+    public int getId() {
+        return id;
+    }
 
-    public void getUsername(){
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+
+    public Deck[] getDecks() {
+        return decks;
+    }
+
+    public SharedDeckDTO[] getSharedDecks() {
+        return sharedDecks;
+    }
+
+    public SharedDeckDTO[] getRequest() {
+        return request;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setImg(File imgFile) {
 
     }
-    public Image getIml(){
+
+    public void addDeck(Deck deck) {
 
     }
-    public void setImg(File img){
+
+    public void removeDeck(String nameOfDeck) {
+    }
+
+    public void removeFromRequest(int idOfDeck) {
 
     }
-    public void addDeck(String nameOfDeck){
+
+    public void shareDeck(int idOfDeck, String sharedEmail) {
 
     }
-    public Deck[] getDeck(){
-
-    }
-    public void removeDeck(String nameOfDeck){
-
-    }
-    public void removeFromRequest(int idOfDeck){
-
-    }
-    public void shareDeck(int idOfDeck, String sharedEmail){}
-
-
-
 }
