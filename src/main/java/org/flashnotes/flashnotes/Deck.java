@@ -9,8 +9,13 @@ public class Deck {
     private String category;
     private int id;
 
-
     public Deck (String ownerOfDeck, String nameOfDeck, String category) {
+        this.ownerOfDeck = ownerOfDeck;
+        this.nameOfDeck = nameOfDeck;
+        this.category = category;
+        this.cards = new Card[0];
+        this.sharedUsers = new String[0];
+        this.id = 0;
 
     }
     public void addCard(String front, String back) {
