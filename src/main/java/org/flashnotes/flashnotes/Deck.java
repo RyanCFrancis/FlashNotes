@@ -26,29 +26,44 @@ public class Deck {
     }
     public Card[] getCards(){
 
+        return cards;
     }
     public void setCategory(String category){
+        this.category = category;
 
     }
     public void setNameOfDeck(String nameOfDeck){
+        this.nameOfDeck = nameOfDeck;
 
     }
     public String getCategory(){
 
+        return category;
     }
     public String getOwnerOfDeck(){
 
+        return ownerOfDeck;
     }
     public String getNameOfDeck(){
 
+        return nameOfDeck;
     }
     public String[] getSharedUsers(){
 
+        return sharedUsers;
     }
     public void  addSharedUser(String username){
 
     }
+    public int getId() {
+        return id;
+    }
 
-
-
+    public void setId(int id) {
+        this.id = id;
+    }
 }
+
+
+
+
