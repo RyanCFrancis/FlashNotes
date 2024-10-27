@@ -13,6 +13,17 @@ public class User {
     private SharedDeckDTO[] sharedDecks;
     private SharedDeckDTO[] request;
 
+    public User(int id, String email, String username) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.img = null;
+        this.decks = new Deck[0];
+        this.sharedDecks = new SharedDeckDTO[0];
+        this.request = new SharedDeckDTO[0];
+    }
+
+
     public void  SetUsername(String username){}
 
     public void getUsername(){
