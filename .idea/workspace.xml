@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/StyleLoginReg.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/upload_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/MenuIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/MainMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +52,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2n8PRrT4y26qmwTwsx4AyClgiCK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,9 +64,9 @@
     "Application.MainRunner.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "aielloBranch",
+    "git-widget-placeholder": "ryan-branch",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/frank/IdeaProjects/FlashNotes/src/main/resources/org/flashnotes/flashnotes",
+    "last_opened_file_path": "D:/union/School/FALL2024/SWE_CSC325/FlashNotes/src/main/resources/org/flashnotes/flashnotes/Images",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -81,6 +78,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\union\School\FALL2024\SWE_CSC325\FlashNotes\src\main\resources\org\flashnotes\flashnotes\Images" />
+      <recent name="D:\union\School\FALL2024\SWE_CSC325\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
       <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -88,11 +87,23 @@
       <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
       </set>
     </attachedChunks>
   </component>
@@ -108,6 +119,7 @@
       <workItem from="1729087729206" duration="13000" />
       <workItem from="1730209402172" duration="284000" />
       <workItem from="1730209722741" duration="4592000" />
+      <workItem from="1730234110856" duration="3709000" />
     </task>
     <servers />
   </component>
