@@ -1,14 +1,27 @@
 package org.flashnotes.flashnotes.Firebase;
 
 
-import com.google.cloud.firestore.Firestore;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
+import com.google.cloud.storage.Acl;
+import com.google.cloud.storage.Blob;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.StorageClient;
+import org.flashnotes.flashnotes.Deck;
+import org.flashnotes.flashnotes.SharedDeckDTO;
+import org.flashnotes.flashnotes.User;
 
 
-import java.io.File;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author Charles Gonzalez Jr
@@ -23,7 +36,7 @@ public class FireBaseActions {
     private Firestore fstore;
     private StorageClient storageClient;
     private FirebaseAuth fauth;
-    private UserRecord currentUser;
+    private User currentUser;
 
 
     /**
@@ -44,10 +57,20 @@ public class FireBaseActions {
      */
     public static FireBaseActions init() {
         if (instance == null) {
-            instance = new FireBaseActions();
+            synchronized (FireBaseActions.class) {
+                instance = new FireBaseActions();
+            }
             return instance;
         }
         return instance;
+    }
+
+    /**
+     *
+     * @return current user
+     */
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     /**
@@ -55,9 +78,31 @@ public class FireBaseActions {
      *
      * @param email    email user is attemping to log in with
      * @param password password user is trying to log in with
-     * @return User being logged in
      */
-    public void login(String email, String password) {
+    public void login(String email, String password) throws FirebaseAuthException {
+
+        List<QueryDocumentSnapshot> documents;
+        try {
+            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email).get();
+            documents = future.get().getDocuments();
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        if (documents.size() > 0) {
+            for (QueryDocumentSnapshot document : documents) {
+                String storedPassword = document.getString("password");
+                if (storedPassword != null && storedPassword.equals(password)) {
+                    //currentUser = mapDocumentToUser(document);
+                } else {
+                    throw new IllegalArgumentException("Email or password incorrect");
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("No user found with the provided email.");
+        }
+
 
     }
 
@@ -69,32 +114,51 @@ public class FireBaseActions {
      * @param password     The password for the new user's account.
      * @param profileImage The profile image to be associated with the user.
      * @throws FirebaseAuthException If there is an error during the Firebase authentication process.
+     * @throws IllegalArgumentException if the user photo upload does not go through
      */
     public void Register(String username, String email, String password, File profileImage) throws FirebaseAuthException {
-        // Implementation here
+        UserRecord user = FirebaseAuth.getInstance().createUser(new UserRecord.CreateRequest().setEmail(email));
+        String imgURL;
+        try {
+            imgURL = uploadImg(profileImage);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error with photo upload");
+            throw new IllegalArgumentException("Error with photo upload");
+        }
+
+        DocumentReference docRef = fstore.collection("Users").document(UUID.randomUUID().toString());
+        Map<String, Object> data = new HashMap<>();
+        data.put("id", Integer.parseInt(user.getUid()));
+        data.put("email", email);
+        data.put("username", username);
+        data.put("password", password);
+        data.put("img", imgURL);
+        data.put("decks", new Deck[0]);
+        data.put("sharedDecks", new SharedDeckDTO[0]);
+        data.put("request", new SharedDeckDTO[0]);
+
+        ApiFuture<WriteResult> result = docRef.set(data);
+
     }
 
-    /**
-     * This method handles the registration of a new user.
-     *
-     * @param email    The email address of the user to be registered.
-     * @param username The username chosen by the user.
-     * @param password The password for the user's account.
-     * @param img      The profile image to upload for the user.
-     * @return true if registration is successful, false otherwise.
-     */
-    public boolean register(String email, String username, String password, File img) {
-        // Implementation here
-        return false;
-    }
 
     /**
      * Uploads an image file to the server.
      *
      * @param img The image file to be uploaded.
      */
-    private void uploadImg(File img) {
-        // Implementation here
+    private String uploadImg(File img) throws IOException {
+
+        String blobName = "images/" + img.getName();
+        String mimeType = Files.probeContentType(img.toPath());
+
+
+        Blob blob = storageClient.bucket().create(blobName,new FileInputStream(img),mimeType);
+        blob.createAcl(Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
+        System.out.println("file uploaded");
+
+        return String.format("https://storage.googleapis.com/%s/%s", storageClient.bucket().getName(), blobName);
     }
 
     /**
@@ -138,4 +202,37 @@ public class FireBaseActions {
     public void updateDeck(int idOfDeck) {
         // Implementation here
     }
+
+    private static String downloadImage(String imageUrl) {
+        String fileName;
+        try {
+            URL url = new URL(imageUrl);
+            fileName = getFileName(url);
+            File file = new File(fileName);
+
+            try (InputStream in = new BufferedInputStream(url.openStream());
+                 FileOutputStream out = new FileOutputStream(file)) {
+
+                byte[] data = new byte[1024];
+                int count;
+                while ((count = in.read(data, 0, data.length)) != -1) {
+                    out.write(data, 0, count);
+                }
+                System.out.println("Downloaded: " + file.getAbsolutePath());
+                return file.toURI().toString();
+
+            }
+        } catch (IOException e) {
+            System.err.println("Error downloading image from " + imageUrl + ": " + e.getMessage());
+        }
+
+        return "";
+    }
+
+    private static String getFileName(URL url) {
+        String fileName = url.getPath();
+        return fileName.substring(fileName.lastIndexOf('/') + 1);
+    }
+}
+
 }

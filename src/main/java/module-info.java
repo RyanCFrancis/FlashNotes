@@ -5,6 +5,8 @@ module org.flashnotes.flashnotes {
     requires firebase.admin;
     requires com.google.auth.oauth2;
     requires com.google.auth;
+    requires com.google.api.apicommon;
+    requires google.cloud.storage;
 
 
     opens org.flashnotes.flashnotes to javafx.fxml;
