@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="main menu fxml made">
+    <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="Added .fxml Files from SceneBuilder for Login And Register">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/Cover.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/flashnotes/flashnotes/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/flashnotes/flashnotes/MainRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/SplashScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/SplashScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +38,27 @@
     }
   ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
+
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maradC&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="recentNewPullRequestHead">
-      <RepoCoordinatesHolder>
-        <option name="owner" value="RyanCFrancis" />
-        <option name="repository" value="FlashNotes" />
-      </RepoCoordinatesHolder>
-    </option>
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="e5dcd8fb-cd7d-49d7-98fc-979a9a64a2ec" />
-        <option name="url" value="https://github.com/RyanCFrancis/FlashNotes" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RyanCFrancis/FlashNotes.git",
+    "accountId": "cbbc082d-4345-4118-a14e-98952bb0cc40"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "RyanCFrancis",
+    "repository": "FlashNotes"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -85,12 +92,26 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainRunner.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#3 on aielloBranch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/frank/IdeaProjects/FlashNotes/src/main/resources/org/flashnotes/flashnotes/Images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\union\School\FALL2024\SWE_CSC325\FlashNotes\src\main\resources\org\flashnotes\flashnotes\Images" />
-      <recent name="D:\union\School\FALL2024\SWE_CSC325\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
+      <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes\Images" />
       <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -129,19 +150,16 @@
       <workItem from="1728351725877" duration="3000" />
       <workItem from="1729087729206" duration="13000" />
       <workItem from="1730209402172" duration="284000" />
-      <workItem from="1730209722741" duration="4592000" />
-      <workItem from="1730234110856" duration="3740000" />
-      <workItem from="1730244078945" duration="333000" />
-      <workItem from="1730244488507" duration="72000" />
-      <workItem from="1730244677601" duration="11000" />
+      <workItem from="1730209722741" duration="4700000" />
+      <workItem from="1730233719129" duration="936000" />
     </task>
-    <task id="LOCAL-00001" summary="main menu fxml made">
+    <task id="LOCAL-00001" summary="Added .fxml Files from SceneBuilder for Login And Register">
       <option name="closed" value="true" />
-      <created>1730244031541</created>
+      <created>1730216993494</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1730244031541</updated>
+      <updated>1730216993494</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -150,7 +168,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="main menu fxml made" />
-    <option name="LAST_COMMIT_MESSAGE" value="main menu fxml made" />
+    <MESSAGE value="Added .fxml Files from SceneBuilder for Login And Register" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added .fxml Files from SceneBuilder for Login And Register" />
   </component>
 </project>
