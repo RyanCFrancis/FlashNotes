@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="Test Commit for CreateCard.java">
+    <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/StyleLoginReg.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/upload_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/flashnotes/flashnotes/CreateCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/flashnotes/flashnotes/CreateCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,11 +21,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
+        <option value="CSS File" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -32,7 +43,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/RyanCFrancis/FlashNotes.git&quot;,
-    &quot;accountId&quot;: &quot;3b082687-3562-4d82-900a-838a5b983735&quot;
+    &quot;accountId&quot;: &quot;cbbc082d-4345-4118-a14e-98952bb0cc40&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -51,25 +62,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainRunner.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "aielloBranch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/frank/IdeaProjects/FlashNotes/src/main/resources/org/flashnotes/flashnotes",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes\org.flashnotes.flashnotes" />
+      <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -83,25 +106,12 @@
       <updated>1728351724820</updated>
       <workItem from="1728351725877" duration="3000" />
       <workItem from="1729087729206" duration="13000" />
-      <workItem from="1729087781670" duration="404000" />
-      <workItem from="1729090082958" duration="309000" />
+      <workItem from="1730209402172" duration="284000" />
+      <workItem from="1730209722741" duration="4592000" />
     </task>
-    <task id="LOCAL-00001" summary="Test Commit for CreateCard.java">
-      <option name="closed" value="true" />
-      <created>1729087909073</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1729087909073</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test Commit for CreateCard.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test Commit for CreateCard.java" />
   </component>
 </project>
