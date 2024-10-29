@@ -11,8 +11,8 @@ public class MainRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("SplashScreen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 600.0,388.0);
+        stage.setTitle("Flash Notes");
         stage.setScene(scene);
         stage.show();
     }
