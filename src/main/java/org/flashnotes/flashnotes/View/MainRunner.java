@@ -1,4 +1,4 @@
-package org.flashnotes.flashnotes;
+package org.flashnotes.flashnotes.View;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +11,8 @@ public class MainRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("SplashScreen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600.0,388.0);
-        stage.setTitle("Flash Notes");
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
