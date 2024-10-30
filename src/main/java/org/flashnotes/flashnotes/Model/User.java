@@ -4,28 +4,46 @@ import javafx.scene.image.Image;
 import org.flashnotes.flashnotes.ViewModel.SharedDeckDTO;
 
 import java.io.File;
+import java.util.List;
+import java.util.List;
 
 public class User {
-    private int id;
+    private String id;
     private String email;
     private String username;
     private Image img;
-    private Deck[] decks;
-    private SharedDeckDTO[] sharedDecks;
-    private SharedDeckDTO[] request;
+    private List<Deck> decks;
+    private List<String> sharedDecks;
+    private List<String> request;
 
-    public User(int id, String email, String username) {
+    public User(String id, String email, String username) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.img = null;
-        this.decks = new Deck[0];
-        this.sharedDecks = new SharedDeckDTO[0];
-        this.request = new SharedDeckDTO[0];
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public int getId() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDecks(List<Deck> decks) {
+        this.decks = decks;
+    }
+
+    public void setSharedDecks(List<String> sharedDecks) {
+        this.sharedDecks = sharedDecks;
+    }
+
+    public void setRequest(List<String> request) {
+        this.request = request;
+    }
+
+    public String getId() {
         return id;
     }
 
@@ -41,15 +59,15 @@ public class User {
         return img;
     }
 
-    public Deck[] getDecks() {
+    public List<Deck> getDecks() {
         return decks;
     }
 
-    public SharedDeckDTO[] getSharedDecks() {
+    public List<String> getSharedDecks() {
         return sharedDecks;
     }
 
-    public SharedDeckDTO[] getRequest() {
+    public List<String> getRequest() {
         return request;
     }
 

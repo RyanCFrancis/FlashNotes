@@ -3,24 +3,24 @@ package org.flashnotes.flashnotes.Firebase;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import com.google.cloud.Service.*;
 import com.google.cloud.storage.Acl;
 import com.google.cloud.storage.Blob;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.StorageClient;
-import org.flashnotes.flashnotes.Deck;
-import org.flashnotes.flashnotes.SharedDeckDTO;
-import org.flashnotes.flashnotes.User;
+
+import org.flashnotes.flashnotes.Model.Card;
+import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.User;
+import org.flashnotes.flashnotes.ViewModel.SharedDeckDTO;
 
 
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -86,23 +86,22 @@ public class FireBaseActions {
             ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email).get();
             documents = future.get().getDocuments();
         } catch (InterruptedException | ExecutionException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error retrieving user: " + e.getMessage());
             return;
         }
 
-        if (documents.size() > 0) {
-            for (QueryDocumentSnapshot document : documents) {
-                String storedPassword = document.getString("password");
-                if (storedPassword != null && storedPassword.equals(password)) {
-                    //currentUser = mapDocumentToUser(document);
-                } else {
-                    throw new IllegalArgumentException("Email or password incorrect");
-                }
+        if (!documents.isEmpty()) {
+            QueryDocumentSnapshot document = documents.get(0);  // Since email should be unique, take the first result
+            String storedPassword = document.getString("password");
+
+            if (storedPassword != null && storedPassword.equals(password)) {
+                currentUser = mapDocumentToUser(document);
+            } else {
+                throw new IllegalArgumentException("Email or password is incorrect.");
             }
         } else {
             throw new IllegalArgumentException("No user found with the provided email.");
         }
-
 
     }
 
@@ -118,26 +117,26 @@ public class FireBaseActions {
      */
     public void Register(String username, String email, String password, File profileImage) throws FirebaseAuthException {
         UserRecord user = FirebaseAuth.getInstance().createUser(new UserRecord.CreateRequest().setEmail(email));
-        String imgURL;
+        String imgURL = "";
         try {
             imgURL = uploadImg(profileImage);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error with photo upload");
-            throw new IllegalArgumentException("Error with photo upload");
+
         }
 
         DocumentReference docRef = fstore.collection("Users").document(UUID.randomUUID().toString());
         Map<String, Object> data = new HashMap<>();
-        data.put("id", Integer.parseInt(user.getUid()));
+        data.put("id", user.getUid());
         data.put("email", email);
         data.put("username", username);
         data.put("password", password);
         data.put("img", imgURL);
-        data.put("decks", new Deck[0]);
-        data.put("sharedDecks", new SharedDeckDTO[0]);
-        data.put("request", new SharedDeckDTO[0]);
-
+        data.put("deckIds", new ArrayList<String>());
+        data.put("sharedDecks", new ArrayList<String>());
+        data.put("request", new ArrayList<String>());
+        System.out.println("here");
         ApiFuture<WriteResult> result = docRef.set(data);
 
     }
@@ -233,6 +232,85 @@ public class FireBaseActions {
         String fileName = url.getPath();
         return fileName.substring(fileName.lastIndexOf('/') + 1);
     }
-}
+
+    /**
+     * Maps Firestore document data to a User object, retrieving related decks, shared decks, and requests.
+     *
+     * @param document The Firestore document snapshot representing a User.
+     * @return The User object populated with data from Firestore.
+     */
+    public User mapDocumentToUser(QueryDocumentSnapshot document) {
+        // Basic User information
+        String id = document.getString("id");
+        String email = document.getString("email");
+        String username = document.getString("username");
+        User user = new User(id, email, username);
+
+        // Deck IDs associated with the User
+        List<String> deckIds = (List<String>) document.get("deckIds");
+        List<Deck> decks = new ArrayList<>();
+
+        // Retrieve and populate each Deck based on its ID
+        if (deckIds != null) {
+            for (String deckId : deckIds) {
+                DocumentReference deckRef = fstore.collection("Decks").document(deckId);
+                ApiFuture<DocumentSnapshot> future = deckRef.get();
+                try {
+                    DocumentSnapshot deckSnapshot = future.get();
+                    if (deckSnapshot.exists()) {
+                        Deck deck = mapDocumentToDeck(deckSnapshot);
+                        decks.add(deck);
+                    }
+                } catch (InterruptedException | ExecutionException e) {
+                    System.out.println("Error retrieving deck with ID " + deckId + ": " + e.getMessage());
+                }
+            }
+        }
+
+        // Convert deck list to array and set in User
+        user.setDecks(decks);
+
+        // Map shared decks and requests if stored as lists of Strings
+        List<String> sharedDecks = (List<String>) document.get("sharedDecks");
+        if (sharedDecks != null) {
+            user.setSharedDecks(sharedDecks);
+        }
+
+        List<String> requests = (List<String>) document.get("request");
+        if (requests != null) {
+            user.setRequest(requests);
+        }
+
+        return user;
+    }
+
+    /**
+     * Maps a Firestore document representing a deck to a Deck object.
+     *
+     * @param document The Firestore document snapshot representing a Deck.
+     * @return The Deck object populated with data from Firestore.
+     */
+    private Deck mapDocumentToDeck(DocumentSnapshot document) {
+        String owner = document.getString("owner");
+        String name = document.getString("name");
+        String category = document.getString("category");
+        Deck deck = new Deck(owner, name, category);
+
+        // Map deck cards
+        List<Map<String, String>> cardData = (List<Map<String, String>>) document.get("cards");
+        List<Card> cards = new ArrayList<>();
+        if (cardData != null) {
+            for (Map<String, String> cardInfo : cardData) {
+                String front = cardInfo.get("front");
+                String back = cardInfo.get("back");
+                cards.add(new Card(front, back));
+            }
+        }
+        deck.setCards(cards);
+
+        return deck;
+    }
 
 }
+
+

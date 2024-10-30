@@ -32,8 +32,6 @@
             <version>9.2.0</version>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -69,6 +67,13 @@
             <artifactId>jfoenix</artifactId>
             <version>17.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.3</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -78,8 +83,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>23</source>
-                    <target>23</target>
+                    <source>22</source>
+                    <target>22</target>
                 </configuration>
             </plugin>
             <plugin>
