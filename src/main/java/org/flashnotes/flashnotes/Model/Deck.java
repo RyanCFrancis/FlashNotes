@@ -1,30 +1,46 @@
 package org.flashnotes.flashnotes.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Deck {
 
-    private Card[] cards;
-    private String[] sharedUsers;
+    private List<Card> cards;
+    private List<String> sharedUsers;
     private String ownerOfDeck;
     private String nameOfDeck;
     private String category;
-    private int id;
+    private String id;
 
     public Deck (String ownerOfDeck, String nameOfDeck, String category) {
         this.ownerOfDeck = ownerOfDeck;
         this.nameOfDeck = nameOfDeck;
         this.category = category;
-        this.cards = new Card[0];
-        this.sharedUsers = new String[0];
-        this.id = 0;
+        this.cards = new ArrayList<>();
+        this.sharedUsers = new ArrayList<>();
+        this.id = "";
 
     }
     public void addCard(String front, String back) {
 
     }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public void setSharedUsers(ArrayList<String> sharedUsers) {
+        this.sharedUsers = sharedUsers;
+    }
+
+    public void setOwnerOfDeck(String ownerOfDeck) {
+        this.ownerOfDeck = ownerOfDeck;
+    }
+
     public void removeCard(int index){
 
     }
-    public Card[] getCards(){
+    public List<Card> getCards(){
 
         return cards;
     }
@@ -48,18 +64,18 @@ public class Deck {
 
         return nameOfDeck;
     }
-    public String[] getSharedUsers(){
+    public List<String> getSharedUsers(){
 
         return sharedUsers;
     }
     public void  addSharedUser(String username){
 
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }
