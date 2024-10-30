@@ -1,6 +1,7 @@
-package org.flashnotes.flashnotes;
+package org.flashnotes.flashnotes.Model;
 
 import javafx.scene.image.Image;
+import org.flashnotes.flashnotes.ViewModel.SharedDeckDTO;
 
 import java.io.File;
 
