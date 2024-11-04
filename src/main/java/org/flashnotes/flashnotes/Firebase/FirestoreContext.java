@@ -13,7 +13,7 @@ public class FirestoreContext {
     public Firestore FirestoreContext() {
         try {
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(getClass().getResourceAsStream("/files/Key.json")))
+                    .setCredentials(GoogleCredentials.fromStream(getClass().getResourceAsStream("/Key.json")))
                     .setStorageBucket("flash-notes-74382.appspot.com")
                     .build();
             FirebaseApp.initializeApp(options);

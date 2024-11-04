@@ -22,6 +22,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 
 /**
  * @author Charles Gonzalez Jr
@@ -168,9 +169,55 @@ public class FireBaseActions {
      * @param ownerOfDeck The owner/creator of the deck.
      * @return The ID of the uploaded deck, or 0 if the upload fails.
      */
-    public int uploadDeck(String nameOfDeck, String category, String ownerOfDeck) {
-        // Implementation here
-        return 0;
+    public String uploadDeck(String nameOfDeck, String category, String ownerOfDeck,String userId) throws ExecutionException, InterruptedException {
+        // Generate a unique ID for the new deck document
+        String deckId = UUID.randomUUID().toString();
+        DocumentReference deckRef = fstore.collection("Decks").document(deckId);
+        DocumentReference userRef = fstore.collection("Users").document(userId);
+
+        // Create the deck data
+        Map<String, Object> deckData = new HashMap<>();
+        deckData.put("name", nameOfDeck);
+        deckData.put("category", category);
+        deckData.put("cards", new ArrayList<Card>());
+        deckData.put("owner", userId);
+        deckData.put("createdAt", FieldValue.serverTimestamp());
+
+        ApiFuture<DocumentSnapshot> userSnap = userRef.get();
+        while(!userSnap.isDone()){
+            if(userSnap.isCancelled()){
+                throw new RuntimeException("error receive user info");
+            }
+        }
+
+       DocumentSnapshot snap =  userSnap.get();
+        if(snap.exists()){
+            // Start a batch operation to upload the deck and update the user document
+            WriteBatch batch = fstore.batch();
+
+            // Add the deck data
+            batch.set(deckRef, deckData);
+
+            // Update the user's deckIds array with the new deck ID
+            batch.update(userRef, "deckIds", FieldValue.arrayUnion(deckId));
+
+            // Commit the batch
+            ApiFuture<List<WriteResult>> commited = batch.commit();
+            while(!commited.isDone()){
+                if(commited.isCancelled()){
+                    throw new RuntimeException("error updating info");
+                }
+            }
+
+            System.out.println(commited.get().toString());
+
+
+        }
+
+        Deck newDeck = new Deck(ownerOfDeck,nameOfDeck,category);
+        newDeck.setId(deckId);
+        currentUser.getDecks().add(newDeck);
+        return deckId;
     }
 
     /**
