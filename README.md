@@ -5,8 +5,8 @@ A JavaFX based Studycard App made in CSC
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#Theteam">Usage</a></li>
-    <li><a href="#Tech-Stack">Roadmap</a></li>
+    <li><a href="#Theteam">The Team</a></li>
+    <li><a href="#Tech-Stack">Tech-Stack</a></li>
 
 
   </ol>
