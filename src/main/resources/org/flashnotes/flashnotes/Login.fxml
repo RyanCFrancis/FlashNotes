@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,15 +15,11 @@
 <AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Login Form Container -->
-    <VBox alignment="CENTER" layoutX="206.0" layoutY="39.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox alignment="CENTER" layoutX="206.0" layoutY="91.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
 
         <!-- Logo and Title -->
         <Label style="-fx-font-size: 24; -fx-text-fill: #333333; -fx-font-weight: bold;" text="Flash Notes" />
-      <ImageView blendMode="DARKEN" disable="true" fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
-         </image>
-      </ImageView>
+
         <Label style="-fx-font-size: 18; -fx-text-fill: #333333;" text="Login" />
 
         <!-- Username Field -->
