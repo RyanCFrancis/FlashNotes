@@ -1,9 +1,8 @@
-package org.flashnotes.flashnotes.Firebase;
+package org.flashnotes.flashnotes.Model;
 
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import com.google.cloud.Service.*;
 import com.google.cloud.storage.Acl;
 import com.google.cloud.storage.Blob;
 import com.google.firebase.auth.FirebaseAuth;
@@ -11,18 +10,12 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.StorageClient;
 
-import org.flashnotes.flashnotes.Model.Card;
-import org.flashnotes.flashnotes.Model.Deck;
-import org.flashnotes.flashnotes.Model.User;
-import org.flashnotes.flashnotes.ViewModel.SharedDeckDTO;
-
 
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 
 /**
  * @author Charles Gonzalez Jr
@@ -129,7 +122,7 @@ public class FireBaseActions {
 
         DocumentReference docRef = fstore.collection("Users").document(UUID.randomUUID().toString());
         Map<String, Object> data = new HashMap<>();
-        data.put("id", user.getUid());
+        data.put("id", docRef.getId());
         data.put("email", email);
         data.put("username", username);
         data.put("password", password);
@@ -170,53 +163,46 @@ public class FireBaseActions {
      * @return The ID of the uploaded deck, or 0 if the upload fails.
      */
     public String uploadDeck(String nameOfDeck, String category, String ownerOfDeck,String userId) throws ExecutionException, InterruptedException {
-        // Generate a unique ID for the new deck document
+
         String deckId = UUID.randomUUID().toString();
         DocumentReference deckRef = fstore.collection("Decks").document(deckId);
         DocumentReference userRef = fstore.collection("Users").document(userId);
 
         // Create the deck data
         Map<String, Object> deckData = new HashMap<>();
+        deckData.put("id", deckRef.getId());
         deckData.put("name", nameOfDeck);
         deckData.put("category", category);
         deckData.put("cards", new ArrayList<Card>());
         deckData.put("owner", userId);
         deckData.put("createdAt", FieldValue.serverTimestamp());
 
-        ApiFuture<DocumentSnapshot> userSnap = userRef.get();
-        while(!userSnap.isDone()){
-            if(userSnap.isCancelled()){
-                throw new RuntimeException("error receive user info");
-            }
-        }
 
-       DocumentSnapshot snap =  userSnap.get();
-        if(snap.exists()){
-            // Start a batch operation to upload the deck and update the user document
+        ApiFuture<DocumentSnapshot> userSnap = userRef.get();
+        DocumentSnapshot snap = userSnap.get();
+
+        if (snap.exists()) {
+
             WriteBatch batch = fstore.batch();
 
-            // Add the deck data
+
             batch.set(deckRef, deckData);
 
-            // Update the user's deckIds array with the new deck ID
             batch.update(userRef, "deckIds", FieldValue.arrayUnion(deckId));
 
-            // Commit the batch
-            ApiFuture<List<WriteResult>> commited = batch.commit();
-            while(!commited.isDone()){
-                if(commited.isCancelled()){
-                    throw new RuntimeException("error updating info");
-                }
-            }
 
-            System.out.println(commited.get().toString());
-
-
+            batch.commit().get(); // Wait for commit completion
+        } else {
+            throw new RuntimeException("User document not found");
         }
 
-        Deck newDeck = new Deck(ownerOfDeck,nameOfDeck,category);
+
+        Deck newDeck = new Deck(ownerOfDeck, nameOfDeck, category);
         newDeck.setId(deckId);
+
+
         currentUser.getDecks().add(newDeck);
+
         return deckId;
     }
 
@@ -241,12 +227,43 @@ public class FireBaseActions {
     }
 
     /**
-     * Updates an existing deck with new information.
-     * add deck to parameters once class is created
-     * @param idOfDeck The ID of the deck to be updated.
+     * Updates all decks for the current user in Firestore to match the current deck list in the user object.
      */
-    public void updateDeck(int idOfDeck) {
-        // Implementation here
+    public void updateDeck() throws ExecutionException, InterruptedException {
+
+        if (currentUser == null || currentUser.getDecks().isEmpty()) {
+            throw new IllegalStateException("No user or decks to update.");
+        }
+
+
+        WriteBatch batch = fstore.batch();
+
+        for (Deck deck : currentUser.getDecks()) {
+            System.out.println(deck.getId());
+            DocumentReference deckRef = fstore.collection("Decks").document(deck.getId());
+
+
+            Map<String, Object> deckData = new HashMap<>();
+            deckData.put("name", deck.getNameOfDeck());
+            deckData.put("category", deck.getCategory());
+            deckData.put("cards", deck.getCards());
+            deckData.put("owner", currentUser.getId());
+            deckData.put("updatedAt", FieldValue.serverTimestamp());
+
+
+            batch.set(deckRef, deckData, SetOptions.merge());
+        }
+
+
+        ApiFuture<List<WriteResult>> commitFuture = batch.commit();
+        try {
+
+            commitFuture.get();
+            System.out.println("All decks updated successfully.");
+        } catch (Exception e) {
+            System.out.println("Error updating decks: " + e.getMessage());
+            throw new RuntimeException("Error updating decks: " + e.getMessage());
+        }
     }
 
     private static String downloadImage(String imageUrl) {
@@ -342,7 +359,7 @@ public class FireBaseActions {
         String name = document.getString("name");
         String category = document.getString("category");
         Deck deck = new Deck(owner, name, category);
-
+        deck.setId(document.getString("id"));
         // Map deck cards
         List<Map<String, String>> cardData = (List<Map<String, String>>) document.get("cards");
         List<Card> cards = new ArrayList<>();
