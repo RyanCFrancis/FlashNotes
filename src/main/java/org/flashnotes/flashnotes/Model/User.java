@@ -93,4 +93,17 @@ public class User {
     public void shareDeck(int idOfDeck, String sharedEmail) {
 
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", img=" + img +
+                ", decks=" + decks +
+                ", sharedDecks=" + sharedDecks +
+                ", request=" + request +
+                '}';
+    }
 }

@@ -50,7 +50,7 @@
                      </Text>
                      <ImageView fitHeight="24.38" fitWidth="39.76" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@Images/MenuIcon.png" />
+                            <Image url="@Images/MenuIcon.png" />
                         </image>
                         <HBox.margin>
                            <Insets bottom="15.0" left="15.0" right="15.0" top="20.0" />

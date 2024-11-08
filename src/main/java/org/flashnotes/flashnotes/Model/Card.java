@@ -25,4 +25,11 @@ public class Card {
       this.back = back;
    }
 
+   @Override
+   public String toString() {
+      return "Card{" +
+              "front='" + front + '\'' +
+              ", back='" + back + '\'' +
+              '}';
+   }
 }

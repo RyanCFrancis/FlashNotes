@@ -78,6 +78,18 @@ public class Deck {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Deck{" +
+                "cards=" + cards +
+                ", sharedUsers=" + sharedUsers +
+                ", ownerOfDeck='" + ownerOfDeck + '\'' +
+                ", nameOfDeck='" + nameOfDeck + '\'' +
+                ", category='" + category + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }
 
 
