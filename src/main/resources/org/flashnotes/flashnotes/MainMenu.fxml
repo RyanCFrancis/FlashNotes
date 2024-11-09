@@ -2,52 +2,48 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="937.0" prefWidth="1472.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
-    <!-- Login Form Container -->
-    <VBox alignment="CENTER" layoutX="14.0" layoutY="115.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="111.0">
+    <!-- Flash Notes top left -->
+    <VBox alignment="CENTER" layoutX="171.0" layoutY="112.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="112.0">
       <children>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
             <children>
+
                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                   <children>
                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Flash Notes">
                         <font>
-                           <Font name="Inter Regular" size="32.0" />
+                           <Font name="Inter Regular" size="25.0" />
                         </font>
                         <HBox.margin>
                            <Insets right="725.0" />
                         </HBox.margin>
                      </Text>
+                     <HBox prefHeight="100.0" prefWidth="200.0" />
                   </children>
                </HBox>
-               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+
+
+               <HBox prefHeight="67.0" prefWidth="666.0">
+               </HBox>
+
+               <!-- home and menu icon top right -->
+               <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="139.0">
                   <children>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                         <font>
-                           <Font name="Inter Regular" size="32.0" />
+                           <Font name="Inter Regular" size="25.0" />
                         </font>
                      </Text>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Account">
-                        <font>
-                           <Font size="32.0" />
-                        </font>
-                        <HBox.margin>
-                           <Insets left="25.0" />
-                        </HBox.margin>
-                     </Text>
+                     <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="22.0" />
                      <ImageView fitHeight="24.38" fitWidth="39.76" pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@Images/MenuIcon.png" />
@@ -60,6 +56,31 @@
                </HBox>
             </children>
          </HBox>
+
+         <!-- Profile Picture -->
+         <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="1062.0" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="100">
+            <children>
+         <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="167.0">
+            <children>
+               <!-- Profile Picture Circle with ImageView inside -->
+               <Circle fill="#4da0ff" radius="58.0" />
+               <ImageView fitHeight="80.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@Images/smiley-face-1-20.png" />
+                  </image>
+               </ImageView>
+
+               <Text fill="black" style="-fx-font-size: 14; -fx-font-weight: bold;" text="John2456" StackPane.alignment="BOTTOM_CENTER">
+                  <StackPane.margin>
+                     <Insets top="5.0" />
+                  </StackPane.margin>
+               </Text>
+            </children>
+         </StackPane>
+            </children>
+         </HBox>
+
+         <!-- Create Deck -->
          <HBox alignment="CENTER" prefHeight="894.0" prefWidth="1399.0">
             <children>
                <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -81,6 +102,8 @@
                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                   </padding>
                </StackPane>
+
+               <!-- Study Deck -->
                <StackPane prefHeight="150.0" prefWidth="200.0">
                   <children>
                      <Rectangle arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="226.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="275.0" />
@@ -100,7 +123,9 @@
                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                   </padding>
                </StackPane>
-               <StackPane prefHeight="150.0" prefWidth="200.0">
+
+               <!-- View Decks -->
+               <StackPane prefHeight="386.0" prefWidth="315.0">
                   <children>
                      <Rectangle arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="226.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="275.0" />
                      <Label text="VIEW DECKS">
@@ -119,14 +144,13 @@
                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                   </padding>
                </StackPane>
-               <Rectangle arcHeight="14.0" arcWidth="14.0" fill="#fefefe" height="572.0" stroke="BLACK" width="275.0">
-                  <HBox.margin>
-                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                  </HBox.margin>
-               </Rectangle>
             </children>
          </HBox>
+
+         <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="1065.0" />
       </children>
 
     </VBox>
+
+
 </AnchorPane>
