@@ -10,7 +10,7 @@ public class InMemoryDatabase {
         private Map<String, User> users = new ConcurrentHashMap<>();  // Simulates "Users" collection
         private Map<String, Deck> decks = new ConcurrentHashMap<>();  // Simulates "Decks" collection
 
-        private String currentLoggedInUserId;  // Field to store the current logged-in user's ID
+        private User currentLoggedInUserId;  // Field to store the current logged-in user's ID
 
         public InMemoryDatabase() {
             preloadUsers();
@@ -59,7 +59,7 @@ public class InMemoryDatabase {
          */
         public void login(String userId) {
             if (users.containsKey(userId)) {
-                currentLoggedInUserId = userId;
+                currentLoggedInUserId = users.get(userId);
                 System.out.println("User logged in: " + userId);
             } else {
                 throw new RuntimeException("User not found with ID: " + userId);
