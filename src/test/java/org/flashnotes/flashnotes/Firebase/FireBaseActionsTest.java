@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,8 +73,32 @@ class FireBaseActionsTest {
     }
 
     @Test
-    void updateImg() {
+    void updateImgTest() throws IOException {
+        try {
+            // Login the user
+            actions.login("test2@gmail.com", "password");
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            Assertions.fail("Login failed");
+        }
+
+        // Get the current user and assert the profile image URL before update
+        user = actions.getCurrentUser();
+        Assertions.assertNotNull(user);
+
+
+        // Set a new image (you should have an image file available for testing)
+        File newImgFile = new File("src/test/java/org/flashnotes/flashnotes/Firebase/smiley-face-1-20.png");
+        String newUrl = actions.updateImg(newImgFile);
+        System.out.println(newUrl);
+        Assertions.assertNotNull(newUrl);
+
+
+
+
     }
+
 
     @Test
     void updateUsername() {

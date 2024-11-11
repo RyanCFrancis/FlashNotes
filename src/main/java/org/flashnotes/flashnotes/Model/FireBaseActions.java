@@ -209,11 +209,31 @@ public class FireBaseActions {
     /**
      * Updates the profile image of a user.
      *
-     * @param id  The ID of the user whose image is to be updated.
      * @param img The new profile image file.
+     * @return The URL of the uploaded image.
      */
-    public void updateImg(int id, File img) {
-        // Implementation here
+    public String updateImg(File img) throws IOException {
+        if (currentUser == null) {
+            throw new IllegalStateException("No user logged in.");
+        }
+
+        // Upload the image to Firebase Storage
+        String imgURL = uploadImg(img);
+
+        // Update the user's Firestore document with the new image URL
+        DocumentReference userDocRef = fstore.collection("Users").document(currentUser.getId());
+        ApiFuture<WriteResult> result = userDocRef.update("img", imgURL);
+
+        try {
+            result.get();  // Wait for the update to complete
+            System.out.println("User's profile image updated successfully.");
+        } catch (Exception e) {
+            System.out.println("Error updating profile image: " + e.getMessage());
+            throw new IOException("Error updating profile image.", e);
+        }
+
+        // Return the URL of the uploaded image
+        return imgURL;
     }
 
     /**
