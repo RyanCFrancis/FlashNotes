@@ -75,9 +75,7 @@ class FireBaseActionsTest {
     void updateImg() {
     }
 
-    @Test
-    void updateUsername() {
-    }
+
 
     @Test
     void updateDeck() throws ExecutionException, InterruptedException {
@@ -101,6 +99,42 @@ class FireBaseActionsTest {
 
 
     }
+
+    @Test
+    void updateUsername() {
+        try {
+            // Log in with an existing user
+            actions.login("test2@gmail.com", "password");
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            Assertions.fail("Login failed");
+        }
+
+        // Get the current user after login
+        user = actions.getCurrentUser();
+
+        // Store the old username for comparison
+        String oldUsername = user.getUsername();
+
+        // Update the username
+        String newUsername = "newTestUsername";
+        try {
+            actions.updateUsername(newUsername);
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            Assertions.fail("Error updating username");
+        }
+
+        // Re-fetch the current user to ensure the username was updated
+        user = actions.getCurrentUser();
+
+        // Assert that the username has been updated successfully
+        assertNotEquals(oldUsername, user.getUsername());
+        assertEquals(newUsername, user.getUsername());
+    }
+
+
 
 
 }
