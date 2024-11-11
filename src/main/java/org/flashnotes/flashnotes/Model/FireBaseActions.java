@@ -217,14 +217,32 @@ public class FireBaseActions {
     }
 
     /**
-     * Updates the username of a user.
+     * Updates the username of the currently logged-in user in Firebase.
      *
-     * @param username The new username to be set for the user.
-     * @param id       The ID of the user whose username is to be updated.
+     * @param newUsername The new username to be set for the user.
      */
-    public void updateUsername(String username, int id) {
-        // Implementation here
+    public void updateUsername(String newUsername) throws ExecutionException, InterruptedException {
+        if (currentUser == null) {
+            throw new IllegalStateException("No user is currently logged in.");
+        }
+
+        String userId = currentUser.getId(); // Get the ID of the currently logged-in user
+
+        // Get a reference to the user document using the user ID
+        DocumentReference userRef = fstore.collection("Users").document(userId);
+
+        // Prepare the update data
+        Map<String, Object> updateData = new HashMap<>();
+        updateData.put("username", newUsername);
+        currentUser.setUsername(newUsername);
+        // Perform the update operation
+        ApiFuture<WriteResult> future = userRef.update(updateData);
+
+        // Wait for the update to complete
+        WriteResult result = future.get();
+        System.out.println("Updated username for user ID " + userId + " at " + result.getUpdateTime());
     }
+
 
     /**
      * Updates all decks for the current user in Firestore to match the current deck list in the user object.
@@ -265,6 +283,8 @@ public class FireBaseActions {
             throw new RuntimeException("Error updating decks: " + e.getMessage());
         }
     }
+
+
 
     private static String downloadImage(String imageUrl) {
         String fileName;
