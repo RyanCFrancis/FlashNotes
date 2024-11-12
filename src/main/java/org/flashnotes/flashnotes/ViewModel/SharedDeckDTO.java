@@ -1,4 +1,4 @@
-package org.flashnotes.flashnotes;
+package org.flashnotes.flashnotes.ViewModel;
 
 public class SharedDeckDTO {
 

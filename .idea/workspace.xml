@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="Created and Added Image to Splash Screen">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/StudyScreen.fxml" afterDir="false" />
+    <list default="true" id="f415614e-a051-4953-9539-5c3f7e4df6f4" name="Changes" comment="Added .fxml Files from SceneBuilder for Login And Register">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Images/Cover.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/flashnotes/flashnotes/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/flashnotes/flashnotes/MainRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/SplashScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/flashnotes/flashnotes/SplashScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,44 +32,27 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;history&quot;: [
-    {
-      &quot;state&quot;: &quot;OPEN&quot;,
-      &quot;reviewState&quot;: &quot;NO_REVIEW&quot;
-    }
-  ],
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;reviewState&quot;: &quot;NO_REVIEW&quot;
+    &quot;assignee&quot;: &quot;maradC&quot;
   }
 }</component>
-  <component name="GitHubPullRequestState">{
-  &quot;prStates&quot;: [
-    {
-      &quot;id&quot;: {
-        &quot;id&quot;: &quot;PR_kwDOM8_Jb86AS8AT&quot;,
-        &quot;number&quot;: 4
-      },
-      &quot;lastSeen&quot;: 1730239411411
-    }
-  ]
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/RyanCFrancis/FlashNotes.git&quot;,
-    &quot;accountId&quot;: &quot;cbbc082d-4345-4118-a14e-98952bb0cc40&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RyanCFrancis/FlashNotes.git",
+    "accountId": "cbbc082d-4345-4118-a14e-98952bb0cc40"
   },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
     },
-    &quot;owner&quot;: &quot;RyanCFrancis&quot;,
-    &quot;repository&quot;: &quot;FlashNotes&quot;
+    "owner": "RyanCFrancis",
+    "repository": "FlashNotes"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -86,24 +69,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MainRunner.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;aielloBranch&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/frank/IdeaProjects/FlashNotes/src/main/resources/org/flashnotes/flashnotes/Images&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainRunner.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#3 on aielloBranch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/frank/IdeaProjects/FlashNotes/src/main/resources/org/flashnotes/flashnotes/Images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\frank\IdeaProjects\FlashNotes\src\main\resources\org\flashnotes\flashnotes\Images" />
@@ -117,8 +99,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -134,14 +116,7 @@
       <workItem from="1729087729206" duration="13000" />
       <workItem from="1730209402172" duration="284000" />
       <workItem from="1730209722741" duration="4700000" />
-      <workItem from="1730233719129" duration="1705000" />
-      <workItem from="1730239214361" duration="71000" />
-      <workItem from="1730239290608" duration="68000" />
-      <workItem from="1730239378897" duration="1548000" />
-      <workItem from="1730246946194" duration="120000" />
-      <workItem from="1730318385890" duration="915000" />
-      <workItem from="1730482566659" duration="24000" />
-      <workItem from="1730754759215" duration="1586000" />
+      <workItem from="1730233719129" duration="936000" />
     </task>
     <task id="LOCAL-00001" summary="Added .fxml Files from SceneBuilder for Login And Register">
       <option name="closed" value="true" />
@@ -151,15 +126,7 @@
       <option name="project" value="LOCAL" />
       <updated>1730216993494</updated>
     </task>
-    <task id="LOCAL-00002" summary="Created and Added Image to Splash Screen">
-      <option name="closed" value="true" />
-      <created>1730234764279</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1730234764279</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +134,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added .fxml Files from SceneBuilder for Login And Register" />
-    <MESSAGE value="Created and Added Image to Splash Screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created and Added Image to Splash Screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added .fxml Files from SceneBuilder for Login And Register" />
   </component>
 </project>

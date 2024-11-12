@@ -1,4 +1,4 @@
-package org.flashnotes.flashnotes;
+package org.flashnotes.flashnotes.View;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
