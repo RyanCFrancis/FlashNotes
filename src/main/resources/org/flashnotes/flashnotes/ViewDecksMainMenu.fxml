@@ -2,24 +2,29 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="937.0" prefWidth="1472.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="937.0" prefWidth="1472.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Flash Notes top left -->
-    <VBox alignment="TOP_RIGHT" layoutX="171.0" layoutY="112.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="112.0">
+    <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="171.0" layoutY="112.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="112.0">
         <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                 <children>
 
                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                         <children>
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Flash Notes">
+                            <Text fx:id="FlashNotes" strokeType="OUTSIDE" strokeWidth="0.0" text="Flash Notes">
                                 <font>
                                     <Font name="Inter Regular" size="25.0" />
                                 </font>
@@ -38,13 +43,13 @@
                     <!-- home and menu icon top right -->
                     <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="139.0">
                         <children>
-                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                            <Text fx:id="home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                                 <font>
                                     <Font name="Inter Regular" size="25.0" />
                                 </font>
                             </Text>
                             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="22.0" />
-                            <ImageView fitHeight="24.38" fitWidth="39.76" pickOnBounds="true" preserveRatio="true">
+                            <ImageView fx:id="menuIcon" fitHeight="24.38" fitWidth="39.76" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@Images/MenuIcon.png" />
                                 </image>
@@ -152,7 +157,7 @@
             </HBox>
 
             <!-- Bottom screen buttons -->
-         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="883.0">
+         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="716.0">
             <children>
 
                 <!-- Delete Button -->

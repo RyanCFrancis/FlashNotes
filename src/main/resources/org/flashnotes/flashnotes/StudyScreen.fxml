@@ -4,20 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="581.0" prefWidth="803.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="581.0" prefWidth="803.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Centered Content Container -->
-    <VBox alignment="CENTER" layoutX="66.0" layoutY="70.0" prefHeight="430.0" prefWidth="670.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox fx:id="vBox" alignment="CENTER" layoutX="66.0" layoutY="70.0" prefHeight="430.0" prefWidth="670.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
 
         <!-- Flash Notes Title -->
         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="630.0" spacing="20" style="-fx-padding: 10;">
-            <Label prefHeight="20.0" prefWidth="152.0" style="-fx-font-size: 14; -fx-text-fill: #333333; -fx-font-weight: bold;" text="Flash Notes" />
+            <Label fx:id="FlashNotes" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: #333333; -fx-font-weight: bold;" stylesheets="@../../../Template.css" text="Flash Notes" />
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="439.0" spacing="20" style="-fx-padding: 0;">
-                <Label style="-fx-font-size: 14; -fx-text-fill: gray;" text="home" />
-                <Button style="-fx-font-size: 16px; -fx-background-color: transparent;" text="≡" />
+                <Label fx:id="home" style="-fx-font-size: 14; -fx-text-fill: gray;" text="home" />
+                <Button fx:id="menuIcon" style="-fx-font-size: 16px; -fx-background-color: transparent;" text="≡" />
             </HBox>
         </HBox>
 
