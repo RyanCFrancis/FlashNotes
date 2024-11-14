@@ -68,8 +68,8 @@ public class Deck {
 
         return sharedUsers;
     }
-    public void  addSharedUser(String username){
-
+    public void setSharedUsers(List<String> sharedUsers) {
+        this.sharedUsers = sharedUsers;
     }
     public String getId() {
         return id;
