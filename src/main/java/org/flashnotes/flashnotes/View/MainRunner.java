@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class MainRunner extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, FirebaseAuthException {
         FireBaseActions.init();
         FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("/org/flashnotes/flashnotes/SplashScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);

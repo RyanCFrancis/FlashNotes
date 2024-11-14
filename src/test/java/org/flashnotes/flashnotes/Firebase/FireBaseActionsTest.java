@@ -37,6 +37,8 @@ class FireBaseActionsTest {
     }
 
 
+
+
     @Test
     void login() {
         try {
@@ -47,10 +49,38 @@ class FireBaseActionsTest {
 
         }
         user = actions.getCurrentUser();
-        System.out.println(user);
+        System.out.println(user.getDecks());
         Assertions.assertNotNull(user);
 
     }
+
+    @Test
+    void shareDeck(){
+        try {
+            actions.login("test2@gmail.com", "password");
+        }catch (FirebaseAuthException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+
+        }
+        actions.shareToUser("mryankeecj@gmail.com", "5f7fa7f9-5420-432b-89b9-d303f3611c9d");
+
+
+    }
+
+//    @Test
+//    void handleRequest() throws ExecutionException, InterruptedException {
+//        try {
+//            actions.login("test2@gmail.com", "password");
+//        }catch (FirebaseAuthException e){
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//
+//        }
+//
+//        actions.handleRequest(false,"081cf83d-c4dd-4563-babf-0ee16eb7959b");
+//
+//    }
 
 
 
@@ -66,9 +96,11 @@ class FireBaseActionsTest {
 
         user = actions.getCurrentUser();
         int initalSize = user.getDecks().size();
+        System.out.println(user.getDecks());
+        actions.uploadDeck("MathStudy","Mathematics",user.getUsername(), user.getId());
         actions.uploadDeck("MathStudy","Mathematics",user.getUsername(), user.getId());
 
-        assertEquals(initalSize+1,user.getDecks().size());
+        assertEquals(initalSize+2,user.getDecks().size());
     }
 
     @Test
@@ -87,8 +119,7 @@ class FireBaseActionsTest {
 
         }
         user = actions.getCurrentUser();
-        user.getDecks().get(0).setNameOfDeck("english");
-        user.getDecks().get(0).getCards().add(new Card("why","oh thats why"));
+       user.getDecks().remove(0);
         actions.updateDeck();
         try {
             actions.login("test2@gmail.com", "password");
