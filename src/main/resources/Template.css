@@ -1,0 +1,48 @@
+/* CSS for basic screen template */
+/* Created IDs in SceneBuilder for each */
+
+
+/* AnchorPane */
+#anchorPane {
+    -fx-background-color: #DBE8F4;
+    -fx-pref-height: 937.0;
+    -fx-pref-width: 1472.0;
+}
+
+/* VBox */
+#vBox {
+    -fx-alignment: center;
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-border-radius: 8;
+    -fx-background-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);
+    -fx-spacing: 20;
+    -fx-pref-width: 300;
+}
+
+/* FlashNotes label */
+#FlashNotes {
+    -fx-font-family: "Inter Regular";
+    -fx-font-size: 25px;
+    -fx-stroke-type: outside;
+    -fx-stroke-width: 0;
+    -fx-font: black;
+}
+
+/* home label */
+#home {
+    -fx-font-family: "Inter Regular";
+    -fx-font-size: 25px;
+    -fx-stroke-type: outside;
+    -fx-stroke-width: 0;
+    -fx-font: black;
+}
+
+
+/* Menu Icon */
+#menuIcon {
+    -fx-fit-height: 24.38;
+    -fx-fit-width: 39.76;
+    -fx-padding: 15 15 15 20;
+}
