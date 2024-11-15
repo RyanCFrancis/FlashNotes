@@ -6,6 +6,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+
 public class RegisterFXController {
 
     @FXML
@@ -15,10 +17,19 @@ public class RegisterFXController {
     private Label flashLabel2;
 
     @FXML
+    private Label noAccountLabel2;
+
+    @FXML
     private PasswordField passwordTxt;
 
     @FXML
+    private ImageView profilePicImgView;
+
+    @FXML
     private Label registerLabel;
+
+    @FXML
+    private Hyperlink signInHyperLink;
 
     @FXML
     private Hyperlink uploadImageHyperLink;
@@ -27,3 +38,4 @@ public class RegisterFXController {
     private TextField usernameTxt;
 
 }
+
