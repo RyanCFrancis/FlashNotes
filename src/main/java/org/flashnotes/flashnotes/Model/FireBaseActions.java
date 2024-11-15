@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.StorageClient;
+import com.google.firestore.v1.Write;
 
 
 import java.io.*;
@@ -174,6 +175,7 @@ public class FireBaseActions {
         deckData.put("name", nameOfDeck);
         deckData.put("category", category);
         deckData.put("cards", new ArrayList<Card>());
+        deckData.put("sharedUsers", new ArrayList<String>());
         deckData.put("owner", userId);
         deckData.put("createdAt", FieldValue.serverTimestamp());
 
@@ -252,7 +254,15 @@ public class FireBaseActions {
         if (currentUser == null || currentUser.getDecks().isEmpty()) {
             throw new IllegalStateException("No user or decks to update.");
         }
-
+        DocumentReference userRef = fstore.collection("Users").document(currentUser.getId());
+        Map<String, Object> updateData = new HashMap<>();
+        ArrayList<String> ids = new ArrayList<>();
+        for(Deck d: currentUser.getDecks()) {
+            ids.add(d.getId());
+        }
+        updateData.put("deckIds", ids);
+        ApiFuture<WriteResult> future = userRef.update(updateData);
+        WriteResult result = future.get();
 
         WriteBatch batch = fstore.batch();
 
@@ -368,6 +378,87 @@ public class FireBaseActions {
         return user;
     }
 
+    public void shareToUser(String email,String deckID){
+        //find the user to share with the email
+        List<QueryDocumentSnapshot> documents;
+        try {
+            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email).get();
+            documents = future.get().getDocuments();
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error retrieving user: " + e.getMessage());
+            throw new RuntimeException("Error retrieving user: " + e.getMessage());
+        }
+        User otherUser = mapDocumentToUser(documents.get(0));
+        if(otherUser.getDecks().size() == 10){
+            throw new RuntimeException("Other users decks are too full");
+        }
+        //use the id to get the document reference
+        DocumentReference sharedUserReference = fstore.collection("Users").document(documents.get(0).get("id").toString());
+
+        Map<String, Object> updateData = new HashMap<>();
+        updateData.put("deckIds", FieldValue.arrayUnion(deckID));
+        ApiFuture<WriteResult> future = sharedUserReference.update(updateData);
+
+        //make sure update goes through
+        try{
+           WriteResult result = future.get();
+        } catch (ExecutionException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+
+
+
+
+    }
+
+//    public void handleRequest(boolean accepted, String deckId) throws ExecutionException, InterruptedException {
+//        if(!accepted){
+//            currentUser.getRequest().remove(deckId);
+//            DocumentReference currentUserRef = fstore.collection("Users").document(currentUser.getId());
+//            Map<String, Object> updateData = new HashMap<>();
+//            updateData.put("request", currentUser.getRequest());
+//            ApiFuture<WriteResult> future = currentUserRef.update(updateData);
+//            try {
+//                WriteResult updated = future.get();
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            } catch (ExecutionException e) {
+//                throw new RuntimeException(e);
+//            }
+//            return;
+//        }
+//
+//        DocumentReference userRef = fstore.collection("Users").document(currentUser.getId());
+//        DocumentReference deckRef = fstore.collection("Decks").document(deckId);
+//
+//        Map<String, Object> userUpdateData = new HashMap<>();
+//        Map<String, Object> deckUpdateData = new HashMap<>();
+//        currentUser.getRequest().remove(deckId);
+//        userUpdateData.put("request", currentUser.getRequest());
+//        userUpdateData.put("deckIds", FieldValue.arrayUnion(deckId));
+//
+//        ApiFuture<DocumentSnapshot> deck = deckRef.get();
+//        currentUser.getDecks().add(mapDocumentToDeck(deck.get()));
+//        deckUpdateData.put("sharedUsers", FieldValue.arrayUnion(currentUser.getEmail()));
+//
+//        ApiFuture<WriteResult> futureDeck = deckRef.update(deckUpdateData);
+//        ApiFuture<WriteResult> futureUser = deckRef.update(userUpdateData);
+//        try{
+//            WriteResult result = futureDeck.get();
+//            WriteResult userUpdateResult = futureUser.get();
+//        }catch (ExecutionException e) {
+//            throw new RuntimeException(e);
+//
+//        }
+//
+//
+//    }
+
     /**
      * Maps a Firestore document representing a deck to a Deck object.
      *
@@ -375,12 +466,24 @@ public class FireBaseActions {
      * @return The Deck object populated with data from Firestore.
      */
     private Deck mapDocumentToDeck(DocumentSnapshot document) {
-        String owner = document.getString("owner");
+        DocumentReference ownerRef = fstore.collection("Users").document(document.get("owner").toString());
+        ApiFuture<DocumentSnapshot> future = ownerRef.get();
+        DocumentSnapshot ownerSnapshot;
+        try {
+             ownerSnapshot = future.get();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+        String owner = ownerSnapshot.getString("username");
         String name = document.getString("name");
         String category = document.getString("category");
         Deck deck = new Deck(owner, name, category);
         deck.setId(document.getString("id"));
+        deck.setSharedUsers((ArrayList<String>) document.get("sharedUsers"));
         // Map deck cards
+
         List<Map<String, String>> cardData = (List<Map<String, String>>) document.get("cards");
         List<Card> cards = new ArrayList<>();
         if (cardData != null) {
