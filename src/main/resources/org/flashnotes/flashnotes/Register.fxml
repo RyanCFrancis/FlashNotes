@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Login Form Container -->
     <VBox alignment="CENTER" layoutX="216.0" layoutY="16.0" prefHeight="515.0" prefWidth="271.0" spacing="25" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
@@ -22,7 +22,7 @@
 
         <!-- Logo and Title -->
         <Label fx:id="registerLabel" style="-fx-font-size: 22; -fx-text-fill: black; -fx-font-weight: regular; -fx-font-family: Inter;" text="Register" />
-      <ImageView blendMode="DARKEN" disable="true" fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profilePicImgView" blendMode="DARKEN" disable="true" fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
          </image>
@@ -53,8 +53,8 @@
          </VBox.margin></Button>
       <HBox alignment="CENTER" prefHeight="31.0" prefWidth="260.0">
          <children>
-            <Label alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Already have an account?" textAlignment="CENTER" />
-            <Hyperlink id="loginHyperLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #007bff; -fx-font-family: Inter" text="Sign In" textAlignment="CENTER" />
+            <Label fx:id="noAccountLabel2" alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Already have an account?" textAlignment="CENTER" />
+            <Hyperlink id="loginHyperLink" fx:id="signInHyperLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #007bff; -fx-font-family: Inter" text="Sign In" textAlignment="CENTER" />
          </children>
       </HBox>
 
