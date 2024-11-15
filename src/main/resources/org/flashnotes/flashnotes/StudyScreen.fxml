@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="581.0" prefWidth="803.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="581.0" prefWidth="803.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Centered Content Container -->
     <VBox fx:id="vBox" alignment="CENTER" layoutX="66.0" layoutY="70.0" prefHeight="430.0" prefWidth="670.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
@@ -25,11 +25,11 @@
 
         <!-- Navigation Buttons -->
         <HBox alignment="CENTER" spacing="10">
-            <Button style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="←" />
-            <Button style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="→" />
+            <Button fx:id="leftArrowButton" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="←" />
+            <Button fx:id="rightArrowButton" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="→" />
         </HBox>
 
         <!-- Matching Game Button -->
-        <Button style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
+        <Button fx:id="matchingGameButton" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
     </VBox>
 </AnchorPane>
