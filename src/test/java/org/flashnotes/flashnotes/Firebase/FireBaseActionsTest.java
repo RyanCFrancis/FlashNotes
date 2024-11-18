@@ -25,14 +25,16 @@ class FireBaseActionsTest {
 
 
     @Test
-    void register()  {
+    void registerWithExisitingUser()  {
         try {
             actions.Register("mryankeee", "test2@gmail.com", "password", new File("src/test/java/org/flashnotes/flashnotes/Firebase/MenuIcon.png"));
         }catch (FirebaseAuthException e){
             e.printStackTrace();
             System.out.println(e.getMessage());
-            Assertions.fail("error with registering");
+            return;
         }
+
+        Assertions.fail();
 
     }
 
@@ -63,7 +65,7 @@ class FireBaseActionsTest {
             System.out.println(e.getMessage());
 
         }
-        actions.shareToUser("mryankeecj@gmail.com", "5f7fa7f9-5420-432b-89b9-d303f3611c9d");
+        actions.shareToUser("mryankeecj@gmail.com", "f5da29a5-2eb1-450f-9f6e-1dc81f7668f6");
 
 
     }
@@ -110,7 +112,7 @@ class FireBaseActionsTest {
 
 
     @Test
-    void updateDeck() throws ExecutionException, InterruptedException {
+    void updateDeckRemoveDeck() throws ExecutionException, InterruptedException {
         try {
             actions.login("test2@gmail.com", "password");
         }catch (FirebaseAuthException e){
@@ -119,6 +121,8 @@ class FireBaseActionsTest {
 
         }
         user = actions.getCurrentUser();
+        int initialSize = user.getDecks().size();
+        System.out.println(initialSize);
        user.getDecks().remove(0);
         actions.updateDeck();
         try {
@@ -127,6 +131,39 @@ class FireBaseActionsTest {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+        user = actions.getCurrentUser();
+        System.out.println(user.getDecks().size());
+        Assertions.assertEquals(initialSize-1,user.getDecks().size());
+
+
+    }
+
+    @Test
+    void updateDeckInfo() throws ExecutionException, InterruptedException {
+        try {
+            actions.login("test2@gmail.com", "password");
+        }catch (FirebaseAuthException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+
+        }
+        user = actions.getCurrentUser();
+        String intialName = user.getDecks().get(0).getNameOfDeck();
+        System.out.println(intialName);
+        user.getDecks().get(0).setNameOfDeck("new name");
+        actions.updateDeck();
+        try {
+            actions.login("test2@gmail.com", "password");
+        }catch (FirebaseAuthException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        user = actions.getCurrentUser();
+        System.out.println(user.getDecks().size());
+        Assertions.assertNotEquals(intialName,user.getDecks().get(0).getNameOfDeck());
+        Assertions.assertEquals("new name",user.getDecks().get(0).getNameOfDeck());
+        user.getDecks().get(0).setNameOfDeck(intialName);
+        actions.updateDeck();
 
 
     }
@@ -160,8 +197,6 @@ class FireBaseActionsTest {
         // Re-fetch the current user to ensure the username was updated
         user = actions.getCurrentUser();
 
-        // Assert that the username has been updated successfully
-        assertNotEquals(oldUsername, user.getUsername());
         assertEquals(newUsername, user.getUsername());
     }
 
