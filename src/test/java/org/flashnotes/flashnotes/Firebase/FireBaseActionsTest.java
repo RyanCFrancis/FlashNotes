@@ -130,7 +130,7 @@ class FireBaseActionsTest {
         user = actions.getCurrentUser();
 
         // Assert that the username has been updated successfully
-//        assertNotEquals(oldUsername, user.getUsername());
+        assertNotEquals(oldUsername, user.getUsername());
         assertEquals(newUsername, user.getUsername());
     }
 

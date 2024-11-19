@@ -68,9 +68,7 @@ public class Deck {
 
         return sharedUsers;
     }
-    public void  addSharedUser(String username){
 
-    }
     public String getId() {
         return id;
     }
