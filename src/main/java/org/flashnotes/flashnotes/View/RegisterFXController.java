@@ -6,7 +6,14 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
+
+
+import java.io.File;
 
 public class RegisterFXController {
 
@@ -36,6 +43,23 @@ public class RegisterFXController {
 
     @FXML
     private TextField usernameTxt;
+
+    private File profileImageFile;
+
+    // Initialize FireBaseActions class
+    private final FireBaseActions fba = FireBaseActions.init();
+
+    private void OpenFileChooser(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png"));
+        Stage stage = (Stage) profilePicImgView.getScene().getWindow();
+        profileImageFile = fileChooser.showOpenDialog(stage);
+        if (profileImageFile != null) {
+            profilePicImgView.setImage(new Image(profileImageFile.toURI().toString()));
+        }
+    }
+
+
 
 }
 
