@@ -90,6 +90,14 @@ public class StudyScreenController {
             isFront = true;
             card.setText("Front:\n" + currentCard.getFront());
             index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
+        }else{
+            currentCardIndex = currentDeck.getCards().size();
+            currentCard = currentDeck.getCards().get(currentCardIndex-1);
+            isFront = true;
+            card.setText("Front:\n" + currentCard.getFront());
+            index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
+
+
         }
     }
 
@@ -100,6 +108,13 @@ public class StudyScreenController {
             isFront = true;
             card.setText("Front:\n" + currentCard.getFront());
             index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
+        }else{
+            currentCardIndex = 1;
+            currentCard = currentDeck.getCards().get(0);
+            isFront = true;
+            card.setText("Front:\n" + currentCard.getFront());
+            index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
+
         }
     }
 
