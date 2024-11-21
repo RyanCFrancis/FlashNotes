@@ -46,6 +46,22 @@ public class RegisterFXController {
     private final FireBaseActions fba = FireBaseActions.init();
     private boolean isRegistering = false;
 
+    @FXML
+    public void initialize() {
+        
+    }
+    private void setupEventHandlers() {
+        uploadImageHyperLink.setOnAction(event -> openFileChooser());
+        RegisterButton.setOnAction(event -> handleRegister());
+        signInHyperLink.setOnAction(event -> navigateToLogin());
+    }
+
+    private void navigateToLogin() {
+    }
+
+    private void handleRegister() {
+    }
+
 
     private void openFileChooser() {
         FileChooser fileChooser = new FileChooser();
