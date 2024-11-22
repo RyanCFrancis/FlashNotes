@@ -48,12 +48,24 @@ public class RegisterFXController {
 
     @FXML
     public void initialize() {
-        
+
     }
+
     private void setupEventHandlers() {
         uploadImageHyperLink.setOnAction(event -> openFileChooser());
         RegisterButton.setOnAction(event -> handleRegister());
         signInHyperLink.setOnAction(event -> navigateToLogin());
+    }
+    private void setUpInitialState(){
+        RegisterButton.setDisable(true);
+        profilePicImgView.setVisible(false);
+
+
+    }
+    private void setupValidations() {
+    }
+
+    private void validateForm() {
     }
 
     private void navigateToLogin() {
@@ -75,6 +87,17 @@ public class RegisterFXController {
 
         if (selectedFile != null) {
             if (selectedFile.length() > MAX_IMAGE_SIZE) {
+                showErrorMessage("Image too Large", "Please select a smaller image ")
 
+            }
+        }
+    }
 
+    private void showErrorMessage(String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 }
