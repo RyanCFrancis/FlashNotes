@@ -62,7 +62,7 @@
                 <children>
                     <StackPane prefHeight="16.0" prefWidth="48.0">
                         <children>
-                            <Circle fill="#ba43ff" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+                            <Circle fx:id="backButton" fill="#ba43ff" radius="27.0" />
                             <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@Images/arrow icon.png" />
@@ -87,7 +87,7 @@
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deck1Plus" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -102,7 +102,7 @@
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deck2Plus" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -117,7 +117,7 @@
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deck3Plus" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
@@ -137,7 +137,7 @@
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deck4Plus" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -152,7 +152,7 @@
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deck5Plus" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -167,7 +167,7 @@
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deck6Plus" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #3c6b2f; -fx-font-size: 50;" text="+" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
@@ -177,13 +177,11 @@
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="716.0">
                 <children>
 
-                    <!-- Delete Button -->
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0" />
 
                     <!-- Add button -->
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0">
+                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="618.0">
                         <children>
-                            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="37.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+                            <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="37.0" width="128.0" />
                             <Label text="Add" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="25" />
@@ -192,8 +190,6 @@
                         </children>
                     </StackPane>
 
-                    <!-- Edit Button -->
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0" />
                 </children>
             </HBox>
         </children>
