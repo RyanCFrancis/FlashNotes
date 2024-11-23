@@ -13,7 +13,7 @@
 
         <!-- Flash Notes Title -->
         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="630.0" spacing="20" style="-fx-padding: 10;">
-            <Label fx:id="FlashNotes" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: #333333; -fx-font-weight: bold;" stylesheets="@../../../Template.css" text="Flash Notes" />
+            <Label fx:id="FlashNotes" onMousePressed="#goToMainMenu" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: #333333; -fx-font-weight: bold;" stylesheets="@../../../Template.css" text="Flash Notes" />
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="439.0" spacing="20" style="-fx-padding: 0;">
                 <Label fx:id="home" style="-fx-font-size: 14; -fx-text-fill: gray;" text="home" />
                 <Button fx:id="menuIcon" style="-fx-font-size: 16px; -fx-background-color: transparent;" text="≡" />

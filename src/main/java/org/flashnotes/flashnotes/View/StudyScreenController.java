@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import org.flashnotes.flashnotes.Model.Card;
 import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
 
 import java.net.URL;
@@ -60,12 +61,14 @@ public class StudyScreenController {
 
     Deck currentDeck;
 
+    FireBaseActions fireBaseActions;
+
 
 
     @FXML
     public void initialize() {
-        InMemoryDatabase database = new InMemoryDatabase();
-        currentUser = database.getUser("1");
+        fireBaseActions = FireBaseActions.init();
+        currentUser = fireBaseActions.getCurrentUser();
         currentCardIndex = 1;
         System.out.println("here");
         System.out.println(currentUser);
@@ -127,6 +130,11 @@ public class StudyScreenController {
             isFront = true;
             card.setText("Front:\n" + currentCard.getFront());
         }
+    }
+
+    @FXML
+    public void goToMainMenu(){
+        //implement routing logic when we get that going
     }
 
 

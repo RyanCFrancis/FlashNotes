@@ -10,14 +10,14 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 import java.io.File;
 import java.io.IOException;
 
+
 public class MainRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException, FirebaseAuthException {
         FireBaseActions.init();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("FlashNotes");
-        stage.setResizable(false);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("/org/flashnotes/flashnotes/SplashScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
