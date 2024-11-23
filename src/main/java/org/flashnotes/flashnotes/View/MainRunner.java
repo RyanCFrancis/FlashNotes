@@ -14,7 +14,7 @@ public class MainRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException, FirebaseAuthException {
         FireBaseActions.init();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("/org/flashnotes/flashnotes/SplashScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainRunner.class.getResource("/org/flashnotes/flashnotes/Register.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);

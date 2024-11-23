@@ -18,6 +18,18 @@ import com.google.firebase.auth.FirebaseAuthException;
 
 import java.io.File;
 
+/**
+ * FXML Controller for handling the user registration logic.
+ * Handles the registration form submission, image upload,
+ * and navigation between the registration and login screens.
+ *
+ * Action methods linked to the FXML view include:
+ * - handleRegister: Triggered when the user clicks the "Register" button.
+ * - goToLogin: Triggered when the user clicks on the login hyperlink.
+ * - openFileChooser: Allows the user to upload a profile picture.
+ * - setUpInitialState: Initializes the view with default settings.
+ * - validateForm: Validates user input before enabling the "Register" button.
+ */
 public class RegisterFXController {
 
     @FXML
@@ -68,17 +80,18 @@ public class RegisterFXController {
         setDefaultProfileImage();
     }
 
-
-
     private void setupEventHandlers() {
     }
+
     private void setUpInitialState(){
         RegisterButton.setDisable(true);
         profilePicImgView.setVisible(false);
     }
+
     private void setupValidations() {
 
     }
+
     private boolean validateInput(String username, String email,
                                   String password, String confirmPassword) {
         if (username.isEmpty() || email.isEmpty() ||
@@ -95,13 +108,11 @@ public class RegisterFXController {
             return false;
         }
 
-
         if (!password.equals(confirmPassword)) {
             showErrorMessage("Password Mismatch",
                     "Passwords do not match.");
             return false;
         }
-
 
         if (profileImageFile == null) {
             showErrorMessage("Profile Picture Required",
@@ -109,12 +120,8 @@ public class RegisterFXController {
             return false;
         }
 
-
         return true;
     }
-
-
-
 
     private void validateForm() {
         boolean isValid = !usernameTxt.getText().trim().isEmpty()
@@ -126,12 +133,11 @@ public class RegisterFXController {
                 && profileImageFile != null
                 && !isRegistering;
 
-
         RegisterButton.setDisable(!isValid);
     }
 
-
-    private void navigateToLogin(ActionEvent actionEvent   ) {
+    // Triggered when the user clicks on the "Go to Login" hyperlink
+    private void goToLogin(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Login.fxml"));
             Scene scene = new Scene(root, 900, 600);
@@ -143,38 +149,31 @@ public class RegisterFXController {
         }
     }
 
-
-
+    // Triggered when the user clicks the "Register" button
     private void handleRegister() {
         if (isRegistering) return;
-
 
         String username = usernameTxt.getText().trim();
         String email = emailTxt.getText().trim();
         String password = passwordTxt.getText();
         String confirmPassword = confirmPasswordTxt.getText();
 
-
         if (!validateInput(username, email, password, confirmPassword)) {
             return;
         }
-
 
         isRegistering = true;
         progressIndicator.setVisible(true);
         RegisterButton.setDisable(true);
 
-
-        // Run registration in background thread
         new Thread(() -> {
             try {
                 fba.Register(username, email, password, profileImageFile);
 
-
                 Platform.runLater(() -> {
                     showSuccessMessage();
                     clearForm();
-                    navigateToLogin();
+                   // navigateToLogin();
                 });
             } catch (FirebaseAuthException e) {
                 handleFirebaseError(e);
@@ -191,6 +190,7 @@ public class RegisterFXController {
         }).start();
     }
 
+    // Opens the file chooser to upload a profile image
     private void openFileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Profile Picture");
@@ -219,6 +219,7 @@ public class RegisterFXController {
             }
         }
     }
+
     private void setDefaultProfileImage(){
         try {
             Image defaultImage = new Image(getClass().getResourceAsStream(
@@ -238,7 +239,6 @@ public class RegisterFXController {
         alert.showAndWait();
     }
 
-
     private void clearForm() {
         usernameTxt.clear();
         emailTxt.clear();
@@ -249,7 +249,6 @@ public class RegisterFXController {
         validateForm();
     }
 
-
     private void showErrorMessage(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -257,10 +256,11 @@ public class RegisterFXController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    // Handles Firebase authentication errors
     private void handleFirebaseError(FirebaseAuthException e) {
         String message;
         String errorMessage = e.getMessage().toLowerCase();
-
 
         if (errorMessage.contains("email already in use")) {
             message = "This email is already registered.";
@@ -275,6 +275,4 @@ public class RegisterFXController {
         Platform.runLater(() ->
                 showErrorMessage("Registration Error", message));
     }
-
-
 }
