@@ -103,7 +103,7 @@ public class RegisterFXController {
             }
         }
     }
-    private void setDefaultImage(){
+    private void setDefaultProfileImage(){
         try {
             Image defaultImage = new Image(getClass().getResourceAsStream(
                     "/Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png")); // Image that is in scenebuilder
@@ -122,6 +122,18 @@ public class RegisterFXController {
         alert.showAndWait();
     }
 
+
+    private void clearForm() {
+        usernameTxt.clear();
+        emailTxt.clear();
+        passwordTxt.clear();
+        confirmPasswordTxt.clear();
+        profileImageFile = null;
+        setDefaultProfileImage();
+        validateForm();
+    }
+
+
     private void showErrorMessage(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -129,4 +141,24 @@ public class RegisterFXController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+    private void handleFirebaseError(FirebaseAuthException e) {
+        String message;
+        String errorMessage = e.getMessage().toLowerCase();
+
+
+        if (errorMessage.contains("email already in use")) {
+            message = "This email is already registered.";
+        } else if (errorMessage.contains("invalid email")) {
+            message = "The email address is not valid.";
+        } else if (errorMessage.contains("weak password")) {
+            message = "Please choose a stronger password.";
+        } else {
+            message = "Registration failed: " + e.getMessage();
+        }
+
+
+        javafx.application.Platform.runLater(() ->
+                showErrorMessage("Registration Error", message));
+    }
+
 }
