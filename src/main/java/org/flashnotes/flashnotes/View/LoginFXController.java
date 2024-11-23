@@ -79,7 +79,7 @@ public class LoginFXController {
             e.printStackTrace();
         }
 }
-    private void navigateToRegister(javafx.event.ActionEvent event) {
+    private void navigateToRegister(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Register.fxml"));
             Scene scene = new Scene(root, 900, 600);
