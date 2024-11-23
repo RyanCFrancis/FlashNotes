@@ -1,6 +1,7 @@
 package org.flashnotes.flashnotes.View;
 
 import com.google.firebase.ErrorCode;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -66,7 +67,19 @@ public class RegisterFXController {
     }
 
     private void validateForm() {
+        boolean isValid = !usernameTxt.getText().trim().isEmpty()
+                && !emailTxt.getText().trim().isEmpty()
+                && !passwordTxt.getText().isEmpty()
+                && !confirmPasswordTxt.getText().isEmpty()
+                && passwordTxt.getText().length() >= MIN_PASSWORD_LENGTH
+                && passwordTxt.getText().equals(confirmPasswordTxt.getText())
+                && profileImageFile != null
+                && !isRegistering;
+
+
+        RegisterButton.setDisable(!isValid);
     }
+
 
     private void navigateToLogin() {
     }
@@ -156,9 +169,9 @@ public class RegisterFXController {
             message = "Registration failed: " + e.getMessage();
         }
 
-
-        javafx.application.Platform.runLater(() ->
+        Platform.runLater(() ->
                 showErrorMessage("Registration Error", message));
     }
+
 
 }
