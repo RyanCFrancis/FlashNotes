@@ -2,7 +2,12 @@ package org.flashnotes.flashnotes.View;
 
 import com.google.firebase.ErrorCode;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,22 +54,67 @@ public class RegisterFXController {
 
     @FXML
     public void initialize() {
-
+        setupEventHandlers();
+        setupValidationListeners();
+        setupInitialState();
     }
 
+    private void setupValidationListeners() {
+
+    }
+    private void setupInitialState() {
+        RegisterButton.setDisable(true);
+        progressIndicator.setVisible(false);
+        setDefaultProfileImage();
+    }
+
+
+
     private void setupEventHandlers() {
-        uploadImageHyperLink.setOnAction(event -> openFileChooser());
-        RegisterButton.setOnAction(event -> handleRegister());
-        signInHyperLink.setOnAction(event -> navigateToLogin());
     }
     private void setUpInitialState(){
         RegisterButton.setDisable(true);
         profilePicImgView.setVisible(false);
-
-
     }
     private void setupValidations() {
+
     }
+    private boolean validateInput(String username, String email,
+                                  String password, String confirmPassword) {
+        if (username.isEmpty() || email.isEmpty() ||
+                password.isEmpty() || confirmPassword.isEmpty()) {
+            showErrorMessage("Missing Information",
+                    "Please fill in all fields.");
+            return false;
+        }
+
+        if (password.length() < MIN_PASSWORD_LENGTH) {
+            showErrorMessage("Weak Password",
+                    "Password must be at least " + MIN_PASSWORD_LENGTH +
+                            " characters long.");
+            return false;
+        }
+
+
+        if (!password.equals(confirmPassword)) {
+            showErrorMessage("Password Mismatch",
+                    "Passwords do not match.");
+            return false;
+        }
+
+
+        if (profileImageFile == null) {
+            showErrorMessage("Profile Picture Required",
+                    "Please upload a profile picture.");
+            return false;
+        }
+
+
+        return true;
+    }
+
+
+
 
     private void validateForm() {
         boolean isValid = !usernameTxt.getText().trim().isEmpty()
@@ -81,12 +131,65 @@ public class RegisterFXController {
     }
 
 
-    private void navigateToLogin() {
+    private void navigateToLogin(ActionEvent actionEvent   ) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Login.fxml"));
+            Scene scene = new Scene(root, 900, 600);
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
 
     private void handleRegister() {
-    }
+        if (isRegistering) return;
 
+
+        String username = usernameTxt.getText().trim();
+        String email = emailTxt.getText().trim();
+        String password = passwordTxt.getText();
+        String confirmPassword = confirmPasswordTxt.getText();
+
+
+        if (!validateInput(username, email, password, confirmPassword)) {
+            return;
+        }
+
+
+        isRegistering = true;
+        progressIndicator.setVisible(true);
+        RegisterButton.setDisable(true);
+
+
+        // Run registration in background thread
+        new Thread(() -> {
+            try {
+                fba.Register(username, email, password, profileImageFile);
+
+
+                Platform.runLater(() -> {
+                    showSuccessMessage();
+                    clearForm();
+                    navigateToLogin();
+                });
+            } catch (FirebaseAuthException e) {
+                handleFirebaseError(e);
+            } catch (Exception e) {
+                showErrorMessage("Registration Error",
+                        "An unexpected error occurred: " + e.getMessage());
+            } finally {
+                javafx.application.Platform.runLater(() -> {
+                    isRegistering = false;
+                    progressIndicator.setVisible(false);
+                    validateForm();
+                });
+            }
+        }).start();
+    }
 
     private void openFileChooser() {
         FileChooser fileChooser = new FileChooser();
