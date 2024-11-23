@@ -10,19 +10,22 @@ import javafx.scene.control.TextField;
 public class LoginFXController {
 
     @FXML
-    private Button RegisterButton;
+    private Label flashLabel1;
 
     @FXML
-    private Label flashLabel2;
+    private Button loginButton;
+
+    @FXML
+    private Label loginLabel;
+
+    @FXML
+    private Label noAccountLabel;
 
     @FXML
     private PasswordField passwordTxt;
 
     @FXML
-    private Label registerLabel;
-
-    @FXML
-    private Hyperlink uploadImageHyperLink;
+    private Hyperlink registerHereLink;
 
     @FXML
     private TextField usernameTxt;

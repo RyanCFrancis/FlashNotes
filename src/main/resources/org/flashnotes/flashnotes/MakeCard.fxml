@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Root Container -->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="937.0" prefWidth="1472.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- Flash Notes top left -->
+    <VBox fx:id="vBox" alignment="CENTER" layoutX="171.0" layoutY="112.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="112.0">
+        <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <children>
+
+                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="864.0">
+                        <children>
+                            <Text fx:id="FlashNotes" strokeType="OUTSIDE" strokeWidth="0.0" text="Flash Notes" wrappingWidth="152.0213165283203">
+                                <font>
+                                    <Font name="Inter Regular" size="25.0" />
+                                </font>
+                                <HBox.margin>
+                                    <Insets right="725.0" />
+                                </HBox.margin>
+                            </Text>
+                            <HBox prefHeight="100.0" prefWidth="200.0" />
+                        </children>
+                    </HBox>
+
+
+                    <HBox prefHeight="67.0" prefWidth="666.0">
+                    </HBox>
+
+                    <!-- home and menu icon top right -->
+                    <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="139.0">
+                        <children>
+                            <Text fx:id="home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                                <font>
+                                    <Font name="Inter Regular" size="25.0" />
+                                </font>
+                            </Text>
+                            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="22.0" />
+                            <ImageView fx:id="menuIcon" fitHeight="24.38" fitWidth="39.76" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@Images/MenuIcon.png" />
+                                </image>
+                                <HBox.margin>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="20.0" />
+                                </HBox.margin>
+                            </ImageView>
+                        </children>
+                    </HBox>
+                </children>
+            </HBox>
+
+
+
+            <HBox alignment="CENTER" prefHeight="505.0" prefWidth="1104.0">
+                <children>
+
+                    <!-- Front side of the Card -->
+                    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="315.0" prefWidth="548.0">
+                        <children>
+                            <Rectangle fx:id="cardFront" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="310.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="508.0">
+                            <effect>
+                                <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
+                            </effect>
+                            </Rectangle>
+                     <Label fx:id="frontLabel" alignment="CENTER" prefHeight="273.0" prefWidth="470.0" text="Front Text" textFill="black">
+                             <font>
+                                 <Font name="Roboto Medium" size="30.0" />
+                             </font>
+                     </Label>
+                        </children>
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin>
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                    </StackPane>
+
+                    <!-- Back side of the Card -->
+               <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="340.0" prefWidth="556.0">
+                       <children>
+                           <Rectangle fx:id="cardBack" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="308.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="508.0">
+                           <effect>
+                               <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
+                           </effect>
+                           </Rectangle>
+                           <Label fx:id="backLabel" alignment="CENTER" prefHeight="273.0" prefWidth="470.0" text="Back Text" textFill="black">
+                               <font>
+                                   <Font name="Roboto Medium" size="30.0" />
+                               </font>
+                           </Label>
+                       </children>
+                   <opaqueInsets>
+                       <Insets />
+                   </opaqueInsets>
+                   <HBox.margin>
+                       <Insets />
+                   </HBox.margin>
+                   <padding>
+                       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                   </padding>
+               </StackPane>
+                </children>
+            </HBox>
+
+
+            <!-- Create Button -->
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="88.0" prefWidth="147.0">
+                <children>
+                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0">
+                        <children>
+                            <Rectangle fx:id="createButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="37.0" width="128.0" />
+                            <Label text="Create" textFill="black">
+                                <font>
+                                    <Font name="Roboto Medium" size="25" />
+                                </font>
+                            </Label>
+                        </children>
+                    </StackPane>
+                </children>
+
+
+            </HBox>
+        </children>
+    </VBox>
+</AnchorPane>
