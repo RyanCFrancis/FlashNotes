@@ -1,6 +1,7 @@
 package org.flashnotes.flashnotes.View;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -135,11 +136,12 @@ public class RegisterFXController {
     }
 
     // Triggered when the user clicks on the "Go to Login" hyperlink
-    private void goToLogin() {
+    private void goToLogin(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
             Scene scene = new Scene(root, 900, 600);
-            Stage window = (Stage) ((Node) getSource()).getScene().getWindow();
+            scene.getStylesheets().add(getClass().getResource("/css/lightTheme.css").toExternalForm());
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
         } catch (Exception e) {
@@ -147,8 +149,10 @@ public class RegisterFXController {
         }
     }
 
+
+
     // Triggered when the user clicks the "Register" button
-    private void handleRegister() {
+    private void handleRegister(ActionEvent event) {
         if (isRegistering) return;
 
         String username = usernameTxt.getText().trim();
@@ -171,7 +175,7 @@ public class RegisterFXController {
                 Platform.runLater(() -> {
                     showSuccessMessage();
                     clearForm();
-                    goToLogin();
+                    goToLogin(event);
                 });
             } catch (FirebaseAuthException e) {
                 handleFirebaseError(e);

@@ -42,36 +42,55 @@ public class LoginFXController {
 
     private final FireBaseActions fireBaseActions = FireBaseActions.init();
 
-
+    //just for later implementation when event handlers are set up
+    @FXML
+    public void initialize() {
+        loginButton.setOnAction(event -> handleLogin(event));
+        registerHereLink.setOnAction(event -> navigateToRegister(event));
+    }
 
     private void handleLogin(ActionEvent event) {
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
 
         try {
-            // Attempt login
             fireBaseActions.login(email, password);
 
-            // If login successful, navigate to main menu
             navigateToMainMenu(event);
+
         } catch (FirebaseAuthException e) {
-            // Error handling will be added later by another team member
-            System.out.println("Login failed: " + e.getMessage());
+            System.out.println("Firebase authentication error: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Login error: " + e.getMessage());
+        } catch (Exception e) {
+            // Handle any other unexpected errors
+            System.out.println("Unexpected error during login: " + e.getMessage());
         }
     }
     //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
     private void navigateToMainMenu(ActionEvent event){
-    try {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
-        Scene scene = new Scene(root, 900, 600);
-        scene.getStylesheets().add(getClass().getResource("/css/lightTheme.css").toExternalForm());
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/MainMenu.fxml"));
+            Scene scene = new Scene(root, 900, 600);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 }
+    private void navigateToRegister(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Register.fxml"));
+            Scene scene = new Scene(root, 900, 600);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
