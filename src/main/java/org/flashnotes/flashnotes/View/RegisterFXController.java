@@ -114,7 +114,13 @@ public class RegisterFXController {
         }
     }
 
-}
+    private void showSuccessMessage() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Registration Successful");
+        alert.setContentText("You can now sign in with your credentials.");
+        alert.showAndWait();
+    }
 
     private void showErrorMessage(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
