@@ -87,11 +87,34 @@ public class RegisterFXController {
 
         if (selectedFile != null) {
             if (selectedFile.length() > MAX_IMAGE_SIZE) {
-                showErrorMessage("Image too Large", "Please select a smaller image ")
+                showErrorMessage("Image too Large", "Please select a smaller image ");
+            }
+            try{
+                Image image = new Image(selectedFile.toURI().toString());
+                if(image.isError()){
+                    throw new Exception("Failed to Load Image");
+                }
+                profilePicImgView.setImage(image);
+                profileImageFile = selectedFile;
+
+            }catch(Exception e){
+                showErrorMessage("Failed to Load Image", "Please select a smaller image ");
 
             }
         }
     }
+    private void setDefaultImage(){
+        try {
+            Image defaultImage = new Image(getClass().getResourceAsStream(
+                    "/Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png")); // Image that is in scenebuilder
+            profilePicImgView.setImage(defaultImage);
+        } catch (Exception e) {
+            // Log the error and possibly show a message in the UI
+            System.err.println("Could not load default profile image: " + e.getMessage());
+        }
+    }
+
+}
 
     private void showErrorMessage(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
