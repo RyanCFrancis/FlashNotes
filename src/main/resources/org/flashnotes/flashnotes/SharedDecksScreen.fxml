@@ -12,7 +12,7 @@
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Flash Notes top left -->
-    <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="171.0" layoutY="112.0" prefWidth="300" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" stylesheets="@../../../Template.css" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="112.0">
+    <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="164.0" layoutY="81.0" prefHeight="776.0" prefWidth="1144.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="81.0">
         <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                 <children>
@@ -27,12 +27,13 @@
                                     <Insets right="725.0" />
                                 </HBox.margin>
                             </Text>
+                     <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" />
                             <HBox prefHeight="100.0" prefWidth="200.0" />
                         </children>
                     </HBox>
 
 
-                    <HBox prefHeight="67.0" prefWidth="666.0">
+                    <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="96.0" prefWidth="276.0">
                     </HBox>
 
                     <!-- home and menu icon top right -->
@@ -57,13 +58,12 @@
                 </children>
             </HBox>
 
-            <!-- Back arrow -->
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="1094.0">
                 <children>
                     <StackPane prefHeight="16.0" prefWidth="48.0">
                         <children>
                             <Circle fx:id="backButton" fill="#ba43ff" radius="27.0" />
-                            <ImageView fx:id="imageView" fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <ImageView fx:id="imageView" fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@Images/arrow icon.png" />
                                 </image>
@@ -72,6 +72,15 @@
                     </StackPane>
                 </children>
             </HBox>
+
+
+            <!-- Shared Decks Title -->
+         <Label fx:id="sharedDecks" prefHeight="55.0" prefWidth="314.0" text="Shared Decks">
+             <font>
+                 <Font name="Roboto Medium" size="38.0" />
+             </font>
+         </Label>
+
 
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="211.0" prefWidth="1053.0">
                 <children>
@@ -82,12 +91,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="207.0" width="227.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="189.0" layoutX="57.0" layoutY="12.0" width="227.0" />
                             <Rectangle fx:id="deck1" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="169.0" layoutX="57.0" layoutY="32.0" width="227.0" />
-                            <Label prefHeight="160.0" prefWidth="115.0" text="Deck 1" textFill="black">
+                            <Label fx:id="DeckOneLabel" prefHeight="160.0" prefWidth="214.0" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck1Edit" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 30;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -97,12 +105,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="207.0" width="227.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="189.0" layoutX="57.0" layoutY="12.0" width="227.0" />
                             <Rectangle fx:id="deck2" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="169.0" layoutX="57.0" layoutY="32.0" width="227.0" />
-                            <Label prefHeight="160.0" prefWidth="115.0" text="Deck 2" textFill="black">
+                            <Label fx:id="DeckTwoLabel" prefHeight="160.0" prefWidth="214.0" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck2Edit" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 30;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -112,12 +119,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="207.0" width="227.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="189.0" layoutX="57.0" layoutY="12.0" width="227.0" />
                             <Rectangle fx:id="deck3" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="169.0" layoutX="57.0" layoutY="32.0" width="227.0" />
-                            <Label prefHeight="160.0" prefWidth="115.0" text="Deck 3" textFill="black">
+                            <Label fx:id="DeckThreeLabel" prefHeight="160.0" prefWidth="212.0" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck3Edit" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 30;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
@@ -132,12 +138,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="207.0" width="227.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="189.0" layoutX="57.0" layoutY="12.0" width="227.0" />
                             <Rectangle fx:id="deck4" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="169.0" layoutX="57.0" layoutY="32.0" width="227.0" />
-                            <Label prefHeight="160.0" prefWidth="115.0" text="Deck 4" textFill="black">
+                            <Label fx:id="DeckFourLabel" prefHeight="160.0" prefWidth="218.0" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck4Edit" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 30;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -147,12 +152,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="207.0" width="227.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="189.0" layoutX="57.0" layoutY="12.0" width="227.0" />
                             <Rectangle fx:id="deck5" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="169.0" layoutX="57.0" layoutY="32.0" width="227.0" />
-                            <Label prefHeight="160.0" prefWidth="115.0" text="Deck 5" textFill="black">
+                            <Label fx:id="DeckFiveLabel" prefHeight="160.0" prefWidth="214.0" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck5Edit" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 30;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -162,33 +166,22 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="207.0" width="227.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="189.0" layoutX="57.0" layoutY="12.0" width="227.0" />
                             <Rectangle fx:id="deck6" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="169.0" layoutX="57.0" layoutY="32.0" width="227.0" />
-                            <Label prefHeight="160.0" prefWidth="115.0" text="Deck 6" textFill="black">
+                            <Label fx:id="DeckSixLabel" prefHeight="160.0" prefWidth="219.0" textFill="black">
                                 <font>
                                     <Font name="Roboto Medium" size="38.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck6Edit" prefHeight="119.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 30;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
             </HBox>
 
-
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="219.0">
+            <!-- Bottom screen buttons -->
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="716.0">
                 <children>
 
-
-                    <!-- Edit button -->
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0">
-                        <children>
-                            <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="37.0" width="128.0" />
-                            <Label text="Edit" textFill="black">
-                                <font>
-                                    <Font name="Roboto Medium" size="25" />
-                                </font>
-                            </Label>
-                        </children>
-                    </StackPane>
+                    <!-- Add button -->
+                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="143.0" />
 
                     <!-- Edit Button -->
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0" />
