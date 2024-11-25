@@ -10,6 +10,7 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 import java.io.File;
 import java.io.IOException;
 
+
 public class MainRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException, FirebaseAuthException {
