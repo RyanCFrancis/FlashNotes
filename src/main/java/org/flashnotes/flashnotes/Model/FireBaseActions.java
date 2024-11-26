@@ -254,6 +254,21 @@ public class FireBaseActions {
         System.out.println("Updated username for user ID " + userId + " at " + result.getUpdateTime());
     }
 
+    public void deleteDeck(String deckId) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = fstore.collection("Decks").document(deckId);
+        ApiFuture<WriteResult> request = docRef.delete();
+
+        if(request.isDone()){
+            System.out.println("Succefully deleted deck in collection");
+        }
+
+
+        System.out.println(request.get().getUpdateTime());
+
+
+
+    }
+
     public void logout(){
         currentUser = null;
     }
