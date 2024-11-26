@@ -1,18 +1,17 @@
 package org.flashnotes.flashnotes.View;
 
+import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 import org.flashnotes.flashnotes.Model.Card;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class StudyScreenController {
 
@@ -63,6 +62,15 @@ public class StudyScreenController {
 
     FireBaseActions fireBaseActions;
 
+//    RotateTransition flipTransition;
+//
+//    PauseTransition swapTextTransition;
+//
+//    TranslateTransition jumpTransition;
+
+    ParallelTransition cardFlipAnimator;
+
+
 
 
     @FXML
@@ -81,6 +89,8 @@ public class StudyScreenController {
         index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         card.setText("Front:\n" + currentCard.getFront());
         title.setText(currentDeck.getNameOfDeck());
+
+
 
 
     }
@@ -102,6 +112,7 @@ public class StudyScreenController {
 
 
         }
+
     }
 
     @FXML public void nextCard(){
@@ -123,13 +134,64 @@ public class StudyScreenController {
 
     @FXML
     public void switchSide(){
+        cardFlipAnimator = new ParallelTransition(flipCard(),cardJump(),changeText());
+//        System.out.println(isFront);
+
+        cardFlipAnimator.play();
+        isFront = !isFront;
+
+//        if(isFront){
+//            isFront = false;
+//            card.setText("Back:\n" + currentCard.getBack());
+//        }else{
+//            isFront = true;
+//            card.setText("Front:\n" + currentCard.getFront());
+//        }
+    }
+
+    private TranslateTransition cardJump(){
+        TranslateTransition move = new TranslateTransition(Duration.millis(200),card);
+        move.setByY(-20);
+        move.setAutoReverse(true);
+        move.setCycleCount(2);
+        return move;
+    }
+
+    private RotateTransition flipCard(){
+        RotateTransition rotate = new RotateTransition(Duration.millis(400), card);
+        rotate.setAxis(Rotate.Y_AXIS);
         if(isFront){
-            isFront = false;
-            card.setText("Back:\n" + currentCard.getBack());
-        }else{
-            isFront = true;
-            card.setText("Front:\n" + currentCard.getFront());
+            rotate.setFromAngle(0);
+            rotate.setToAngle(180);
+            rotate.setFromAngle(180);
+            rotate.setToAngle(0);
+        } else {
+            rotate.setFromAngle(0);
+            rotate.setToAngle(180);
+            rotate.setFromAngle(180);
+            rotate.setToAngle(0);
         }
+        rotate.setInterpolator(Interpolator.LINEAR);
+        rotate.setCycleCount(1);
+
+        return rotate;
+    }
+
+
+    private PauseTransition changeText(){
+        PauseTransition pauseTransition = new PauseTransition(Duration.millis(200));
+        if(isFront){
+            pauseTransition.setOnFinished( e -> {
+//                isFront = false;
+                card.setText("Back:\n" + currentCard.getBack());
+            });
+        } else {
+            pauseTransition.setOnFinished( e -> {
+//                isFront = true;
+                card.setText("Front:\n" + currentCard.getFront());
+            });
+        }
+        return pauseTransition;
     }
 
     @FXML
