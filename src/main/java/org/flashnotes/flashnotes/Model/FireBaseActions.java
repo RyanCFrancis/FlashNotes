@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.StorageClient;
+import com.google.firestore.v1.Write;
 
 
 import java.io.*;
@@ -31,7 +32,7 @@ public class FireBaseActions {
     private StorageClient storageClient;
     private FirebaseAuth fauth;
     private User currentUser;
-    Card selectedCard;
+    public Card selectedCard;
 
     public Deck getCurrentDeck() {
         return currentDeck;
@@ -143,6 +144,21 @@ public class FireBaseActions {
         data.put("request", new ArrayList<String>());
         System.out.println("here");
         ApiFuture<WriteResult> result = docRef.set(data);
+
+    }
+
+    public void deleteDeck(String deckId) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = fstore.collection("Decks").document(deckId);
+        ApiFuture<WriteResult> request = docRef.delete();
+
+       if(request.isDone()){
+           System.out.println("Succefully deleted deck in collection");
+       }
+
+
+        System.out.println(request.get().getUpdateTime());
+
+
 
     }
 

@@ -16,15 +16,15 @@
             <Font name="Inter Regular" size="25.0" />
          </font>
       </Text>
-      <ImageView fx:id="profileIMG" fitHeight="200.0" fitWidth="200.0" layoutX="313.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profileIMG" fitHeight="200.0" fitWidth="200.0" layoutX="303.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/smiley-face-1-20.png" />
          </image>
       </ImageView>
-      <Text fx:id="nameIntro" fill="black" layoutX="341.0" layoutY="305.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Welcome my guy" textAlignment="CENTER" />
-      <VBox fx:id="Decks" layoutX="82.0" layoutY="378.0" prefHeight="200.0" prefWidth="662.0" style="-fx-border-color: black;" />
+      <Text fx:id="nameIntro" fill="black" layoutX="344.0" layoutY="305.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Welcome my guy" textAlignment="CENTER" />
+      <VBox fx:id="Decks" layoutX="16.0" layoutY="378.0" prefHeight="200.0" prefWidth="774.0" style="-fx-border-color: black;" />
       <Label fx:id="emptyDecks" layoutX="296.0" layoutY="342.0" prefHeight="20.0" prefWidth="208.0" text="You have no decks, so create one!" visible="false" />
       <Button fx:id="addButton" layoutX="714.0" layoutY="339.0" mnemonicParsing="false" onAction="#addDeck" style="-fx-background-radius: 100;" text="+" />
-      <Button fx:id="logoutButton" layoutX="697.0" layoutY="49.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <Button fx:id="logoutButton" layoutX="703.0" layoutY="32.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
    </children>
 </AnchorPane>

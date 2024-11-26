@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.EditDeckController">
    <children>
       <Label layoutX="76.0" layoutY="40.0" text="FlashNotes">
@@ -22,10 +21,11 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <VBox fx:id="cards" layoutX="44.0" layoutY="189.0" prefHeight="263.0" prefWidth="712.0" />
+      <VBox fx:id="cards" alignment="TOP_CENTER" layoutX="44.0" layoutY="189.0" prefHeight="263.0" prefWidth="712.0" style="-fx-border-color: black;" />
       <Button fx:id="confirmButton" layoutX="691.0" layoutY="43.0" mnemonicParsing="false" onAction="#confirmNameOrCategoryChanges" text="Confirm Edit" />
       <Label layoutX="265.0" layoutY="22.0" text="Name of deck:" />
       <Label layoutX="525.0" layoutY="22.0" text="Category:" />
       <Button fx:id="addCardButton" layoutX="696.0" layoutY="137.0" mnemonicParsing="false" onAction="#addCard" text="Add Card" />
+      <Button fx:id="mainMenuButton" layoutX="356.0" layoutY="515.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Main Menu" />
    </children>
 </AnchorPane>

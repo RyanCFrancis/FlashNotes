@@ -58,7 +58,7 @@ public class ViewDecksMainMenuFXController {
         Decks.getChildren().clear();
         System.out.println(curr.getImg());
         profileIMG.setImage(new Image(curr.getImg().getUrl()));
-        profileIMG.setFitWidth(200);
+        profileIMG.setFitWidth(250);
         profileIMG.setFitHeight(200);
         nameIntro.setText("Welcome " + curr.getUsername() + "!");
         if(curr.getDecks().size() == 0) {
@@ -67,6 +67,8 @@ public class ViewDecksMainMenuFXController {
         else {
             for(Deck d: curr.getDecks()){
                 Label nameOfDeck = new Label("Name Of Deck: " + d.getNameOfDeck() + "\nOwner of deck: " + d.getOwnerOfDeck());
+                nameOfDeck.setWrapText(true);
+                nameOfDeck.setMinWidth(300);
                 Button deleteButton = new Button("Delete");
                 deleteButton.setOnAction((ActionEvent event) -> {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -78,6 +80,7 @@ public class ViewDecksMainMenuFXController {
                         curr.getDecks().remove(d);
                         try {
                             actions.updateDeck();
+                            actions.deleteDeck(d.getId());
                         } catch (ExecutionException e) {
                             throw new RuntimeException(e);
                         } catch (InterruptedException e) {
@@ -117,11 +120,17 @@ public class ViewDecksMainMenuFXController {
                         e.printStackTrace();
                     }
                 });
-                HBox buttons = new HBox(new Label(d.getCards().size()+"/10 cards"),deleteButton, studyButton,editDeckButton);
+
+                Button shareButton = new Button("Share");
+                shareButton.setOnAction((ActionEvent event) -> {
+                    actions.setCurrentDeck(d);
+                });
+                HBox buttons = new HBox(new Label(d.getCards().size()+"/10 cards"),deleteButton, studyButton,editDeckButton, shareButton);
                 buttons.setSpacing(10);
                 HBox selection = new HBox(nameOfDeck, buttons);
                 selection.setStyle("-fx-background-color: white;");
-                selection.setSpacing(200);
+                selection.setSpacing(100);
+                selection.setMinWidth(450);
                         Decks.getChildren().add(selection);
 
             }
@@ -130,6 +139,14 @@ public class ViewDecksMainMenuFXController {
 
     @FXML
     void addDeck(ActionEvent event) {
+        if(actions.getCurrentUser().getDecks().size() == 10) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("error");
+            alert.setHeaderText(null);
+            alert.setContentText("You have reach your limit of decks... please delete one to create another");
+            Optional<ButtonType> result = alert.showAndWait();
+            return;
+        }
         try {
             Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/NewAddDeck.fxml"));
             Scene scene = new Scene(root, 800, 600);
@@ -151,7 +168,7 @@ public class ViewDecksMainMenuFXController {
         if(result.get() == ButtonType.OK) {
             FireBaseActions.init().logout();
             try {
-                Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/login.fxml"));
+                Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/Login.fxml"));
                 Scene scene = new Scene(root, 800, 600);
                 Stage window = (Stage) (FlashNotes.getScene().getWindow());
                 window. setScene(scene);

@@ -3,6 +3,7 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -44,12 +45,17 @@ public class EditDeckController {
     void initialize() {
         currentDeck = FireBaseActions.init().getCurrentDeck();
         cards.getChildren().clear();
+        nameOfDeck.setText(FireBaseActions.init().getCurrentDeck().getNameOfDeck());
+        category.setText(FireBaseActions.init().getCurrentDeck().getCategory());
         for(Card card : currentDeck.getCards()) {
             Label info = new Label("Front: " + card.getFront() + "\nBack: " + card.getBack());
+            info.minWidth(300);
+            info.setStyle("-fx-background-color: White");
             Button editButton = new Button("Edit");
             editButton.setOnAction(event -> {
+                FireBaseActions.init().selectedCard = card;
                 try {
-                    Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/EditCardScreen.fxml"));
+                    Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/NewEditCard.fxml"));
                     Scene scene = new Scene(root, 800, 600);
                     Stage window = (Stage) (addCardButton.getScene().getWindow());
                     window. setScene(scene);
@@ -60,8 +66,10 @@ public class EditDeckController {
             });
             Button deleteButton = new Button("Delete");
             HBox buttons = new HBox( editButton, deleteButton);
+            buttons.setMinWidth(200);
             HBox container = new HBox(info, buttons);
-            container.setSpacing(200);
+            container.setAlignment(Pos.TOP_CENTER);
+            container.setSpacing(300);
             cards.getChildren().add(container);
 
         }
@@ -95,7 +103,20 @@ public class EditDeckController {
     @FXML
     void addCard(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/AddCardScreen.fxml"));
+            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/NewAddCard.fxml"));
+            Scene scene = new Scene(root, 800, 600);
+            Stage window = (Stage) (addCardButton.getScene().getWindow());
+            window. setScene(scene);
+            window.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void returnToMainMenu(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/NewMainMenu.fxml"));
             Scene scene = new Scene(root, 800, 600);
             Stage window = (Stage) (addCardButton.getScene().getWindow());
             window. setScene(scene);
