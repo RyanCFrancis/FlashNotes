@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenController">
 
     <!-- Centered Content Container -->
-    <VBox fx:id="vBox" alignment="CENTER" layoutX="65.0" layoutY="66.0" prefHeight="430.0" prefWidth="670.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox fx:id="vBox" alignment="CENTER" layoutX="75.0" layoutY="62.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
 
         <!-- Flash Notes Title -->
         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="630.0" spacing="20" style="-fx-padding: 10;">
@@ -26,7 +26,7 @@
             </HBox>
         </HBox>
       <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="148.0" />
-      <Label fx:id="card" alignment="CENTER" contentDisplay="CENTER" maxHeight="300.0" maxWidth="400.0" minHeight="160.0" minWidth="-Infinity" onMousePressed="#switchSide" prefHeight="173.0" prefWidth="400.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 10; -fx-padding: 10;" text="Place Holder" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="card" alignment="CENTER" contentDisplay="CENTER" maxHeight="300.0" maxWidth="400.0" minHeight="160.0" minWidth="-Infinity" onMousePressed="#switchSide" prefHeight="168.0" prefWidth="400.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 10; -fx-padding: 10;" text="Place Holder" textAlignment="CENTER" wrapText="true" />
       <Label fx:id="index" text="1/10 cards" />
 
         <!-- Navigation Buttons -->

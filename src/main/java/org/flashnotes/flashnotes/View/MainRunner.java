@@ -70,7 +70,7 @@ public class MainRunner extends Application {
     private void showMainApp(Stage primaryStage) {
         // Set up the main application window
         try {
-            scene = new Scene(loadFXML("/org/flashnotes/flashnotes/Login.fxml"),800,600);
+            scene = new Scene(loadFXML("/org/flashnotes/flashnotes/MainMenu.fxml"),800,600);
             primaryStage.setScene(scene);
             primaryStage.show();
         }catch(Exception e){
