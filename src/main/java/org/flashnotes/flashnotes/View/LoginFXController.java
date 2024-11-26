@@ -7,11 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 
@@ -42,54 +38,70 @@ public class LoginFXController {
 
     private final FireBaseActions fireBaseActions = FireBaseActions.init();
 
-    //just for later implementation when event handlers are set up
-    @FXML
-    public void initialize() {
-        loginButton.setOnAction(event -> handleLogin(event));
-        registerHereLink.setOnAction(event -> navigateToRegister(event));
+    Alert alert;
+
+
+
+   @FXML
+    private void login(ActionEvent event) {
+       try{
+           fireBaseActions.login(usernameTxt.getText().trim(),passwordTxt.getText().trim());
+       } catch (FirebaseAuthException e) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+       } catch (Exception e){
+           alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Error");
+           alert.setHeaderText(null);
+           alert.setContentText(e.getMessage());
+           alert.showAndWait();
+           return;
+       }
+
+       if(fireBaseActions.getCurrentUser() == null){
+           alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Error");
+           alert.setHeaderText(null);
+           alert.setContentText("Email or password is incorrect");
+           alert.showAndWait();
+           return;
+       }
+
+       goToMainMenu();
+
+
+
+
+   }
+
+   @FXML
+    private void goToRegister(ActionEvent event) {
+       try {
+           Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/Register.fxml"));
+           Scene scene = new Scene(root, 800, 600);
+           Stage window = (Stage) (usernameTxt.getScene().getWindow());
+           window. setScene(scene);
+           window.show();
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
     }
 
-    private void handleLogin(ActionEvent event) {
-        String email = usernameTxt.getText().trim();
-        String password = passwordTxt.getText();
-
+     private void goToMainMenu(){
         try {
-            fireBaseActions.login(email, password);
-
-            navigateToMainMenu(event);
-
-        } catch (FirebaseAuthException e) {
-            System.out.println("Firebase authentication error: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Login error: " + e.getMessage());
-        } catch (Exception e) {
-            // Handle any other unexpected errors
-            System.out.println("Unexpected error during login: " + e.getMessage());
-        }
-    }
-    //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
-    private void navigateToMainMenu(ActionEvent event){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/MainMenu.fxml"));
-            Scene scene = new Scene(root, 900, 600);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-}
-    private void navigateToRegister(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Register.fxml"));
-            Scene scene = new Scene(root, 900, 600);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+             Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/NewMainMenu.fxml"));
+             Scene scene = new Scene(root, 800, 600);
+             Stage window = (Stage) (usernameTxt.getScene().getWindow());
+             window. setScene(scene);
+             window.show();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+     }
 
 
 

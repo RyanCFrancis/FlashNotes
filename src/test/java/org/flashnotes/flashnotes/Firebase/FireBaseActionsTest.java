@@ -66,7 +66,7 @@ class FireBaseActionsTest {
 
         user = actions.getCurrentUser();
         int initalSize = user.getDecks().size();
-        actions.uploadDeck("MathStudy","Mathematics",user.getUsername(), user.getId());
+        actions.uploadDeck("MathStudy","Mathematics");
 
         assertEquals(initalSize+1,user.getDecks().size());
     }

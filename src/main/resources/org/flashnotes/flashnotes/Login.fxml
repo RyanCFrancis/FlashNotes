@@ -12,23 +12,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600.0" minWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.LoginFXController">
 
     <!-- Login Form Container -->
-    <VBox alignment="CENTER" layoutX="220.0" layoutY="61.0" prefHeight="420.0" prefWidth="271.0" spacing="30" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox alignment="CENTER" layoutX="265.0" layoutY="90.0" prefHeight="420.0" prefWidth="271.0" spacing="30" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
         <Label fx:id="flashLabel1" prefHeight="17.0" prefWidth="240.0" style="-fx-font-size: 14; -fx-text-fill: black; -fx-font-family: Inter" text="Flash Notes" />
 
         <!-- Logo and Title -->
         <Label fx:id="loginLabel" style="-fx-font-size: 22; -fx-text-fill: black; -fx-font-weight: regular; -fx-font-family: Inter;" text="Login" />
 
         <!-- Username Field -->
-        <TextField id="usernameText" fx:id="usernameTxt" prefHeight="42.0" prefWidth="190.0" promptText="Username" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+        <TextField id="usernameText" fx:id="usernameTxt" prefHeight="42.0" prefWidth="190.0" promptText="Email" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         <!-- Password Field -->
         <PasswordField id="passwordText" fx:id="passwordTxt" prefHeight="42.0" prefWidth="190.0" promptText="Password" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         <!-- Login Button -->
-        <Button fx:id="loginButton" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Login">
+        <Button fx:id="loginButton" onAction="#login" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Login">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin></Button>
@@ -37,7 +37,7 @@
       
               <!-- Register Link -->
               <Label fx:id="noAccountLabel" alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Don’t have an account?" textAlignment="CENTER" />
-              <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Register here" textAlignment="CENTER" />
+              <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" onAction="#goToRegister" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Register here" textAlignment="CENTER" />
          </children>
       </HBox>
 

@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -34,6 +36,8 @@ public class RegisterFXController {
     @FXML
     private Button RegisterButton;
     @FXML
+    private HBox uploadBox;
+    @FXML
     private Label flashLabel2;
     @FXML
     private Label noAccountLabel2;
@@ -41,8 +45,6 @@ public class RegisterFXController {
     private PasswordField passwordTxt;
     @FXML
     private PasswordField confirmPasswordTxt;
-    @FXML
-    private TextField emailTxt;
     @FXML
     private ImageView profilePicImgView;
     @FXML
@@ -54,227 +56,104 @@ public class RegisterFXController {
     @FXML
     private TextField usernameTxt;
     @FXML
+    private TextField emailTxt;
+    @FXML
     private ProgressIndicator progressIndicator;
 
-    private static final int MIN_PASSWORD_LENGTH = 8;
-    private static final long MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
+    Alert alert;
 
-    private File profileImageFile;
-    private final FireBaseActions fba = FireBaseActions.init();
-    private boolean isRegistering = false;
+    File imageToUpload;
 
     @FXML
-    public void initialize() {
-        setupEventHandlers();
-        setupValidationListeners();
-        setupInitialState();
-    }
+    void FindImg(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
 
-    private void setupValidationListeners() {
+        Stage stage = (Stage) registerLabel.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
 
-    }
-    private void setupInitialState() {
-        RegisterButton.setDisable(true);
-        progressIndicator.setVisible(false);
-        setDefaultProfileImage();
-    }
+        if(file != null) {
+            System.out.println("file not null");
+            imageToUpload = file;
+            uploadBox.getChildren().addAll(new Label(" " + file.getName()));
+            return;
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an image file");
+            alert.showAndWait();
 
-    private void setupEventHandlers() {
-    }
-
-    private void setUpInitialState(){
-        RegisterButton.setDisable(true);
-        profilePicImgView.setVisible(false);
-    }
-
-    private void setupValidations() {
-
-    }
-
-    private boolean validateInput(String username, String email,
-                                  String password, String confirmPassword) {
-        if (username.isEmpty() || email.isEmpty() ||
-                password.isEmpty() || confirmPassword.isEmpty()) {
-            showErrorMessage("Missing Information",
-                    "Please fill in all fields.");
-            return false;
         }
 
-        if (password.length() < MIN_PASSWORD_LENGTH) {
-            showErrorMessage("Weak Password",
-                    "Password must be at least " + MIN_PASSWORD_LENGTH +
-                            " characters long.");
-            return false;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            showErrorMessage("Password Mismatch",
-                    "Passwords do not match.");
-            return false;
-        }
-
-        if (profileImageFile == null) {
-            showErrorMessage("Profile Picture Required",
-                    "Please upload a profile picture.");
-            return false;
-        }
-
-        return true;
     }
 
-    private void validateForm() {
-        boolean isValid = !usernameTxt.getText().trim().isEmpty()
-                && !emailTxt.getText().trim().isEmpty()
-                && !passwordTxt.getText().isEmpty()
-                && !confirmPasswordTxt.getText().isEmpty()
-                && passwordTxt.getText().length() >= MIN_PASSWORD_LENGTH
-                && passwordTxt.getText().equals(confirmPasswordTxt.getText())
-                && profileImageFile != null
-                && !isRegistering;
+    @FXML
+    void Register(ActionEvent event){
+        if(imageToUpload == null){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an image file");
+            alert.showAndWait();
+            return;
+        }
+        if(passwordTxt.getText().length() < 6 || usernameTxt.getText().length() < 6) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Username and password need to be at least 6 characters");
+            alert.showAndWait();
+            return;
+        }
 
-        RegisterButton.setDisable(!isValid);
-    }
 
-    // Triggered when the user clicks on the "Go to Login" hyperlink
-    private void goToLogin(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
-            Scene scene = new Scene(root, 900, 600);
-            scene.getStylesheets().add(getClass().getResource("/css/lightTheme.css").toExternalForm());
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
+            FireBaseActions.init().Register(usernameTxt.getText(), emailTxt.getText(), passwordTxt.getText(), imageToUpload);
+        }catch (FirebaseAuthException e) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }catch (Exception e){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
+
+      alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("Successful register");
+        alert.showAndWait();
+        try {
+            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/Login.fxml"));
+            Scene scene = new Scene(root, 800, 600);
+            Stage window = (Stage) (usernameTxt.getScene().getWindow());
+            window. setScene(scene);
             window.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-
-    // Triggered when the user clicks the "Register" button
-    private void handleRegister(ActionEvent event) {
-        if (isRegistering) return;
-
-        String username = usernameTxt.getText().trim();
-        String email = emailTxt.getText().trim();
-        String password = passwordTxt.getText();
-        String confirmPassword = confirmPasswordTxt.getText();
-
-        if (!validateInput(username, email, password, confirmPassword)) {
-            return;
-        }
-
-        isRegistering = true;
-        progressIndicator.setVisible(true);
-        RegisterButton.setDisable(true);
-
-        new Thread(() -> {
-            try {
-                fba.Register(username, email, password, profileImageFile);
-
-                Platform.runLater(() -> {
-                    showSuccessMessage();
-                    clearForm();
-                    goToLogin(event);
-                });
-            } catch (FirebaseAuthException e) {
-                handleFirebaseError(e);
-            } catch (Exception e) {
-                showErrorMessage("Registration Error",
-                        "An unexpected error occurred: " + e.getMessage());
-            } finally {
-                javafx.application.Platform.runLater(() -> {
-                    isRegistering = false;
-                    progressIndicator.setVisible(false);
-                    validateForm();
-                });
-            }
-        }).start();
-    }
-
-    // Opens the file chooser to upload a profile image
-    private void openFileChooser() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Profile Picture");
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg")
-        );
-
-        Stage stage = (Stage) profilePicImgView.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
-
-        if (selectedFile != null) {
-            if (selectedFile.length() > MAX_IMAGE_SIZE) {
-                showErrorMessage("Image too Large", "Please select a smaller image ");
-            }
-            try{
-                Image image = new Image(selectedFile.toURI().toString());
-                if(image.isError()){
-                    throw new Exception("Failed to Load Image");
-                }
-                profilePicImgView.setImage(image);
-                profileImageFile = selectedFile;
-
-            }catch(Exception e){
-                showErrorMessage("Failed to Load Image", "Please select a smaller image ");
-
-            }
-        }
-    }
-
-    private void setDefaultProfileImage(){
+    @FXML
+    void goToLogin(){
         try {
-            Image defaultImage = new Image(getClass().getResourceAsStream(
-                    "/Images/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png")); // Image that is in scenebuilder
-            profilePicImgView.setImage(defaultImage);
+            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/Login.fxml"));
+            Scene scene = new Scene(root, 800, 600);
+            Stage window = (Stage) (usernameTxt.getScene().getWindow());
+            window. setScene(scene);
+            window.show();
         } catch (Exception e) {
-            // Log the error and possibly show a message in the UI
-            System.err.println("Could not load default profile image: " + e.getMessage());
+            e.printStackTrace();
         }
-    }
-
-    private void showSuccessMessage() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Registration Successful");
-        alert.setContentText("You can now sign in with your credentials.");
-        alert.showAndWait();
-    }
-
-    private void clearForm() {
-        usernameTxt.clear();
-        emailTxt.clear();
-        passwordTxt.clear();
-        confirmPasswordTxt.clear();
-        profileImageFile = null;
-        setDefaultProfileImage();
-        validateForm();
-    }
-
-    private void showErrorMessage(String header, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
-    // Handles Firebase authentication errors
-    private void handleFirebaseError(FirebaseAuthException e) {
-        String message;
-        String errorMessage = e.getMessage().toLowerCase();
-
-        if (errorMessage.contains("email already in use")) {
-            message = "This email is already registered.";
-        } else if (errorMessage.contains("invalid email")) {
-            message = "The email address is not valid.";
-        } else if (errorMessage.contains("weak password")) {
-            message = "Please choose a stronger password.";
-        } else {
-            message = "Registration failed: " + e.getMessage();
-        }
-
-        Platform.runLater(() ->
-                showErrorMessage("Registration Error", message));
     }
 }

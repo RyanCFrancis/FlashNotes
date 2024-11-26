@@ -14,10 +14,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
+<AnchorPane minHeight="600.0" minWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
 
     <!-- Login Form Container -->
-    <VBox alignment="CENTER" layoutX="216.0" layoutY="16.0" prefHeight="515.0" prefWidth="271.0" spacing="25" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox alignment="CENTER" layoutX="265.0" layoutY="7.0" prefHeight="515.0" prefWidth="271.0" spacing="25" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
         <Label fx:id="flashLabel2" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="240.0" style="-fx-font-size: 14; -fx-text-fill: black; -fx-font-family: Inter" text="Flash Notes" />
 
         <!-- Logo and Title -->
@@ -30,31 +30,32 @@
 
         <!-- Username Field -->
         <TextField id="usernameText" fx:id="usernameTxt" prefHeight="42.0" prefWidth="190" promptText="Username" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+      <TextField id="usernameText" fx:id="emailTxt" prefHeight="42.0" prefWidth="190" promptText="Email" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         <!-- Password Field -->
         <PasswordField id="passwordText" fx:id="passwordTxt" prefHeight="42.0" prefWidth="190" promptText="Password" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         
-      <HBox alignment="CENTER" prefHeight="31.0" prefWidth="260.0">
+      <HBox fx:id="uploadBox" alignment="CENTER" prefHeight="31.0" prefWidth="260.0">
          <children>
             <ImageView blendMode="DARKEN" disable="true" fitHeight="32.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/upload_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
                </image>
             </ImageView>
-              <Hyperlink id="registerHyperLink" fx:id="uploadImageHyperLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Upload Image" textAlignment="CENTER" />
+            <Label onMousePressed="#FindImg" text="Upload Image" />
          </children>
       </HBox>
 
         <!-- Login Button -->
-        <Button fx:id="RegisterButton" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" styleClass="loginButton" text="Create Account">
+        <Button fx:id="RegisterButton" onAction="#Register" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" styleClass="loginButton" text="Create Account">
          <VBox.margin>
             <Insets />
          </VBox.margin></Button>
       <HBox alignment="CENTER" prefHeight="31.0" prefWidth="260.0">
          <children>
             <Label fx:id="noAccountLabel2" alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Already have an account?" textAlignment="CENTER" />
-            <Hyperlink id="loginHyperLink" fx:id="signInHyperLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #007bff; -fx-font-family: Inter" text="Sign In" textAlignment="CENTER" />
+            <Hyperlink id="loginHyperLink" fx:id="signInHyperLink" alignment="TOP_CENTER" onAction="#goToLogin" style="-fx-font-size: 12; -fx-text-fill: #007bff; -fx-font-family: Inter" text="Sign In" textAlignment="CENTER" />
          </children>
       </HBox>
 
