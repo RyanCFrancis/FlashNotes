@@ -16,4 +16,5 @@ module org.flashnotes.flashnotes {
 //    opens org.flashnotes.flashnotes.Firebase to javafx.fxml;
     opens org.flashnotes.flashnotes.View to javafx.fxml;
     opens org.flashnotes.flashnotes.Model to javafx.fxml;
+
 }

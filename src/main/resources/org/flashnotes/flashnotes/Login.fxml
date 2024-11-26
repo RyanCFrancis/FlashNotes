@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.LoginFXController">
 
     <!-- Login Form Container -->
     <VBox alignment="CENTER" layoutX="265.0" layoutY="90.0" prefHeight="420.0" prefWidth="271.0" spacing="30" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
@@ -31,7 +31,9 @@
       
               <!-- Register Link -->
               <Label fx:id="noAccountLabel" alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Don’t have an account?" textAlignment="CENTER" />
-              <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Register here" textAlignment="CENTER" />
+              <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter"
+                         text="Register here" textAlignment="CENTER"
+                         onAction="#onRegisterHereLinkClicked"/>
          </children>
       </HBox>
 
