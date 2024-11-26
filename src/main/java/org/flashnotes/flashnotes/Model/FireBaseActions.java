@@ -78,6 +78,21 @@ public class FireBaseActions {
         return currentUser;
     }
 
+    public void deleteDeck(String deckId) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = fstore.collection("Decks").document(deckId);
+        ApiFuture<WriteResult> request = docRef.delete();
+
+        if(request.isDone()) {
+            System.out.println("Succefully deleted deck in collection");
+        }
+
+
+        System.out.println(request.get().getUpdateTime());
+
+
+
+    }
+
     /**
      * This class logs in user based on their credentials and throws and error if
      *
