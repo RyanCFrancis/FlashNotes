@@ -76,7 +76,7 @@ public class User {
     }
 
     public void setImg(File imgFile) {
-
+        this.img = new Image(imgFile.toURI().toString());
     }
 
     public void addDeck(Deck deck) {
