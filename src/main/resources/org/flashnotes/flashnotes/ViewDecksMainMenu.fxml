@@ -22,7 +22,7 @@
             </Text>
                 <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                     <children>
-                        <Text fx:id="home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                        <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                             <font>
                                 <Font name="Inter Regular" size="12.0" />
                             </font>
@@ -131,12 +131,14 @@
                 </children>
             </HBox>
 
+
+            <!-- Add Card -->
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="342.0">
                 <children>
                <StackPane prefHeight="60.0" prefWidth="100.0">
                    <children>
-                       <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" width="88.0" />
-                       <Label text="Add" textFill="black">
+                       <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#addScreen" width="88.0" />
+                       <Label fx:id="add" text="Add" onMouseClicked="#addScreen" textFill="black">
                            <font>
                                <Font size="22.0" />
                            </font>
@@ -148,8 +150,8 @@
                     <!-- Edit button -->
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="69.0" prefWidth="128.0">
                         <children>
-                            <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" width="88.0" />
-                            <Label text="Edit" textFill="black">
+                            <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#editScreen" width="88.0" />
+                            <Label fx:id="edit" text="Edit" onMouseClicked="#editScreen" textFill="black">
                                 <font>
                                     <Font size="22.0" />
                                 </font>
@@ -158,10 +160,11 @@
                     </StackPane>
 
 
+                    <!-- Delete button -->
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="100.0">
                         <children>
-                            <Rectangle fx:id="deleteButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" width="88.0" />
-                            <Label text="Delete" textFill="black">
+                            <Rectangle fx:id="deleteButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#deleteScreen" width="88.0" />
+                            <Label fx:id="delete" onMouseClicked="#deleteScreen" text="Delete" textFill="black">
                                 <font>
                                     <Font size="22.0" />
                                 </font>
@@ -170,7 +173,6 @@
                     </StackPane>
                 </children>
             </HBox>
-
         </children>
     </VBox>
 </AnchorPane>

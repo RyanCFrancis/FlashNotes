@@ -6,15 +6,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.User;
 
 import java.io.IOException;
 
-public class ViewDecksMainMenuFXController {
+
+// There is currrently no FireStore or FireBase implementation yet which is why
+// FireBase Actions is commented out
+// All buttons have functionality, the home button is in the homeButtonInterface
+//Three other controllers were created to manage the specific functions of the add, delete, and edit
+// When chosen decks get assigned a unique Id which keeps track of it
+
+
+public class ViewDecksMainMenuFXController implements homeButtonInterface {
 
     @FXML
     private Label AddLabel;
@@ -47,7 +56,7 @@ public class ViewDecksMainMenuFXController {
     private Rectangle addLabel;
 
     @FXML
-    private AnchorPane anchorPane;
+    protected AnchorPane anchorPane;
 
     @FXML
     private Label editLabel;
@@ -61,85 +70,119 @@ public class ViewDecksMainMenuFXController {
     @FXML
     private VBox vBox;
 
+    int currentCardIndex;
+
+    Deck currentDeck;
+
+    User currentUser;
+
+    protected String currentSelectedDeckId;
+
+    //FireBaseActions fireBaseActions;
 
 
-    public void initialize(String actionType)
+
+
+    public void initialize()
     {
-        if (actionType.equals("add"))
-        {
-            addScreen();
-        }
-        else if (actionType.equals("edit"))
-        {
-            editScreen();
-        }
-        else if (actionType.equals("delete"))
-        {
-            deleteScreen();
-        }
+       // fireBaseActions = FireBaseActions.init();
+       // currentUser = fireBaseActions.getCurrentUser();
     }
 
 
-    // Calls loadScreen when user clicks add button
-    @FXML
-    public void addCard(Event event)
+    // Retrieves the anchorPane from homeButtonInterface
+    @Override
+    public AnchorPane getAnchorPane()
     {
-        loadScreen("ViewDecksAdd.fxml");
+        return anchorPane;
     }
 
 
-    // Calls loadscreen when user clicks delete button
-    @FXML
-    public void deleteCard(Event event)
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewDecksDelete.fxml"));
+    // Adds home button functionality
+    @Override
+    public void home(Event event) {
+        homeButtonInterface.super.home(event);
     }
 
 
-    // Calls loadscreen when user clicks edit button
-    @FXML
-    public void editCard(Event event)
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewDecksEdit.fxml"));
-    }
-
-
-    // Method that loads an FXML file, creates its view, and sets it as the new content of the AnchorPane
-    private void loadScreen(String screen)
-    {
+    // Implements back button functionality
+    public void backButton(Event event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(screen));
-            Parent newView = fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksMainMenu.fxml"));
+            Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setRoot(mainMenuView);
 
-            anchorPane.getChildren().add(newView);
-
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
 
 
-    // Setup logic for add screen
+    // Method to return the selected deckId
+    public String getCurrentSelectedDeckId()
+    {
+        return currentSelectedDeckId;
+    }
+
+
+    // Method to set the deckId of the deck being selected
+    public void setCurrentSelectedDeckId(String deckId)
+    {
+        this.currentSelectedDeckId = deckId;
+    }
+
+
+    // Sends user to Add screen
     @FXML
     private void addScreen()
     {
-        System.out.println("Add Screen intialized...");
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksAdd.fxml"));
+            Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setRoot(mainMenuView);
+
+        } catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 
-    // Setup logic for the delete screen
+    // Sends user to Delete screen
     @FXML
     private void deleteScreen()
     {
-        System.out.println("Delete Screen intialized...");
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksDelete.fxml"));
+            Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setRoot(mainMenuView);
+
+        } catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 
-    // Setup logic for the edit screen
+    // Sends user to Edit screen
     @FXML
     private void editScreen()
     {
-        System.out.println("Edit Screen intialized...");
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksEdit.fxml"));
+            Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setRoot(mainMenuView);
+
+        } catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
