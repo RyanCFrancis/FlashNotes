@@ -23,6 +23,7 @@ public class MainRunner extends Application {
     public static Scene scene;
     @Override
     public void start(Stage stage) throws IOException, FirebaseAuthException {
+
         FireBaseActions.init();
 
         Image splashImage = new Image(getClass().getResource("/org/flashnotes/flashnotes/Images/Cover.jpg").toExternalForm());
@@ -58,6 +59,7 @@ public class MainRunner extends Application {
         });
 
         fadeIn.play();
+
     }
 
 
