@@ -1,6 +1,5 @@
 package org.flashnotes.flashnotes.View;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,45 +18,30 @@ import java.io.File;
 
 public class RegisterFXController {
 
-
     private Alert alert;
-    @FXML
-    private Button RegisterButton;
-    @FXML
-    private Label flashLabel2;
-    @FXML
-    private Label noAccountLabel2;
-    @FXML
-    private PasswordField passwordTxt;
-    @FXML
-    private PasswordField confirmPasswordTxt;
-    @FXML
-    private TextField emailTxt;
-    @FXML
-    private ImageView profilePicImgView;
-    @FXML
-    private Label registerLabel;
-    @FXML
-    private Hyperlink signInHyperLink;
-    @FXML
-    private Hyperlink uploadImageHyperLink;
-    @FXML
-    private TextField usernameTxt;
-    @FXML
-    private ProgressIndicator progressIndicator;
+
+    @FXML private Button RegisterButton;
+    @FXML private Label flashLabel2;
+    @FXML private Label noAccountLabel2;
+    @FXML private PasswordField passwordTxt;
+    @FXML private PasswordField confirmPasswordTxt;
+    @FXML private TextField emailTxt;
+    @FXML private ImageView profilePicImgView;
+    @FXML private Label registerLabel;
+    @FXML private Hyperlink signInHyperLink;
+    @FXML private Hyperlink uploadImageHyperLink;
+    @FXML private TextField usernameTxt;
+    @FXML private ProgressIndicator progressIndicator;
 
     private static final int MIN_PASSWORD_LENGTH = 8;
     private static final long MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
 
     private File profileImageFile;
 
-
     @FXML
     public void initialize() {
         setupInitialState();
-
     }
-
 
     private void setupInitialState() {
         progressIndicator.setVisible(false); // Initially hide the progress indicator
@@ -74,42 +58,6 @@ public class RegisterFXController {
         }
     }
 
-    private boolean validateInput(String username, String email, String password, String confirmPassword) {
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            showErrorMessage("Missing Information", "Please fill in all fields.");
-            return false;
-        }
-
-        if (password.length() < MIN_PASSWORD_LENGTH) {
-            showErrorMessage("Weak Password", "Password must be at least " + MIN_PASSWORD_LENGTH + " characters long.");
-            return false;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            showErrorMessage("Password Mismatch", "Passwords do not match.");
-            return false;
-        }
-
-        if (profileImageFile == null) {
-            showErrorMessage("Profile Picture Required", "Please upload a profile picture.");
-            return false;
-        }
-
-        return true;
-    }
-
-    private void validateForm() {
-        boolean isValid = !usernameTxt.getText().trim().isEmpty()
-                && !emailTxt.getText().trim().isEmpty()
-                && !passwordTxt.getText().isEmpty()
-                && !confirmPasswordTxt.getText().isEmpty()
-                && passwordTxt.getText().length() >= MIN_PASSWORD_LENGTH
-                && passwordTxt.getText().equals(confirmPasswordTxt.getText())
-                && profileImageFile != null;
-
-        RegisterButton.setDisable(!isValid); // Disable the register button if the form is not valid
-    }
-
     private void showErrorMessage(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -120,15 +68,16 @@ public class RegisterFXController {
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        if(profileImageFile == null){
-        alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText("Please select an image file");
-        alert.showAndWait();
-        return;
-    }
-        if(passwordTxt.getText().length() < 6 || usernameTxt.getText().length() < 6) {
+        if (profileImageFile == null) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an image file");
+            alert.showAndWait();
+            return;
+        }
+
+        if (passwordTxt.getText().length() < 6 || usernameTxt.getText().length() < 6) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -137,17 +86,16 @@ public class RegisterFXController {
             return;
         }
 
-
         try {
             FireBaseActions.init().Register(usernameTxt.getText(), emailTxt.getText(), passwordTxt.getText(), profileImageFile);
-        }catch (FirebaseAuthException e) {
+        } catch (FirebaseAuthException e) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
             return;
-        }catch (Exception e){
+        } catch (Exception e) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -161,39 +109,16 @@ public class RegisterFXController {
         alert.setHeaderText(null);
         alert.setContentText("Successful register");
         alert.showAndWait();
+
         try {
             Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/Login.fxml"));
             Scene scene = new Scene(root, 800, 600);
             Stage window = (Stage) (usernameTxt.getScene().getWindow());
-            window. setScene(scene);
+            window.setScene(scene);
             window.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void clearForm() {
-        // Clear all the form fields
-        usernameTxt.clear();
-        emailTxt.clear();
-        passwordTxt.clear();
-        confirmPasswordTxt.clear();
-
-        // Reset the profile image to the default
-        profileImageFile = null;
-        setDefaultProfileImage();
-
-        // Optionally, disable the register button until the form is valid again
-        RegisterButton.setDisable(false);
-    }
-
-    private void showSuccessMessage() {
-        // Display a success message when registration is successful
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registration Successful");
-        alert.setHeaderText("Welcome to Flash Notes!");
-        alert.setContentText("You have successfully registered. You can now log in with your credentials.");
-        alert.showAndWait();  // Show the alert and wait for the user to acknowledge it
     }
 
     @FXML
@@ -208,7 +133,6 @@ public class RegisterFXController {
             e.printStackTrace();  // Print the exception for debugging
         }
     }
-
 
     @FXML
     private void openFileChooser(ActionEvent event) {
