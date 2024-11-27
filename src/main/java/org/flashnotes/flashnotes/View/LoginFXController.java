@@ -47,6 +47,7 @@ public class LoginFXController {
     public void initialize() {
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
+        loginButton.setDefaultButton(true);
     }
     @FXML
     private void handleLogin(ActionEvent event) {
