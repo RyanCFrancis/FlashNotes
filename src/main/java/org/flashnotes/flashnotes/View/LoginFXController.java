@@ -48,7 +48,7 @@ public class LoginFXController {
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
     }
-
+    @FXML
     private void handleLogin(ActionEvent event) {
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
@@ -70,7 +70,7 @@ public class LoginFXController {
     //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
     private void navigateToMainMenu(ActionEvent event){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/MainMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
             Scene scene = new Scene(root, 900, 600);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
@@ -79,9 +79,10 @@ public class LoginFXController {
             e.printStackTrace();
         }
 }
+    @FXML
     private void navigateToRegister(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("org/flashnotes/flashnotes/Register.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/org/flashnotes/flashnotes/Register.fxml"));
             Scene scene = new Scene(root, 900, 600);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
