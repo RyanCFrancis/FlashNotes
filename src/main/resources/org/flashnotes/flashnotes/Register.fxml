@@ -55,11 +55,10 @@
         </HBox>
 
         <!-- Register Button -->
-        <Button fx:id="RegisterButton" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" text="Create Account" onAction="#handleRegister">
+        <Button fx:id="RegisterButton" onAction="#handleRegister" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" styleClass="loginButton" text="Create Account">
             <VBox.margin>
                 <Insets />
-            </VBox.margin>
-        </Button>
+            </VBox.margin></Button>
 
         <ProgressIndicator fx:id="progressIndicator" prefHeight="30.0" prefWidth="30.0" visible="false" />
 

@@ -19,6 +19,8 @@ import java.io.File;
 
 public class RegisterFXController {
 
+
+    private Alert alert;
     @FXML
     private Button RegisterButton;
     @FXML
@@ -48,23 +50,16 @@ public class RegisterFXController {
     private static final long MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
 
     private File profileImageFile;
-    private final FireBaseActions fba = FireBaseActions.init();
-    private boolean isRegistering = false;
+
 
     @FXML
     public void initialize() {
         setupInitialState();
 
-        // Add listeners to input fields to validate form on change
-        usernameTxt.textProperty().addListener((observable, oldValue, newValue) -> validateForm());
-        emailTxt.textProperty().addListener((observable, oldValue, newValue) -> validateForm());
-        passwordTxt.textProperty().addListener((observable, oldValue, newValue) -> validateForm());
-        confirmPasswordTxt.textProperty().addListener((observable, oldValue, newValue) -> validateForm());
     }
 
 
     private void setupInitialState() {
-        RegisterButton.setDisable(true);
         progressIndicator.setVisible(false); // Initially hide the progress indicator
         setDefaultProfileImage(); // Set a default profile image
     }
@@ -125,51 +120,57 @@ public class RegisterFXController {
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        System.out.println("Register button clicked");
-
-        String username = usernameTxt.getText().trim();
-        String email = emailTxt.getText().trim();
-        String password = passwordTxt.getText().trim();
-        String confirmPassword = confirmPasswordTxt.getText().trim();
-
-        // Validate user input before proceeding
-        if (!validateInput(username, email, password, confirmPassword)) {
+        if(profileImageFile == null){
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Please select an image file");
+        alert.showAndWait();
+        return;
+    }
+        if(passwordTxt.getText().length() < 6 || usernameTxt.getText().length() < 6) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Username and password need to be at least 6 characters");
+            alert.showAndWait();
             return;
         }
 
+
         try {
-            progressIndicator.setVisible(true);  // Show the progress indicator during registration
-            isRegistering = true;
+            FireBaseActions.init().Register(usernameTxt.getText(), emailTxt.getText(), passwordTxt.getText(), profileImageFile);
+        }catch (FirebaseAuthException e) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }catch (Exception e){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
 
-            // Perform the registration operation (assuming this method is synchronous)
-            fba.Register(username, email, password, profileImageFile);
-
-            // If we reach here, registration was successful
-            Platform.runLater(() -> {
-                progressIndicator.setVisible(false);  // Hide the progress indicator
-                showSuccessMessage();  // Show the success message
-                clearForm();  // Clear all fields
-                goToLogin(event);  // Navigate to the login screen
-            });
-
-        } catch (FirebaseAuthException e) {
-            // Handle errors specific to Firebase authentication
-            Platform.runLater(() -> {
-                progressIndicator.setVisible(false);  // Hide the progress indicator
-                showErrorMessage("Firebase Error", "Error registering user: " + e.getMessage());
-            });
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("Successful register");
+        alert.showAndWait();
+        try {
+            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/Login.fxml"));
+            Scene scene = new Scene(root, 800, 600);
+            Stage window = (Stage) (usernameTxt.getScene().getWindow());
+            window. setScene(scene);
+            window.show();
         } catch (Exception e) {
-            // Handle any unexpected errors
-            Platform.runLater(() -> {
-                progressIndicator.setVisible(false);  // Hide the progress indicator
-                showErrorMessage("Registration Error", "An unexpected error occurred: " + e.getMessage());
-            });
-        } finally {
-            // Ensure that the registration state is reset after the operation
-            isRegistering = false;
+            e.printStackTrace();
         }
     }
-
 
     private void clearForm() {
         // Clear all the form fields
@@ -183,7 +184,7 @@ public class RegisterFXController {
         setDefaultProfileImage();
 
         // Optionally, disable the register button until the form is valid again
-        RegisterButton.setDisable(true);
+        RegisterButton.setDisable(false);
     }
 
     private void showSuccessMessage() {
