@@ -39,22 +39,27 @@
             </HBox>
 
             <!-- Back Arrow -->
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="624.0">
-                <children>
-                    <StackPane prefHeight="30.0" prefWidth="22.0">
-                        <children>
-                            <Circle fx:id="backButton" fill="#BA43FF" radius="15.0" />
-                            <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@Images/arrow icon.png" />
-                                </image>
-                            </ImageView>
-                        </children>
-                    </StackPane>
-                </children>
-            </HBox>
+         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="624.0">
+            <children>
+               <StackPane prefHeight="30.0" prefWidth="22.0">
+                  <children>
+                     <Circle fx:id="backButton" fill="#BA43FF" radius="15.0" />
+                     <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                             <image>
+                                 <Image url="@Images/arrow icon.png" />
+                             </image>
+                     </ImageView>
+                  </children>
+               </StackPane>
+            </children>
+         </HBox>
 
-
+            <!-- Shared decks label -->
+         <Label alignment="CENTER" prefHeight="36.0" prefWidth="229.0" text="Shared Decks">
+                 <font>
+                     <Font name="Inter Regular" size="30" />
+                 </font>
+         </Label>
             <HBox alignment="CENTER" prefHeight="120.0" prefWidth="592.0">
                 <children>
 
@@ -64,12 +69,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 1" textFill="black">
+                            <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckOneDelete" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -79,12 +83,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckTwo" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 2" textFill="black">
+                            <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckTwoDelete" prefHeight="73.0" prefWidth="76.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -93,19 +96,18 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 3" textFill="black">
+                            <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckThreeDelete" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
             </HBox>
 
 
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="132.0" prefWidth="625.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="625.0">
                 <children>
 
                     <!-- Deck 4 -->
@@ -114,12 +116,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 4" textFill="black">
+                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckFourDelete" prefHeight="78.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -129,12 +130,11 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" text="Deck 5" textFill="black">
+                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckFiveDelete" prefHeight="81.0" prefWidth="77.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -143,36 +143,16 @@
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
-                            <Rectangle fx:id="deck6" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" text="Deck 6" textFill="black">
+                            <Rectangle fx:id="deckSix" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
+                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckSixDelete" prefHeight="80.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
             </HBox>
-
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="98.0">
-                <children>
-
-
-                    <!-- Delete button -->
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="100.0">
-                        <children>
-                            <Rectangle fx:id="deleteButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" width="88.0" />
-                            <Label text="Delete" textFill="black">
-                                <font>
-                                    <Font size="22.0" />
-                                </font>
-                            </Label>
-                        </children>
-                    </StackPane>
-                </children>
-            </HBox>
-
         </children>
     </VBox>
 </AnchorPane>

@@ -31,6 +31,17 @@ public class FireBaseActions {
     private StorageClient storageClient;
     private FirebaseAuth fauth;
     private User currentUser;
+    Card selectedCard;
+
+    public Deck getCurrentDeck() {
+        return currentDeck;
+    }
+
+    public void setCurrentDeck(Deck currentDeck) {
+        this.currentDeck = currentDeck;
+    }
+
+    private Deck currentDeck;
 
 
     /**
@@ -159,14 +170,13 @@ public class FireBaseActions {
      *
      * @param nameOfDeck  The name of the deck to be uploaded.
      * @param category    The category of the deck (e.g., subject, type).
-     * @param ownerOfDeck The owner/creator of the deck.
      * @return The ID of the uploaded deck, or 0 if the upload fails.
      */
-    public String uploadDeck(String nameOfDeck, String category, String ownerOfDeck,String userId) throws ExecutionException, InterruptedException {
+    public String uploadDeck(String nameOfDeck, String category) throws ExecutionException, InterruptedException {
 
         String deckId = UUID.randomUUID().toString();
         DocumentReference deckRef = fstore.collection("Decks").document(deckId);
-        DocumentReference userRef = fstore.collection("Users").document(userId);
+        DocumentReference userRef = fstore.collection("Users").document(currentUser.getId());
 
         // Create the deck data
         Map<String, Object> deckData = new HashMap<>();
@@ -175,7 +185,7 @@ public class FireBaseActions {
         deckData.put("category", category);
         deckData.put("cards", new ArrayList<Card>());
         deckData.put("sharedUsers", new ArrayList<String>());
-        deckData.put("owner", userId);
+        deckData.put("owner", currentUser.getUsername());
         deckData.put("createdAt", FieldValue.serverTimestamp());
 
 
@@ -198,7 +208,7 @@ public class FireBaseActions {
         }
 
 
-        Deck newDeck = new Deck(ownerOfDeck, nameOfDeck, category);
+        Deck newDeck = new Deck(currentUser.getUsername(), nameOfDeck, category);
         newDeck.setId(deckId);
 
 
@@ -244,13 +254,17 @@ public class FireBaseActions {
         System.out.println("Updated username for user ID " + userId + " at " + result.getUpdateTime());
     }
 
+    public void logout(){
+        currentUser = null;
+    }
+
 
     /**
      * Updates all decks for the current user in Firestore to match the current deck list in the user object.
      */
     public void updateDeck() throws ExecutionException, InterruptedException {
 
-        if (currentUser == null || currentUser.getDecks().isEmpty()) {
+        if (currentUser == null) {
             throw new IllegalStateException("No user or decks to update.");
         }
         DocumentReference userRef = fstore.collection("Users").document(currentUser.getId());
@@ -274,7 +288,7 @@ public class FireBaseActions {
             deckData.put("name", deck.getNameOfDeck());
             deckData.put("category", deck.getCategory());
             deckData.put("cards", deck.getCards());
-            deckData.put("owner", currentUser.getId());
+            deckData.put("owner", currentUser.getUsername());
             deckData.put("updatedAt", FieldValue.serverTimestamp());
 
 
@@ -295,7 +309,7 @@ public class FireBaseActions {
 
 
 
-    private static String downloadImage(String imageUrl) {
+    private String downloadImage(String imageUrl) {
         String fileName;
         try {
             URL url = new URL(imageUrl);
@@ -311,6 +325,7 @@ public class FireBaseActions {
                     out.write(data, 0, count);
                 }
                 System.out.println("Downloaded: " + file.getAbsolutePath());
+                currentUser.setImg(file);
                 return file.toURI().toString();
 
             }
@@ -338,7 +353,7 @@ public class FireBaseActions {
         String email = document.getString("email");
         String username = document.getString("username");
         User user = new User(id, email, username);
-
+        currentUser = user;
         // Deck IDs associated with the User
         List<String> deckIds = (List<String>) document.get("deckIds");
         List<Deck> decks = new ArrayList<>();
@@ -362,6 +377,8 @@ public class FireBaseActions {
 
         // Convert deck list to array and set in User
         user.setDecks(decks);
+
+        downloadImage(document.getString("img"));
 
         // Map shared decks and requests if stored as lists of Strings
         List<String> sharedDecks = (List<String>) document.get("sharedDecks");
@@ -400,7 +417,7 @@ public class FireBaseActions {
 
         //make sure update goes through
         try{
-           WriteResult result = future.get();
+            WriteResult result = future.get();
         } catch (ExecutionException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
@@ -465,11 +482,11 @@ public class FireBaseActions {
      * @return The Deck object populated with data from Firestore.
      */
     private Deck mapDocumentToDeck(DocumentSnapshot document) {
-        DocumentReference ownerRef = fstore.collection("Users").document(document.get("owner").toString());
+        DocumentReference ownerRef = fstore.collection("Users").document(currentUser.getId());
         ApiFuture<DocumentSnapshot> future = ownerRef.get();
         DocumentSnapshot ownerSnapshot;
         try {
-             ownerSnapshot = future.get();
+            ownerSnapshot = future.get();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } catch (ExecutionException e) {
@@ -481,6 +498,7 @@ public class FireBaseActions {
         Deck deck = new Deck(owner, name, category);
         deck.setId(document.getString("id"));
         deck.setSharedUsers((ArrayList<String>) document.get("sharedUsers"));
+        deck.setOwnerOfDeck(document.getString("owner"));
         // Map deck cards
 
         List<Map<String, String>> cardData = (List<Map<String, String>>) document.get("cards");

@@ -5,8 +5,8 @@
 /* AnchorPane */
 #anchorPane {
     -fx-background-color: #DBE8F4;
-    -fx-pref-height: 937.0;
-    -fx-pref-width: 1472.0;
+    -fx-pref-height: 600.0;
+    -fx-pref-width: 800.0;
 }
 
 /* VBox */
@@ -18,13 +18,14 @@
     -fx-background-radius: 18;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);
     -fx-spacing: 20;
-    -fx-pref-width: 300;
+    -fx-pref-width: 450;
+    -fx-pref-height: 650 ;
 }
 
 /* FlashNotes label */
 #FlashNotes {
     -fx-font-family: "Inter Regular";
-    -fx-font-size: 25px;
+    -fx-font-size: 15px;
     -fx-stroke-type: outside;
     -fx-stroke-width: 0;
     -fx-font: black;
@@ -33,7 +34,7 @@
 /* home label */
 #home {
     -fx-font-family: "Inter Regular";
-    -fx-font-size: 25px;
+    -fx-font-size: 15px;
     -fx-stroke-type: outside;
     -fx-stroke-width: 0;
     -fx-font: black;

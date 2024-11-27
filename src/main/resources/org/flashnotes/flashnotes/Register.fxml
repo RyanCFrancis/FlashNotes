@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Root Container -->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -14,10 +15,16 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.ProgressIndicator?>
-<AnchorPane prefHeight="542.0" prefWidth="711.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
+
 
     <!-- Login Form Container -->
-    <VBox alignment="CENTER" layoutX="216.0" layoutY="16.0" prefHeight="515.0" prefWidth="271.0" spacing="25" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox alignment="CENTER" layoutX="265.0" layoutY="3.0" prefHeight="515.0" prefWidth="271.0" spacing="25" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
         <Label fx:id="flashLabel2" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="240.0" style="-fx-font-size: 14; -fx-text-fill: black; -fx-font-family: Inter" text="Flash Notes" />
 
         <!-- Logo and Title -->
@@ -31,10 +38,17 @@
         </ImageView>
 
         <!-- Username Field -->
-        <TextField fx:id="usernameTxt" prefHeight="42.0" prefWidth="190" promptText="Username" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+
+<!--        <TextField fx:id="usernameTxt" prefHeight="42.0" prefWidth="190" promptText="Username" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" /> -->
 
         <!-- Email Field -->
-        <TextField fx:id="emailTxt" prefHeight="42.0" prefWidth="190" promptText="Email" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+<!--         <TextField fx:id="emailTxt" prefHeight="42.0" prefWidth="190" promptText="Email" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" /> -->
+
+        <TextField id="usernameText" fx:id="usernameTxt" prefHeight="31.0" prefWidth="221.0" promptText="Username" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+
+        <!-- Email Field -->
+      <TextField id="emailText" fx:id="emailTxt" prefHeight="31.0" prefWidth="221.0" promptText="Email" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+
 
         <!-- Password Field -->
         <PasswordField fx:id="passwordTxt" prefHeight="42.0" prefWidth="190" promptText="Password" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
