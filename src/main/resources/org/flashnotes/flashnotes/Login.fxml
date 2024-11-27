@@ -20,7 +20,7 @@
 
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.LoginFXController">
+<AnchorPane maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.LoginFXController">
 
 
     <!-- Login Form Container -->
