@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksMainMenuFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksEditController">
 
     <!-- Flash Notes top left -->
     <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -22,7 +22,7 @@
                     </Text>
                     <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                         <children>
-                            <Text fx:id="home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                            <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                                 <font>
                                     <Font name="Inter Regular" size="12.0" />
                                 </font>
@@ -43,8 +43,8 @@
                 <children>
                     <StackPane prefHeight="30.0" prefWidth="22.0">
                         <children>
-                            <Circle fx:id="backButton" fill="#BA43FF" radius="15.0" />
-                            <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <Circle fx:id="backButton" fill="#BA43FF" onMouseClicked="#backButton" radius="15.0" />
+                            <ImageView fitHeight="19.0" fitWidth="20.0" onMouseClicked="#backButton" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@Images/arrow icon.png" />
                                 </image>
@@ -69,7 +69,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckOneEdit" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deckOneEdit" onMouseClicked="#editDeck" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -84,7 +84,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckTwoEdit" prefHeight="73.0" prefWidth="76.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deckTwoEdit" onMouseClicked="#editDeck" prefHeight="73.0" prefWidth="76.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -98,7 +98,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckThreeEdit" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deckThreeEdit" onMouseClicked="#editDeck" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
@@ -119,7 +119,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckFourEdit" prefHeight="78.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deckFourEdit" onMouseClicked="#editDeck" prefHeight="78.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -134,7 +134,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deckFiveEdit" prefHeight="81.0" prefWidth="77.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deckFiveEdit" onMouseClicked="#editDeck" prefHeight="81.0" prefWidth="77.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
 
@@ -149,29 +149,13 @@
                                     <Font size="30.0" />
                                 </font>
                             </Label>
-                            <Button fx:id="deck6Edit" prefHeight="80.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
+                            <Button fx:id="deckSixEdit" onMouseClicked="#editDeck" prefHeight="80.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: #2b3035; -fx-font-size: 25;" text="?" StackPane.alignment="TOP_LEFT" />
                         </children>
                     </StackPane>
                 </children>
             </HBox>
 
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="94.0">
-                <children>
-
-
-                    <!-- Edit button -->
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="69.0" prefWidth="128.0">
-                        <children>
-                            <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" width="88.0" />
-                            <Label text="Edit" textFill="black">
-                                <font>
-                                    <Font size="22.0" />
-                                </font>
-                            </Label>
-                        </children>
-                    </StackPane>
-                </children>
-            </HBox>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="94.0" />
 
         </children>
     </VBox>
