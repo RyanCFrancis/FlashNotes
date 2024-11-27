@@ -46,6 +46,7 @@ public class RegisterFXController {
     private void setupInitialState() {
         progressIndicator.setVisible(false); // Initially hide the progress indicator
         setDefaultProfileImage(); // Set a default profile image
+        RegisterButton.setDefaultButton(true); //set enter key to press the register button
     }
 
     private void setDefaultProfileImage() {
