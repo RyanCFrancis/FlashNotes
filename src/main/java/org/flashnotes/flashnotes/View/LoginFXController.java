@@ -71,7 +71,7 @@ public class LoginFXController {
     private void navigateToMainMenu(ActionEvent event){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
-            Scene scene = new Scene(root, 900, 600);
+            Scene scene = new Scene(root, 800, 600);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
