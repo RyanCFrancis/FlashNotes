@@ -28,18 +28,19 @@
         <PasswordField id="passwordText" fx:id="passwordTxt" prefHeight="42.0" prefWidth="190.0" promptText="Password" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         <!-- Login Button -->
-        <Button fx:id="loginButton" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Login">
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin></Button>
-      <HBox alignment="CENTER" prefHeight="31.0" prefWidth="260.0">
-         <children>
-      
-              <!-- Register Link -->
-              <Label fx:id="noAccountLabel" alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Don’t have an account?" textAlignment="CENTER" />
-              <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Register here" textAlignment="CENTER" />
-         </children>
-      </HBox>
+        <Button fx:id="loginButton" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Login" onAction="#handleLogin">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </Button>
+
+        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="260.0">
+            <children>
+                <!-- Register Link -->
+                <Label fx:id="noAccountLabel" alignment="BOTTOM_LEFT" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Don’t have an account?" textAlignment="CENTER" />
+                <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Register here" textAlignment="CENTER" onAction="#navigateToRegister" />
+            </children>
+        </HBox>
 
     </VBox>
 </AnchorPane>
