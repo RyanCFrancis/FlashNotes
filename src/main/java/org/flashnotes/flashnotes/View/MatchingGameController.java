@@ -58,13 +58,15 @@ public class MatchingGameController {
 
     int currScore = 0;
 
+    int numberOfAttempts = 0;
+
 
 
     @FXML
     void initialize() {
        InMemoryDatabase db = new InMemoryDatabase();
        deck = db.getDeck("deck1");
-        score.setText("Score= " + currScore );
+        score.setText("Score= " + currScore +"/" + numberOfAttempts);
         System.out.println(deck);
         title.setText(deck.getNameOfDeck());
         deck.getCards().add(new Card("Object"," a fundamental building block that represents an instance of a class. It encapsulates both data (attributes) and behavior (methods) into a single unit. They model real-world entities or concepts and allow us to organize code around these entities."));
@@ -104,21 +106,23 @@ public class MatchingGameController {
    void checkOne(){
         if(AnswerOneIsCorrect) {
             currScore++;
+            numberOfAttempts++;
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Correct");
             alert.setHeaderText("Correct");
             alert.setContentText("You are correct!");
             alert.showAndWait();
-            score.setText("Score= " + currScore );
+            score.setText("Score= " + currScore +"/" + numberOfAttempts);
             goToNextCard(null);
 
         }else{
+            numberOfAttempts++;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Incorrect");
             alert.setHeaderText("Incorrect");
             alert.setContentText("You are incorrect!");
             alert.showAndWait();
-            score.setText("Score= " + currScore );
+            score.setText("Score= " + currScore +"/" + numberOfAttempts);
             goToNextCard(null);
         }
    }
@@ -127,21 +131,23 @@ public class MatchingGameController {
    void checkTwo(){
        if(!AnswerOneIsCorrect) {
            currScore++;
+           numberOfAttempts++;
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("Correct");
            alert.setHeaderText("Correct");
            alert.setContentText("You are correct!");
            alert.showAndWait();
-           score.setText("Score= " + currScore );
+           score.setText("Score= " + currScore +"/" + numberOfAttempts);
            goToNextCard(null);
 
        }else{
+           numberOfAttempts++;
            Alert alert = new Alert(Alert.AlertType.ERROR);
            alert.setTitle("Incorrect");
            alert.setHeaderText("Incorrect");
            alert.setContentText("You are incorrect!");
            alert.showAndWait();
-           score.setText("Score= " + currScore );
+           score.setText("Score= " + currScore +"/" + numberOfAttempts);
           goToNextCard(null);
        }
    }
@@ -185,6 +191,10 @@ public class MatchingGameController {
 
     @FXML
     void goToNextCard(ActionEvent event) {
+        if(event != null) {
+            numberOfAttempts++;
+            score.setText("Score= " + currScore +"/" + numberOfAttempts);
+        }
         while(true) {
             double random  = Math.random();
             int nextIndex = (int)(random * deck.getCards().size());

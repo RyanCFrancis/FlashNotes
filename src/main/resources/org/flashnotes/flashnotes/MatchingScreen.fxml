@@ -65,12 +65,12 @@
                </VBox>
                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0">
                   <children>
-                     <Button fx:id="AnswerTwoButton" contentDisplay="TOP" maxWidth="216.0" mnemonicParsing="false" onAction="#checkTwo" prefHeight="150.0" prefWidth="216.0" style="-fx-background-color: #4da0ff; -fx-border-radius: 20px;" text="Button" wrapText="true">
+                     <Button fx:id="AnswerTwoButton" contentDisplay="TOP" maxWidth="216.0" mnemonicParsing="false" onAction="#checkTwo" prefHeight="150.0" prefWidth="216.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 20px;" text="Button" wrapText="true">
                         <font>
                            <Font size="10.0" />
                         </font>
                      </Button>
-                     <Button fx:id="AnswerOneButton" maxWidth="215.0" mnemonicParsing="false" onAction="#checkOne" prefHeight="157.0" prefWidth="215.0" style="-fx-background-color: #4da0ff; -fx-border-radius: 20px;" text="Button" wrapText="true">
+                     <Button fx:id="AnswerOneButton" maxWidth="215.0" mnemonicParsing="false" onAction="#checkOne" prefHeight="157.0" prefWidth="215.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 20px;" text="Button" wrapText="true">
                         <VBox.margin>
                            <Insets top="20.0" />
                         </VBox.margin>
