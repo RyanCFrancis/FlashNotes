@@ -26,40 +26,39 @@ public class MainRunner extends Application {
 
         FireBaseActions.init();
 
-        showMainApp(stage);
-//        Image splashImage = new Image(getClass().getResource("/org/flashnotes/flashnotes/Images/Cover.jpg").toExternalForm());
-//
-//        ImageView splashImageView = new ImageView(splashImage);
-//
-//        splashImageView.setFitWidth(800);
-//        splashImageView.setFitHeight(600);
-//
-//        StackPane root = new StackPane(splashImageView);
-//        scene = new Scene(root, 800, 600); // Set the desired width and height
-//
-//
-//        stage.setScene(scene);
-//        stage.show();
-//
-//
-//        // Add a fade-in and fade-out transition for splash screen
-//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), splashImageView);
-//        fadeIn.setFromValue(0);
-//        fadeIn.setToValue(1);
-//
-//        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1.5), splashImageView);
-//        fadeOut.setFromValue(1);
-//        fadeOut.setToValue(0);
-//        fadeOut.setDelay(Duration.seconds(2)); // Show the splash for 2 seconds before fading out
-//
-//        // Chain fade-in and fade-out and load the main window after
-//        fadeIn.setOnFinished(e -> fadeOut.play());
-//        fadeOut.setOnFinished(e -> {
-//            stage.close();
-//            showMainApp(stage);
-//        });
-//
-//        fadeIn.play();
+        Image splashImage = new Image(getClass().getResource("/org/flashnotes/flashnotes/Images/Cover.jpg").toExternalForm());
+
+        ImageView splashImageView = new ImageView(splashImage);
+
+        splashImageView.setFitWidth(800);
+        splashImageView.setFitHeight(600);
+
+        StackPane root = new StackPane(splashImageView);
+        scene = new Scene(root, 800, 600); // Set the desired width and height
+
+
+        stage.setScene(scene);
+        stage.show();
+
+
+        // Add a fade-in and fade-out transition for splash screen
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), splashImageView);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1.5), splashImageView);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.seconds(2)); // Show the splash for 2 seconds before fading out
+
+        // Chain fade-in and fade-out and load the main window after
+        fadeIn.setOnFinished(e -> fadeOut.play());
+        fadeOut.setOnFinished(e -> {
+            stage.close();
+            showMainApp(stage);
+        });
+
+        fadeIn.play();
 
     }
 
@@ -73,7 +72,7 @@ public class MainRunner extends Application {
     private void showMainApp(Stage primaryStage) {
         // Set up the main application window
         try {
-            scene = new Scene(loadFXML("/org/flashnotes/flashnotes/MatchingScreen.fxml"),800,600);
+            scene = new Scene(loadFXML("/org/flashnotes/flashnotes/Login.fxml"),800,600);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
