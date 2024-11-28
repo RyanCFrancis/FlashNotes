@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.flashnotes.flashnotes.Model.Card;
 import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 public class MatchingGameController {
 
@@ -60,10 +61,12 @@ public class MatchingGameController {
 
     int numberOfAttempts = 0;
 
+    FireBaseActions a = FireBaseActions.init();
 
 
     @FXML
     void initialize() {
+        // deck = a.getCurrentDeck();
        InMemoryDatabase db = new InMemoryDatabase();
        deck = db.getDeck("deck1");
         score.setText("Score= " + currScore +"/" + numberOfAttempts);
