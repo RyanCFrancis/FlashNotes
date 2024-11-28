@@ -1,9 +1,12 @@
 package org.flashnotes.flashnotes.View;
 
 import javafx.animation.*;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
@@ -13,7 +16,13 @@ import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
 
-public class StudyScreenController {
+public class StudyScreenController implements homeButtonInterface {
+
+    @FXML
+    private MenuItem exit;
+
+    @FXML
+    private MenuButton menuButton;
 
     @FXML
     private Label FlashNotes;
@@ -22,7 +31,7 @@ public class StudyScreenController {
     private Button MatchingGameButton;
 
     @FXML
-    private AnchorPane anchorPane;
+    protected AnchorPane anchorPane;
 
     @FXML
     private Button backButton;
@@ -62,15 +71,29 @@ public class StudyScreenController {
 
     FireBaseActions fireBaseActions;
 
-//    RotateTransition flipTransition;
-//
-//    PauseTransition swapTextTransition;
-//
-//    TranslateTransition jumpTransition;
+    RotateTransition flipTransition;
+
+    PauseTransition swapTextTransition;
+
+    TranslateTransition jumpTransition;
 
     ParallelTransition cardFlipAnimator;
 
 
+    @Override
+    public AnchorPane getAnchorPane() {
+        return anchorPane;
+    }
+
+    @Override
+    public void home(Event event) {
+        homeButtonInterface.super.home(event);
+    }
+
+    @Override
+    public void menuExit(Event event) {
+        homeButtonInterface.super.menuExit(event);
+    }
 
 
     @FXML
@@ -91,9 +114,7 @@ public class StudyScreenController {
         title.setText(currentDeck.getNameOfDeck());
 
 
-
-
-    }
+   }
 
     @FXML
     public void previousCard(){
@@ -133,20 +154,20 @@ public class StudyScreenController {
     }
 
     @FXML
-    public void switchSide(){
+   public void switchSide(){
         cardFlipAnimator = new ParallelTransition(flipCard(),cardJump(),changeText());
-//        System.out.println(isFront);
+        System.out.println(isFront);
 
         cardFlipAnimator.play();
         isFront = !isFront;
 
-//        if(isFront){
-//            isFront = false;
-//            card.setText("Back:\n" + currentCard.getBack());
-//        }else{
-//            isFront = true;
-//            card.setText("Front:\n" + currentCard.getFront());
-//        }
+        if(isFront){
+            isFront = false;
+            card.setText("Back:\n" + currentCard.getBack());
+        }else{
+            isFront = true;
+            card.setText("Front:\n" + currentCard.getFront());
+        }
     }
 
     private TranslateTransition cardJump(){
@@ -182,22 +203,15 @@ public class StudyScreenController {
         PauseTransition pauseTransition = new PauseTransition(Duration.millis(200));
         if(isFront){
             pauseTransition.setOnFinished( e -> {
-//                isFront = false;
-                card.setText("Back:\n" + currentCard.getBack());
+                isFront = false;
+               card.setText("Back:\n" + currentCard.getBack());
             });
         } else {
             pauseTransition.setOnFinished( e -> {
-//                isFront = true;
+                isFront = true;
                 card.setText("Front:\n" + currentCard.getFront());
-            });
+           });
         }
         return pauseTransition;
     }
-
-    @FXML
-    public void goToMainMenu(){
-        //implement routing logic when we get that going
-    }
-
-
 }

@@ -1,5 +1,6 @@
 package org.flashnotes.flashnotes.View;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -8,13 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class MainMenuFXController {
+public class MainMenuFXController implements homeButtonInterface {
 
     @FXML
     private Text FlashNotes;
 
     @FXML
-    private AnchorPane anchorPane;
+    protected AnchorPane anchorPane;
 
     @FXML
     private Label createDeckLabel;
@@ -43,5 +44,21 @@ public class MainMenuFXController {
     @FXML
     private Rectangle viewDeckRectangle;
 
+
+    // Retrieves the anchorPane from homeButtonInterface
+    @Override
+    public AnchorPane getAnchorPane()
+    {
+        return anchorPane;
+    }
+
+
+    // Adds home button functionality
+    @Override
+    public void home(Event event) { homeButtonInterface.super.home(event); }
+
+
+    @Override
+    public void menuExit(Event event) { homeButtonInterface.super.menuExit(event); }
 }
 

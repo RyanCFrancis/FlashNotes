@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -24,6 +26,12 @@ import java.io.IOException;
 
 
 public class ViewDecksMainMenuFXController implements homeButtonInterface {
+
+    @FXML
+    private MenuItem exit;
+
+    @FXML
+    private MenuButton menuButton;
 
     @FXML
     private Label AddLabel;
@@ -92,16 +100,21 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
 
     // Retrieves the anchorPane from homeButtonInterface
     @Override
-    public AnchorPane getAnchorPane()
-    {
-        return anchorPane;
-    }
+    public AnchorPane getAnchorPane() { return anchorPane; }
 
 
-    // Adds home button functionality
+   // Adds home button functionality
     @Override
     public void home(Event event) {
         homeButtonInterface.super.home(event);
+    }
+
+
+    @Override
+    public void menuExit(Event event) {
+        //homeButtonInterface.super.home(event);
+        if (event.getSource() instanceof MenuItem)
+            System.exit(0);
     }
 
 

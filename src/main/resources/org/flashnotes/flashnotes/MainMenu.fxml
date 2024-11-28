@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MainMenuFXController">
 
    <!-- Flash Notes top left -->
    <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -30,11 +30,20 @@
                         </font>
                      </Text>
                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="22.0" />
+
+                     <!-- Menu button and drop down -->
+                     <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
+                             <graphic>
                      <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@Images/MenuIcon.png" />
                         </image>
                      </ImageView>
+                             </graphic>
+                        <items>
+                           <MenuItem fx:id="exit" text="Exit" onAction="#menuExit" />
+                        </items>
+                     </MenuButton>
                   </children>
                </HBox>
             </children>

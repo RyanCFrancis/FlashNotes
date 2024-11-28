@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenController">
 
     <!-- Centered Content Container -->
@@ -11,20 +13,36 @@
 
         <!-- Flash Notes Title -->
         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="630.0" spacing="20" style="-fx-padding: 10;">
-            <Label fx:id="FlashNotes" onMousePressed="#goToMainMenu" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: black;" stylesheets="@../../../Template.css" text="Flash Notes">
+            <Label fx:id="FlashNotes" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: black;" stylesheets="@../../../Template.css" text="Flash Notes">
                 <font>
                 <Font name="Inter Regular" size="25.0" />
             </font>
         </Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="439.0" spacing="20" style="-fx-padding: 0;">
-                <Label fx:id="home" style="-fx-font-size: 14; -fx-text-fill: black;" text="home" textFill="black">
+                <Label fx:id="home" onMouseClicked="#home" style="-fx-font-size: 14; -fx-text-fill: black;" text="home" textFill="black">
                     <font>
                         <Font name="Inter Regular" size="25.0" />
                     </font>
                 </Label>
-                <Button fx:id="menuIcon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="40.0" style="-fx-font-size: 20px; -fx-background-color: transparent;" text="≡" />
+
+
+                <!-- Menu button and drop down -->
+                <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
+                    <graphic>
+                        <ImageView fx:id="menu" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Images/MenuIcon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem fx:id="exit" text="Exit" onAction="#menuExit" />
+                    </items>
+                </MenuButton>
             </HBox>
         </HBox>
+
+
       <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="148.0" />
       <Label fx:id="card" alignment="CENTER" contentDisplay="CENTER" maxHeight="300.0" maxWidth="400.0" minHeight="160.0" minWidth="-Infinity" onMousePressed="#switchSide" prefHeight="168.0" prefWidth="400.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 10; -fx-padding: 10;" text="Place Holder" textAlignment="CENTER" wrapText="true" />
       <Label fx:id="index" text="1/10 cards" />
