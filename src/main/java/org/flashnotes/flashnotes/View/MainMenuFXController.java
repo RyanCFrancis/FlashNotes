@@ -1,6 +1,5 @@
 package org.flashnotes.flashnotes.View;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,13 +14,13 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
-public class MainMenuFXController implements homeButtonInterface {
+public class MainMenuFXController {
 
     @FXML
     private Text FlashNotes;
 
     @FXML
-    protected AnchorPane anchorPane;
+    private AnchorPane anchorPane;
 
     @FXML
     private Label createDeckLabel;
@@ -55,6 +54,7 @@ public class MainMenuFXController implements homeButtonInterface {
 
     @FXML
     private Rectangle viewDeckRectangle;
+
 
     private FireBaseActions actions;
     @FXML
@@ -100,5 +100,6 @@ public class MainMenuFXController implements homeButtonInterface {
 
     @Override
     public void menuExit(Event event) { homeButtonInterface.super.menuExit(event); }
+
 }
 

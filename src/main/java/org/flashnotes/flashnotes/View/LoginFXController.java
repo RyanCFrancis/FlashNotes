@@ -7,11 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -41,12 +37,23 @@ public class LoginFXController {
     @FXML
     private TextField usernameTxt;
 
+
     private  FireBaseActions fireBaseActions;
+
+    @FXML private ProgressIndicator progressIndicator;
+
+
+    // private final FireBaseActions fireBaseActions = FireBaseActions.init();
+
 
     //just for later implementation when event handlers are set up
     @FXML
     public void initialize() {
+
         fireBaseActions  = FireBaseActions.init();
+
+        progressIndicator.setVisible(false);
+
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
         loginButton.setDefaultButton(true);
