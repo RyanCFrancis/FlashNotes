@@ -19,7 +19,7 @@ import org.flashnotes.flashnotes.Model.User;
 import java.io.IOException;
 
 
-// There is currrently no FireStore or FireBase implementation yet which is why
+// There is currently no FireStore or FireBase implementation yet which is why
 // FireBase Actions is commented out
 // All buttons have functionality, the home button is in the homeButtonInterface
 //Three other controllers were created to manage the specific functions of the add, delete, and edit

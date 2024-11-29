@@ -1,5 +1,6 @@
 package org.flashnotes.flashnotes.View;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,7 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
-public class MainMenuFXController {
+public class MainMenuFXController implements homeButtonInterface {
 
     @FXML
     private Text FlashNotes;

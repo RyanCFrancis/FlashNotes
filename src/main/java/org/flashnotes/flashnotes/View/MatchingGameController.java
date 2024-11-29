@@ -1,6 +1,7 @@
 package org.flashnotes.flashnotes.View;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -14,7 +15,7 @@ import org.flashnotes.flashnotes.Model.Card;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 
-public class MatchingGameController {
+public class MatchingGameController implements homeButtonInterface {
 
     @FXML
     private Button AnswerOneButton;
@@ -62,6 +63,25 @@ public class MatchingGameController {
     int numberOfAttempts = 0;
 
     FireBaseActions a = FireBaseActions.init();
+
+
+    // Retrieves the anchorPane from homeButtonInterface
+    @Override
+    public AnchorPane getAnchorPane()
+    {
+        return anchorPane;
+    }
+
+
+    // Adds home button functionality
+    @Override
+    public void home(Event event) { homeButtonInterface.super.home(event); }
+
+
+    @Override
+    public void menuExit(Event event) { homeButtonInterface.super.menuExit(event); }
+
+
 
 
     @FXML
@@ -155,10 +175,10 @@ public class MatchingGameController {
        }
    }
 
-    @FXML
-    void goHome(MouseEvent event) {
-
-    }
+//    @FXML
+//    void goHome(MouseEvent event) {
+//
+//    }
 
     void nextCard() {
         while(true) {
