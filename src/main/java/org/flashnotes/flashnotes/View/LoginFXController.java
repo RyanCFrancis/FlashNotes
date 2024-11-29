@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.util.EventObject;
@@ -40,11 +41,12 @@ public class LoginFXController {
     @FXML
     private TextField usernameTxt;
 
-   // private final FireBaseActions fireBaseActions = FireBaseActions.init();
+    private  FireBaseActions fireBaseActions;
 
     //just for later implementation when event handlers are set up
     @FXML
     public void initialize() {
+        fireBaseActions  = FireBaseActions.init();
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
         loginButton.setDefaultButton(true);
@@ -54,19 +56,19 @@ public class LoginFXController {
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
 
-      //  try {
-            //fireBaseActions.login(email, password);
+        try {
+            fireBaseActions.login(email, password);
 
             navigateToMainMenu(event);
 
-       // } catch (FirebaseAuthException e) {
-//            System.out.println("Firebase authentication error: " + e.getMessage());
-//        } catch (IllegalArgumentException e) {
-//            System.out.println("Login error: " + e.getMessage());
-//        } catch (Exception e) {
-//            // Handle any other unexpected errors
-//            System.out.println("Unexpected error during login: " + e.getMessage());
-//        }
+        } catch (FirebaseAuthException e) {
+            System.out.println("Firebase authentication error: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Login error: " + e.getMessage());
+        } catch (Exception e) {
+            // Handle any other unexpected errors
+            System.out.println("Unexpected error during login: " + e.getMessage());
+        }
     }
     //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
     private void navigateToMainMenu(ActionEvent event){
@@ -75,6 +77,7 @@ public class LoginFXController {
             Scene scene = new Scene(root, 800, 600);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
+//            window.initStyle(StageStyle.UNDECORATED); hide border and titlebar
             window.show();
         } catch (Exception e) {
             e.printStackTrace();
