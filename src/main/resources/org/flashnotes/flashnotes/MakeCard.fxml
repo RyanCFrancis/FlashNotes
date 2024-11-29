@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksEditController">
 
     <!-- Flash Notes top left -->
     <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -71,7 +71,10 @@
                                 <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                             </effect>
                             </Rectangle>
-                     <TextField alignment="CENTER" maxHeight="100.0" maxWidth="200.0" minHeight="100.0" minWidth="100.0" opacity="0.34" prefHeight="100.0" prefWidth="200.0" text="Enter Front Content Here" />
+                     <TextField alignment="CENTER" maxHeight="100.0" maxWidth="200.0" minHeight="100.0" minWidth="100.0" opacity="0.34" prefHeight="100.0" prefWidth="200.0" promptText="Enter Front Content Here">
+                        <padding>
+                           <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                        </padding></TextField>
                         </children>
                         <opaqueInsets>
                             <Insets />
@@ -92,7 +95,13 @@
                                <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                            </effect>
                            </Rectangle>
-                     <TextField alignment="CENTER" maxHeight="100.0" maxWidth="200.0" minHeight="100.0" minWidth="100.0" opacity="0.34" prefHeight="100.0" prefWidth="200.0" text="Enter Back Content Here" />
+                     <TextField alignment="CENTER" maxHeight="100.0" maxWidth="200.0" minHeight="100.0" minWidth="100.0" opacity="0.34" prefHeight="100.0" prefWidth="200.0" promptText="Enter Back Content Here">
+                        <StackPane.margin>
+                           <Insets />
+                        </StackPane.margin>
+                        <padding>
+                           <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                        </padding></TextField>
                        </children>
                    <opaqueInsets>
                        <Insets />
