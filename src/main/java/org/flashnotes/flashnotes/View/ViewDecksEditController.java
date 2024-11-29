@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
@@ -23,7 +25,10 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController {
     @FXML
     private Button deckSixEdit;
 
-
+//    maybe not needed?
+//    public void initialize() {
+//        fireBaseActions = FireBaseActions.init();
+//    }
 
 
     // Executes when user clicks to select the deck for editing
@@ -34,26 +39,38 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController {
         if(source == deckOneEdit)
         {
             setCurrentSelectedDeckId("deck1");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(0);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckTwoEdit)
         {
             setCurrentSelectedDeckId("deck2");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(1);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckThreeEdit)
         {
             setCurrentSelectedDeckId("deck3");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(2);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckFourEdit)
         {
             setCurrentSelectedDeckId("deck4");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(3);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckFiveEdit)
         {
             setCurrentSelectedDeckId("deck5");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(4);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if (source == deckSixEdit)
         {
             setCurrentSelectedDeckId("deck6");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(5);
+            fireBaseActions.setCurrentDeck(d);
         }
 
         // If a deck is assigned an id, it will enable editing
