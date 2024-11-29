@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 
@@ -73,7 +74,7 @@ public class MainRunner extends Application {
     private void showMainApp(Stage primaryStage) {
         // Set up the main application window
         try {
-            scene = new Scene(loadFXML("/org/flashnotes/flashnotes/MatchingScreen.fxml"),800,600);
+            scene = new Scene(loadFXML("/org/flashnotes/flashnotes/Login.fxml"),800,600);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();

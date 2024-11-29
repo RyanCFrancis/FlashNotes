@@ -2,15 +2,23 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MainMenuFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MainMenuFXController">
 
    <!-- Flash Notes top left -->
    <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -41,7 +49,7 @@
                      </ImageView>
                              </graphic>
                         <items>
-                           <MenuItem fx:id="exit" text="Exit" onAction="#menuExit" />
+                           <MenuItem fx:id="exit" onAction="#menuExit" text="Exit" />
                         </items>
                      </MenuButton>
                   </children>
@@ -56,13 +64,9 @@
             <children>
                <!-- Profile Picture Circle with ImageView inside -->
                <Circle fx:id="profileCircle" fill="#4da0ff" radius="36.0" />
-               <ImageView fx:id="imageView" fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@Images/smiley-face-1-20.png" />
-                  </image>
-               </ImageView>
+               <ImageView fx:id="profilePicture" fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
 
-               <Text fx:id="username" fill="black" style="-fx-font-size: 14; -fx-font-weight: bold;" text="John2456" wrappingWidth="64.90234375" StackPane.alignment="BOTTOM_CENTER">
+               <Text fx:id="username" fill="black" style="-fx-font-size: 14; -fx-font-weight: bold;" text="John2456" textAlignment="CENTER" wrappingWidth="64.90234375" StackPane.alignment="BOTTOM_CENTER">
                   <StackPane.margin>
                      <Insets top="5.0" />
                   </StackPane.margin>
@@ -80,7 +84,7 @@
             <children>
                <StackPane prefHeight="150.0" prefWidth="200.0">
                   <children>
-                     <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
+                     <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goCreateDeck" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
@@ -130,7 +134,7 @@
                <!-- View Decks -->
                <StackPane prefHeight="386.0" prefWidth="315.0">
                   <children>
-                     <Rectangle fx:id="viewDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
+                     <Rectangle fx:id="viewDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goToViewDecks" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>

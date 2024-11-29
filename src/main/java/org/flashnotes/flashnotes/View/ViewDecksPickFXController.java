@@ -26,7 +26,7 @@ import java.io.IOException;
 // When chosen decks get assigned a unique Id which keeps track of it
 
 
-public class ViewDecksMainMenuFXController implements homeButtonInterface {
+public class ViewDecksPickFXController implements homeButtonInterface {
 
     @FXML
     private MenuItem exit;
@@ -92,6 +92,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
 
 
 
+    @FXML
     public void initialize()
     {
         fireBaseActions = FireBaseActions.init();
@@ -148,56 +149,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
     }
 
 
-    // Sends user to Add screen
-    @FXML
-    private void addScreen()
-    {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksAdd.fxml"));
-            Parent mainMenuView = fxmlLoader.load();
-            anchorPane.getScene().setRoot(mainMenuView);
-
-        } catch(IOException e)
-        {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
 
-    // Sends user to Delete screen
-    @FXML
-    private void deleteScreen()
-    {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksDelete.fxml"));
-            Parent mainMenuView = fxmlLoader.load();
-            anchorPane.getScene().setRoot(mainMenuView);
 
-        } catch(IOException e)
-        {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-
-    // Sends user to Edit screen
-    @FXML
-    private void editScreen()
-    {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksEdit.fxml"));
-            Parent mainMenuView = fxmlLoader.load();
-            anchorPane.getScene().setRoot(mainMenuView);
-
-        } catch(IOException e)
-        {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }
