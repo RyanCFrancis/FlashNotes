@@ -45,5 +45,7 @@
 #menuIcon {
     -fx-fit-height: 24.38;
     -fx-fit-width: 39.76;
-    -fx-padding: 15 15 15 20;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
 }

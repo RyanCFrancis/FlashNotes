@@ -33,11 +33,21 @@
                                 </font>
                             </Text>
                             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="22.0" />
-                            <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@Images/MenuIcon.png" />
-                                </image>
-                            </ImageView>
+
+
+                            <!-- Menu button and drop down -->
+                            <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
+                                <graphic>
+                                    <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@Images/MenuIcon.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                                <items>
+                                    <MenuItem fx:id="exit" text="Exit" onAction="#menuExit" />
+                                </items>
+                            </MenuButton>
                         </children>
                     </HBox>
                 </children>

@@ -40,7 +40,7 @@ public class LoginFXController {
     @FXML
     private TextField usernameTxt;
 
-    private final FireBaseActions fireBaseActions = FireBaseActions.init();
+   // private final FireBaseActions fireBaseActions = FireBaseActions.init();
 
     //just for later implementation when event handlers are set up
     @FXML
@@ -54,19 +54,19 @@ public class LoginFXController {
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
 
-        try {
-            fireBaseActions.login(email, password);
+      //  try {
+            //fireBaseActions.login(email, password);
 
             navigateToMainMenu(event);
 
-        } catch (FirebaseAuthException e) {
-            System.out.println("Firebase authentication error: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Login error: " + e.getMessage());
-        } catch (Exception e) {
-            // Handle any other unexpected errors
-            System.out.println("Unexpected error during login: " + e.getMessage());
-        }
+       // } catch (FirebaseAuthException e) {
+//            System.out.println("Firebase authentication error: " + e.getMessage());
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("Login error: " + e.getMessage());
+//        } catch (Exception e) {
+//            // Handle any other unexpected errors
+//            System.out.println("Unexpected error during login: " + e.getMessage());
+//        }
     }
     //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
     private void navigateToMainMenu(ActionEvent event){
