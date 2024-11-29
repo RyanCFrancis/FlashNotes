@@ -51,5 +51,8 @@
             </children>
         </HBox>
 
+        <ProgressIndicator fx:id="progressIndicator" prefHeight="30.0" prefWidth="30.0" visible="false" />
+
+
     </VBox>
 </AnchorPane>
