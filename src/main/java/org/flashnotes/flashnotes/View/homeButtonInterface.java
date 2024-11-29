@@ -11,11 +11,13 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+
+// Necessary to override in implementation
 public interface homeButtonInterface {
 
     javafx.scene.layout.AnchorPane getAnchorPane();
 
-
+// Adds functionality to the home label
     default void home(Event event)
     {
         try
@@ -33,7 +35,7 @@ public interface homeButtonInterface {
         }
     }
 
-
+// Adds functionality to the drop down menu to exit out of the application
     default void menuExit(Event event)
     {
         try
