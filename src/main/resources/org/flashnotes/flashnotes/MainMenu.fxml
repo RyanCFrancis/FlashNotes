@@ -109,7 +109,7 @@
                <!-- Study Deck -->
                <StackPane prefHeight="150.0" prefWidth="200.0">
                   <children>
-                     <Rectangle fx:id="studyDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
+                     <Rectangle fx:id="studyDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goViewDecksPick" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
@@ -134,7 +134,7 @@
                <!-- View Decks -->
                <StackPane prefHeight="386.0" prefWidth="315.0">
                   <children>
-                     <Rectangle fx:id="viewDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goToViewDecks" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
+                     <Rectangle fx:id="viewDeckRectangle" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goToViewDecks" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
