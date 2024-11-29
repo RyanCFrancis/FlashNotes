@@ -55,20 +55,24 @@ public class LoginFXController {
     private void handleLogin(ActionEvent event) {
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
+        boolean loginWorked = true;
 
         try {
             fireBaseActions.login(email, password);
 
-            navigateToMainMenu(event);
-
         } catch (FirebaseAuthException e) {
             System.out.println("Firebase authentication error: " + e.getMessage());
+            loginWorked = false;
         } catch (IllegalArgumentException e) {
             System.out.println("Login error: " + e.getMessage());
+            loginWorked = false;
         } catch (Exception e) {
             // Handle any other unexpected errors
             System.out.println("Unexpected error during login: " + e.getMessage());
+            loginWorked = false;
         }
+        if (loginWorked){navigateToMainMenu(event);}
+
     }
     //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
     private void navigateToMainMenu(ActionEvent event){

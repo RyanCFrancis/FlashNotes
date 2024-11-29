@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -32,6 +33,12 @@ public class MainMenuFXController implements homeButtonInterface {
     private Text home;
 
     @FXML
+    private ImageView profilePicture;
+
+    @FXML
+    private Text username;
+
+    @FXML
     private ImageView menuIcon;
 
     @FXML
@@ -53,6 +60,8 @@ public class MainMenuFXController implements homeButtonInterface {
     @FXML
     public void initialize() {
         actions = FireBaseActions.init();
+        profilePicture.setImage(actions.getCurrentUser().getImg());
+        username.setText(actions.getCurrentUser().getUsername());
     }
 
 
@@ -63,7 +72,7 @@ public class MainMenuFXController implements homeButtonInterface {
     }
 
     @FXML
-    public void goCreateDeck(){
+    public void goCreateDeck() throws IOException {
         if (actions.getCurrentUser().getDecks().size() >= 6){
             System.exit(0); //TODO WARNING THAT NO MORE CAN BE MADE
         }
@@ -71,6 +80,8 @@ public class MainMenuFXController implements homeButtonInterface {
 
 
         //TODO GO TO CREATEDECK FXML
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/NewDeck.fxml"));
+        anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 
 

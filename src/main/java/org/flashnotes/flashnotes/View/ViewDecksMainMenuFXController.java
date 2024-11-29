@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
 
 import java.io.IOException;
@@ -86,15 +87,16 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
 
     protected String currentSelectedDeckId;
 
-    //FireBaseActions fireBaseActions;
+    FireBaseActions fireBaseActions;
 
 
 
 
     public void initialize()
     {
-       // fireBaseActions = FireBaseActions.init();
-       // currentUser = fireBaseActions.getCurrentUser();
+        fireBaseActions = FireBaseActions.init();
+        currentUser = fireBaseActions.getCurrentUser();
+        System.out.println(currentUser.getUsername());
     }
 
 

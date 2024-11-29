@@ -64,13 +64,9 @@
             <children>
                <!-- Profile Picture Circle with ImageView inside -->
                <Circle fx:id="profileCircle" fill="#4da0ff" radius="36.0" />
-               <ImageView fx:id="imageView" fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@Images/smiley-face-1-20.png" />
-                  </image>
-               </ImageView>
+               <ImageView fx:id="profilePicture" fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
 
-               <Text fx:id="username" fill="black" style="-fx-font-size: 14; -fx-font-weight: bold;" text="John2456" wrappingWidth="64.90234375" StackPane.alignment="BOTTOM_CENTER">
+               <Text fx:id="username" fill="black" style="-fx-font-size: 14; -fx-font-weight: bold;" text="John2456" textAlignment="CENTER" wrappingWidth="64.90234375" StackPane.alignment="BOTTOM_CENTER">
                   <StackPane.margin>
                      <Insets top="5.0" />
                   </StackPane.margin>
@@ -88,7 +84,7 @@
             <children>
                <StackPane prefHeight="150.0" prefWidth="200.0">
                   <children>
-                     <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
+                     <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goCreateDeck" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
