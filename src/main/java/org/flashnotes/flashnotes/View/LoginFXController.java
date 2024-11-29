@@ -44,10 +44,10 @@ public class LoginFXController {
     //just for later implementation when event handlers are set up
     @FXML
     public void initialize() {
+        progressIndicator.setVisible(false);
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
         loginButton.setDefaultButton(true);
-        progressIndicator.setVisible(false);
     }
     @FXML
     private void handleLogin(ActionEvent event) {
