@@ -62,7 +62,7 @@ public class MatchingGameController implements homeButtonInterface {
 
     int numberOfAttempts = 0;
 
-    FireBaseActions a = FireBaseActions.init();
+    FireBaseActions actions;
 
 
     // Retrieves the anchorPane from homeButtonInterface
@@ -86,18 +86,21 @@ public class MatchingGameController implements homeButtonInterface {
 
     @FXML
     void initialize() {
+        actions = FireBaseActions.init();
+
         // deck = a.getCurrentDeck();
-       InMemoryDatabase db = new InMemoryDatabase();
-       deck = db.getDeck("deck1");
+//       InMemoryDatabase db = new InMemoryDatabase();
+//       deck = db.getDeck("deck1");
+        deck = actions.getCurrentDeck();
         score.setText("Score= " + currScore +"/" + numberOfAttempts);
         System.out.println(deck);
         title.setText(deck.getNameOfDeck());
-        deck.getCards().add(new Card("Object"," a fundamental building block that represents an instance of a class. It encapsulates both data (attributes) and behavior (methods) into a single unit. They model real-world entities or concepts and allow us to organize code around these entities."));
-        deck.getCards().add(new Card("Variables","a storage location in a computer's memory that holds a value. The value of a variable can change (or vary) during the execution of a program. They are essential for storing data and interacting with it throughout your program."));
-        deck.getCards().add(new Card("Method"," A block of code that performs a specific task or set of tasks. Are used to structure and organize code by grouping related statements together, making code reusable and easier to maintain."));
-        deck.getCards().add(new Card("Interface"," In Java is a reference type, similar to a class, that can contain only abstract methods (methods without a body), default methods (with a body), static methods, and constant variables (public, static, and final). It defines a contract that classes can implement. An interface is used to specify a set of behaviors (methods) that a class must provide."));
-        deck.getCards().add(new Card("Polymorphism","A fundamental concept in object-oriented programming (OOP), it allows one entity (such as a method or object) to take on multiple forms. In Java, this enables objects of different classes to be treated as objects of a common superclass. The actual method that gets invoked is determined at runtime, allowing the same method name to behave differently based on the object’s type."));
-        deck.getCards().add(new Card("Inheritance","Is one of the core concepts of object-oriented programming (OOP). It allows a new class (called the subclass or child class) to inherit the properties and behaviors (fields and methods) of an existing class (called the superclass or parent class). This helps promote code reusability and establishes a relationship between the parent and child classes."));
+//        deck.getCards().add(new Card("Object"," a fundamental building block that represents an instance of a class. It encapsulates both data (attributes) and behavior (methods) into a single unit. They model real-world entities or concepts and allow us to organize code around these entities."));
+//        deck.getCards().add(new Card("Variables","a storage location in a computer's memory that holds a value. The value of a variable can change (or vary) during the execution of a program. They are essential for storing data and interacting with it throughout your program."));
+//        deck.getCards().add(new Card("Method"," A block of code that performs a specific task or set of tasks. Are used to structure and organize code by grouping related statements together, making code reusable and easier to maintain."));
+//        deck.getCards().add(new Card("Interface"," In Java is a reference type, similar to a class, that can contain only abstract methods (methods without a body), default methods (with a body), static methods, and constant variables (public, static, and final). It defines a contract that classes can implement. An interface is used to specify a set of behaviors (methods) that a class must provide."));
+//        deck.getCards().add(new Card("Polymorphism","A fundamental concept in object-oriented programming (OOP), it allows one entity (such as a method or object) to take on multiple forms. In Java, this enables objects of different classes to be treated as objects of a common superclass. The actual method that gets invoked is determined at runtime, allowing the same method name to behave differently based on the object’s type."));
+//        deck.getCards().add(new Card("Inheritance","Is one of the core concepts of object-oriented programming (OOP). It allows a new class (called the subclass or child class) to inherit the properties and behaviors (fields and methods) of an existing class (called the superclass or parent class). This helps promote code reusability and establishes a relationship between the parent and child classes."));
         double random  = Math.random();
         int firstIndex = (int)(random * deck.getCards().size());
         currIndex = firstIndex;
