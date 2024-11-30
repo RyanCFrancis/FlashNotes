@@ -86,9 +86,12 @@ public class MakeCardFXController implements  homeButtonInterface{
         ButtonType buttonAdd = new ButtonType("Add More");
         ButtonType buttonStudy = new ButtonType("Study");
         ButtonType buttonPlay = new ButtonType("Three");
+        ButtonType buttonCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         Optional<ButtonType> ButtonResult = alert.showAndWait();
-        alert.getButtonTypes().setAll(buttonAdd, buttonStudy, buttonPlay);
+        alert.getButtonTypes().setAll(buttonAdd, buttonStudy, buttonPlay,buttonCancel);
+
+
         if (ButtonResult.get() == buttonAdd){
             // ... user chose "One"
         } else if (ButtonResult.get() == buttonStudy) {
