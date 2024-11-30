@@ -38,37 +38,31 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController {
         // Assigns the chosen deck a unique id to keep track of the deck
         if(source == deckOneEdit)
         {
-            setCurrentSelectedDeckId("deck1");
             Deck d = fireBaseActions.getCurrentUser().getDecks().get(0);
             fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckTwoEdit)
         {
-            setCurrentSelectedDeckId("deck2");
             Deck d = fireBaseActions.getCurrentUser().getDecks().get(1);
             fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckThreeEdit)
         {
-            setCurrentSelectedDeckId("deck3");
             Deck d = fireBaseActions.getCurrentUser().getDecks().get(2);
             fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckFourEdit)
         {
-            setCurrentSelectedDeckId("deck4");
             Deck d = fireBaseActions.getCurrentUser().getDecks().get(3);
             fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckFiveEdit)
         {
-            setCurrentSelectedDeckId("deck5");
             Deck d = fireBaseActions.getCurrentUser().getDecks().get(4);
             fireBaseActions.setCurrentDeck(d);
         }
         else if (source == deckSixEdit)
         {
-            setCurrentSelectedDeckId("deck6");
             Deck d = fireBaseActions.getCurrentUser().getDecks().get(5);
             fireBaseActions.setCurrentDeck(d);
         }

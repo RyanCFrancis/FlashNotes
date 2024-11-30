@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import org.flashnotes.flashnotes.Model.Deck;
 
 import java.io.IOException;
 
@@ -32,28 +33,34 @@ public class ViewDecksDeleteController extends ViewDecksMainMenuFXController {
 
         if(source == deckOneDelete)
         {
-            setCurrentSelectedDeckId("deck1");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(0);
+            fireBaseActions.setCurrentDeck(d);;
 
         }
         else if(source == deckTwoDelete)
         {
-            setCurrentSelectedDeckId("deck2");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(1);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckThreeDelete)
         {
-            setCurrentSelectedDeckId("deck3");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(2);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckFourDelete)
         {
-            setCurrentSelectedDeckId("deck4");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(3);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if(source == deckFiveDelete)
         {
-            setCurrentSelectedDeckId("deck5");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(4);
+            fireBaseActions.setCurrentDeck(d);
         }
         else if (source == deckSixDelete)
         {
-            setCurrentSelectedDeckId("deck6");
+            Deck d = fireBaseActions.getCurrentUser().getDecks().get(5);
+            fireBaseActions.setCurrentDeck(d);
         }
 
 

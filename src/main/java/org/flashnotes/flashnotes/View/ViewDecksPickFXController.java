@@ -34,6 +34,25 @@ import java.util.List;
 public class ViewDecksPickFXController implements homeButtonInterface {
 
     @FXML
+    private StackPane StackPaneOne;
+
+    @FXML
+    private StackPane StackPaneTwo;
+
+    @FXML
+    private StackPane StackPaneThree;
+
+    @FXML
+    private StackPane StackPaneFour;
+
+    @FXML
+    private StackPane StackPaneFive;
+
+    @FXML
+    private StackPane StackPaneSix;
+
+
+    @FXML
     private MenuItem exit;
 
     @FXML
@@ -118,6 +137,7 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         fireBaseActions = FireBaseActions.init();
         currentUser = fireBaseActions.getCurrentUser();
         System.out.println(currentUser.getUsername());
+
 
         for (int i=0;i<currentUser.getDecks().size();i++){
             getDeckLabel(i).setText(currentUser.getDecks().get(i).getNameOfDeck());
@@ -267,15 +287,17 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     // Method to return the selected deckId
     public String getCurrentSelectedDeckId()
     {
-        return currentSelectedDeckId;
+        return fireBaseActions.getCurrentDeck().getNameOfDeck();
     }
 
 
     // Method to set the deckId of the deck being selected
-    public void setCurrentSelectedDeckId(String deckId)
+    public void setCurrentSelectedDeckId(int index)
     {
-        this.currentSelectedDeckId = deckId;
+        Deck d = fireBaseActions.getCurrentUser().getDecks().get(index);
+        fireBaseActions.setCurrentDeck(d);
     }
+
 
     //facing errors loading the study screen fxml page, tried debugging with a sout to see if it was being clicked which it was
     //Study Screen Error printed was
@@ -313,6 +335,7 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         }
 
     }
+
 
 
 }

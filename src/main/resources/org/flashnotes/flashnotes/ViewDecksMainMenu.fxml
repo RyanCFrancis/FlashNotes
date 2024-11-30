@@ -22,7 +22,7 @@
             </Text>
                 <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                     <children>
-                        <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home" >
+                        <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                             <font>
                                 <Font name="Inter Regular" size="12.0" />
                             </font>
@@ -40,7 +40,7 @@
                                 </ImageView>
                             </graphic>
                             <items>
-                                <MenuItem fx:id="exit" text="Exit" onAction="#menuExit" />
+                                <MenuItem fx:id="exit" onAction="#menuExit" text="Exit" />
                             </items>
                         </MenuButton>
                     </children>
@@ -51,12 +51,12 @@
             <children>
 
                 <!-- Deck 1 -->
-               <StackPane alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
+               <StackPane fx:id="StackPaneOne" alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                    <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 1" textFill="black">
+                    <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -65,12 +65,12 @@
                </StackPane>
 
                 <!-- Deck 2 -->
-               <StackPane alignment="BOTTOM_CENTER" prefHeight="126.0" prefWidth="170.0">
+               <StackPane fx:id="StackPaneTwo" alignment="BOTTOM_CENTER" prefHeight="126.0" prefWidth="170.0">
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckTwo" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                    <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 2" textFill="black">
+                    <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -78,12 +78,12 @@
                 </children>
                </StackPane>
 
-               <StackPane alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
+               <StackPane fx:id="StackPaneThree" alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                    <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 3" textFill="black">
+                    <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -98,12 +98,12 @@
                 <children>
 
                     <!-- Deck 4 -->
-                    <StackPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="150.0">
+                    <StackPane fx:id="StackPaneFour" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="150.0">
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 4" textFill="black">
+                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
@@ -112,12 +112,12 @@
                     </StackPane>
 
                     <!-- Deck 5 -->
-                    <StackPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="170.0">
+                    <StackPane fx:id="StackPaneFive" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="170.0">
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" text="Deck 5" textFill="black">
+                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
@@ -126,12 +126,12 @@
                     </StackPane>
 
                     <!-- Deck 6 -->
-                    <StackPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="124.0" prefWidth="150.0">
+                    <StackPane fx:id="StackPaneSix" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="124.0" prefWidth="150.0">
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckSix" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" text="Deck 6" textFill="black">
+                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
@@ -148,7 +148,7 @@
                <StackPane prefHeight="60.0" prefWidth="100.0">
                    <children>
                        <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#addScreen" width="88.0" />
-                       <Label fx:id="add" text="Add" onMouseClicked="#addScreen" textFill="black">
+                       <Label fx:id="add" onMouseClicked="#addScreen" text="Add" textFill="black">
                            <font>
                                <Font size="22.0" />
                            </font>
@@ -161,7 +161,7 @@
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="69.0" prefWidth="128.0">
                         <children>
                             <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#editScreen" width="88.0" />
-                            <Label fx:id="edit" text="Edit" onMouseClicked="#editScreen" textFill="black">
+                            <Label fx:id="edit" onMouseClicked="#editScreen" text="Edit" textFill="black">
                                 <font>
                                     <Font size="22.0" />
                                 </font>
