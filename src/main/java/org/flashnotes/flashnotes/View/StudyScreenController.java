@@ -3,6 +3,8 @@ package org.flashnotes.flashnotes.View;
 import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -15,6 +17,8 @@ import org.flashnotes.flashnotes.Model.Card;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
+
+import java.io.IOException;
 
 public class StudyScreenController implements homeButtonInterface {
 
@@ -99,13 +103,14 @@ public class StudyScreenController implements homeButtonInterface {
     @FXML
     public void initialize() {
         fireBaseActions = FireBaseActions.init();
+//        System.out.println("Printing from study screen init");
         currentUser = fireBaseActions.getCurrentUser();
+//        System.out.println(currentUser);
         currentDeck = fireBaseActions.getCurrentDeck();
-        System.out.println(currentDeck.toString());
+//        System.out.println(currentDeck);
 //        System.out.println(currentUser.getUsername());
         currentCardIndex = 1;
-        System.out.println("here");
-        System.out.println(currentUser);
+//        System.out.println(currentUser);
         isFront = true;
 //        currentDeck = currentUser.getDecks().get(0);
 //        currentDeck.getCards().add(new Card("Objects","I dont know ask the professor"));
@@ -217,5 +222,11 @@ public class StudyScreenController implements homeButtonInterface {
            });
         }
         return pauseTransition;
+    }
+
+    @FXML
+    private void goToGame() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
+        anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 }

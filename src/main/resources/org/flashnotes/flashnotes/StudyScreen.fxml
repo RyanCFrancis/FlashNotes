@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenController">
 
     <!-- Centered Content Container -->
     <VBox fx:id="vBox" alignment="CENTER" layoutX="75.0" layoutY="62.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
@@ -36,7 +41,7 @@
                         </ImageView>
                     </graphic>
                     <items>
-                        <MenuItem fx:id="exit" text="Exit" onAction="#menuExit" />
+                        <MenuItem fx:id="exit" onAction="#menuExit" text="Exit" />
                     </items>
                 </MenuButton>
             </HBox>
@@ -54,6 +59,6 @@
         </HBox>
 
         <!-- Matching Game Button -->
-        <Button fx:id="MatchingGameButton" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
+        <Button fx:id="MatchingGameButton" onAction="#goToGame" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
     </VBox>
 </AnchorPane>

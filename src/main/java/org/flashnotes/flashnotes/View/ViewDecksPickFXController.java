@@ -122,7 +122,7 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         for (int i=0;i<currentUser.getDecks().size();i++){
             getDeckLabel(i).setText(currentUser.getDecks().get(i).getNameOfDeck());
         }
-        for (int i=currentUser.getDecks().size()+1;i<6;i++){
+        for (int i=currentUser.getDecks().size();i<6;i++){
             getDeckSP(i).setVisible(false);
         }
     }
@@ -286,11 +286,12 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     //Conclusion: it is being clicked but won't transtion
     @FXML
     public void goToStudyScreen(MouseEvent mouseEvent) {
-        System.out.println("being Clicked");
+//        System.out.println("being Clicked");
 
-        System.out.println(mouseEvent.getSource().toString());
-        currentDeck = getClickedDeck(mouseEvent.getSource().toString());
-        System.out.println(currentDeck.toString());
+//        System.out.println(mouseEvent.getSource().toString());
+        fireBaseActions.setCurrentDeck(getClickedDeck(mouseEvent.getSource().toString()));
+//        currentDeck = fireBaseActions.getCurrentDeck();
+//        System.out.println("Deck:"+currentDeck.toString());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
             Parent studyScreen = fxmlLoader.load();
