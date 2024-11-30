@@ -49,11 +49,8 @@ public class LoginFXController {
     //just for later implementation when event handlers are set up
     @FXML
     public void initialize() {
-
         fireBaseActions  = FireBaseActions.init();
-
         progressIndicator.setVisible(false);
-
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
         loginButton.setDefaultButton(true);
@@ -63,6 +60,8 @@ public class LoginFXController {
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
         boolean loginWorked = true;
+
+        progressIndicator.setVisible(true);
 
         try {
             fireBaseActions.login(email, password);
@@ -77,6 +76,9 @@ public class LoginFXController {
             // Handle any other unexpected errors
             System.out.println("Unexpected error during login: " + e.getMessage());
             loginWorked = false;
+        } finally {
+            // After the login attempt, hide the ProgressIndicator
+            progressIndicator.setVisible(false);
         }
         if (loginWorked){navigateToMainMenu(event);}
 
