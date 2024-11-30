@@ -133,6 +133,10 @@ public class ViewDecksPickFXController implements homeButtonInterface {
             e.printStackTrace();
         }
     }
+
+    //Used what you said about Peter's youtrack Code
+    //Deck deck = firebaseActions.getuser().getdecks(index);
+    //firebaseActions.setCurrentDeck(deck);
     @FXML
     public void loadDeckNames() {
         // Get the list of decks from the current user
@@ -152,33 +156,56 @@ public class ViewDecksPickFXController implements homeButtonInterface {
                     continue; // Skip this deck and don't add it to the UI
                 }
 
-                // Identify the corresponding label and stackpane
-                StackPane deckStackPane = (StackPane) vBox.getChildren().get(i);
-                Label deckLabel = (Label) deckStackPane.getChildren().get(1); // Assuming Label is the second child of StackPane
+                // Determine which label corresponds to which deck (DeckOneLabel, DeckTwoLabel, etc.)
+                Label deckLabel = getDeckLabel(i); // Get the corresponding Label (DeckOneLabel, DeckTwoLabel, etc.)
 
-                // Update the deck label text
-                deckLabel.setText(deckName);
+                if (deckLabel != null) {
+                    // Set the label text to the deck's name
+                    deckLabel.setText(deckName);
 
-                // Set the StackPane's visibility to true
-                deckStackPane.setVisible(true);
+                    // Set visibility to true, as we have a valid deck to display
+                    deckLabel.setVisible(true);
 
-                // Add a click event listener to each StackPane/Label
-                deckStackPane.setOnMouseClicked(event -> {
-                    // Set the selected deck's ID to the controller
-                    setCurrentSelectedDeckId(deck.getId());
+                    // Set the click event for each deck label to load the deck when clicked
+                    deckLabel.setOnMouseClicked(event -> {
+                        // Set the selected deck as the current deck using Firebase actions
+                        fireBaseActions.setCurrentDeck(deck);
 
-                    // You can log it or update the UI accordingly
-                    System.out.println("Selected Deck: " + deckLabel.getText());
-                });
+                        // You can log the selected deck or perform other actions here
+                        System.out.println("Selected Deck: " + deckLabel.getText());
+                    });
+                }
             }
         } else {
-            // If there are no valid decks, hide all StackPanes or display a no decks message
-            for (int i = 0; i < 6; i++) {
-                StackPane deckStackPane = (StackPane) vBox.getChildren().get(i);
-                deckStackPane.setVisible(false);
-            }
+            // If there are no valid decks, hide all labels or display a no decks message
+            hideAllDeckLabels();
         }
     }
+
+    // Helper method to get the correct Label based on the index
+    private Label getDeckLabel(int index) {
+        switch (index) {
+            case 0: return DeckOneLabel;
+            case 1: return DeckTwoLabel;
+            case 2: return DeckThreeLabel;
+            case 3: return DeckFourLabel;
+            case 4: return DeckFiveLabel;
+            case 5: return DeckSixLabel;
+            default: return null; // Return null if index is out of bounds
+        }
+    }
+
+    // Helper method to hide all deck labels
+    private void hideAllDeckLabels() {
+        DeckOneLabel.setVisible(false);
+        DeckTwoLabel.setVisible(false);
+        DeckThreeLabel.setVisible(false);
+        DeckFourLabel.setVisible(false);
+        DeckFiveLabel.setVisible(false);
+        DeckSixLabel.setVisible(false);
+    }
+
+
 
     // Method to return the selected deckId
     public String getCurrentSelectedDeckId()
