@@ -2,34 +2,63 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="581.0" prefWidth="803.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenFxController">
 
     <!-- Centered Content Container -->
-    <VBox fx:id="vBox" alignment="CENTER" layoutX="66.0" layoutY="70.0" prefHeight="430.0" prefWidth="670.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox fx:id="vBox" alignment="CENTER" layoutX="75.0" layoutY="62.0" prefHeight="501.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
 
         <!-- Flash Notes Title -->
         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="630.0" spacing="20" style="-fx-padding: 10;">
-            <Label fx:id="FlashNotes" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: #333333; -fx-font-weight: bold;" stylesheets="@../../../Template.css" text="Flash Notes" />
+            <Label fx:id="FlashNotes" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 14; -fx-text-fill: black;" stylesheets="@../../../Template.css" text="Flash Notes">
+                <font>
+                    <Font name="Inter Regular" size="25.0" />
+                </font>
+            </Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="439.0" spacing="20" style="-fx-padding: 0;">
-                <Label fx:id="home" style="-fx-font-size: 14; -fx-text-fill: gray;" text="home" />
-                <Button fx:id="menuIcon" style="-fx-font-size: 16px; -fx-background-color: transparent;" text="≡" />
+                <Label fx:id="home" onMouseClicked="#home" style="-fx-font-size: 14; -fx-text-fill: black;" text="home" textFill="black">
+                    <font>
+                        <Font name="Inter Regular" size="25.0" />
+                    </font>
+                </Label>
+
+
+                <!-- Menu button and drop down -->
+                <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
+                    <graphic>
+                        <ImageView fx:id="menu" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Images/MenuIcon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem fx:id="exit" onAction="#menuExit" text="Exit" />
+                    </items>
+                </MenuButton>
             </HBox>
         </HBox>
 
-        <!-- Question Card as Button -->
-        <Button fx:id="PlaceHolderButton" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 80 100 80 100; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" text="Place Holder Text" />
+
+        <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="148.0" />
+        <Label fx:id="card" alignment="CENTER" contentDisplay="CENTER" maxWidth="400.0" minHeight="154.0" minWidth="-Infinity" onMousePressed="#switchSide" prefHeight="232.0" prefWidth="400.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 10; -fx-padding: 10;" text="Place Holder" textAlignment="CENTER" wrapText="true" />
+        <Label fx:id="index" text="1/10 cards" />
 
         <!-- Navigation Buttons -->
         <HBox alignment="CENTER" spacing="10">
-            <Button fx:id="leftArrowButton" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="←" />
-            <Button fx:id="rightArrowButton" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="→" />
+            <Button fx:id="backButton" onAction="#previousCard" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="←" />
+            <Button fx:id="NextButton" onAction="#nextCard" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="→" />
         </HBox>
 
         <!-- Matching Game Button -->
-        <Button fx:id="matchingGameButton" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
+        <Button fx:id="MatchingGameButton" onAction="#goToMatchingGame" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
     </VBox>
 </AnchorPane>

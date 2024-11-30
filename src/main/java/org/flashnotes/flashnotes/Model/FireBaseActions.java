@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.StorageClient;
-import com.google.firestore.v1.Write;
 
 
 import java.io.*;
@@ -89,7 +88,7 @@ public class FireBaseActions {
 
         List<QueryDocumentSnapshot> documents;
         try {
-            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email).get();
+            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email.toLowerCase()).get();
             documents = future.get().getDocuments();
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("Error retrieving user: " + e.getMessage());
@@ -101,7 +100,7 @@ public class FireBaseActions {
             String storedPassword = document.getString("password");
 
             if (storedPassword != null && storedPassword.equals(password)) {
-                currentUser = mapDocumentToUser(document);
+                currentUser = mapDocumentToUser(document,false);
             } else {
                 throw new IllegalArgumentException("Email or password is incorrect.");
             }
@@ -109,6 +108,24 @@ public class FireBaseActions {
             throw new IllegalArgumentException("No user found with the provided email.");
         }
 
+    }
+
+    public boolean checkForUser(String email) {
+
+        List<QueryDocumentSnapshot> documents;
+        try {
+            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email.toLowerCase()).get();
+            documents = future.get().getDocuments();
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error retrieving user: " + e.getMessage());
+            return false;
+        }
+
+        if (documents.isEmpty()) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -135,7 +152,7 @@ public class FireBaseActions {
         DocumentReference docRef = fstore.collection("Users").document(UUID.randomUUID().toString());
         Map<String, Object> data = new HashMap<>();
         data.put("id", docRef.getId());
-        data.put("email", email);
+        data.put("email", email.toLowerCase());
         data.put("username", username);
         data.put("password", password);
         data.put("img", imgURL);
@@ -147,21 +164,6 @@ public class FireBaseActions {
 
     }
 
-    public void deleteDeck(String deckId) throws ExecutionException, InterruptedException {
-        DocumentReference docRef = fstore.collection("Decks").document(deckId);
-        ApiFuture<WriteResult> request = docRef.delete();
-
-       if(request.isDone()){
-           System.out.println("Succefully deleted deck in collection");
-       }
-
-
-        System.out.println(request.get().getUpdateTime());
-
-
-
-    }
-
 
     /**
      * Uploads an image file to the server.
@@ -170,7 +172,7 @@ public class FireBaseActions {
      */
     private String uploadImg(File img) throws IOException {
 
-        String blobName = "images/" + img.getName();
+        String blobName = "images/" + img.getName().replace(" ","");
         String mimeType = Files.probeContentType(img.toPath());
 
 
@@ -328,7 +330,7 @@ public class FireBaseActions {
     private String downloadImage(String imageUrl) {
         String fileName;
         try {
-            URL url = new URL(imageUrl);
+            URL url = new URL(imageUrl.replace(" ",""));
             fileName = getFileName(url);
             File file = new File(fileName);
 
@@ -363,13 +365,15 @@ public class FireBaseActions {
      * @param document The Firestore document snapshot representing a User.
      * @return The User object populated with data from Firestore.
      */
-    public User mapDocumentToUser(QueryDocumentSnapshot document) {
+    public User mapDocumentToUser(QueryDocumentSnapshot document,boolean forShared) {
         // Basic User information
         String id = document.getString("id");
         String email = document.getString("email");
         String username = document.getString("username");
         User user = new User(id, email, username);
-        currentUser = user;
+        if(!forShared) {
+            currentUser = user;
+        }
         // Deck IDs associated with the User
         List<String> deckIds = (List<String>) document.get("deckIds");
         List<Deck> decks = new ArrayList<>();
@@ -394,17 +398,20 @@ public class FireBaseActions {
         // Convert deck list to array and set in User
         user.setDecks(decks);
 
-        downloadImage(document.getString("img"));
+        if(!forShared) {
+            downloadImage(document.getString("img"));
 
-        // Map shared decks and requests if stored as lists of Strings
-        List<String> sharedDecks = (List<String>) document.get("sharedDecks");
-        if (sharedDecks != null) {
-            user.setSharedDecks(sharedDecks);
-        }
 
-        List<String> requests = (List<String>) document.get("request");
-        if (requests != null) {
-            user.setRequest(requests);
+            // Map shared decks and requests if stored as lists of Strings
+            List<String> sharedDecks = (List<String>) document.get("sharedDecks");
+            if (sharedDecks != null) {
+                user.setSharedDecks(sharedDecks);
+            }
+
+            List<String> requests = (List<String>) document.get("request");
+            if (requests != null) {
+                user.setRequest(requests);
+            }
         }
 
         return user;
@@ -420,7 +427,7 @@ public class FireBaseActions {
             System.out.println("Error retrieving user: " + e.getMessage());
             throw new RuntimeException("Error retrieving user: " + e.getMessage());
         }
-        User otherUser = mapDocumentToUser(documents.get(0));
+        User otherUser = mapDocumentToUser(documents.get(0),true);
         if(otherUser.getDecks().size() == 10){
             throw new RuntimeException("Other users decks are too full");
         }
@@ -433,7 +440,7 @@ public class FireBaseActions {
 
         //make sure update goes through
         try{
-           WriteResult result = future.get();
+            WriteResult result = future.get();
         } catch (ExecutionException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
@@ -502,7 +509,7 @@ public class FireBaseActions {
         ApiFuture<DocumentSnapshot> future = ownerRef.get();
         DocumentSnapshot ownerSnapshot;
         try {
-             ownerSnapshot = future.get();
+            ownerSnapshot = future.get();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } catch (ExecutionException e) {

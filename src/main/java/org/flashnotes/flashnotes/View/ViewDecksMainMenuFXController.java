@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +33,12 @@ public class ViewDecksMainMenuFXController {
     @FXML
     private Button logoutButton;
 
+    @FXML
+    private TextField categoryField;
+
+    @FXML
+    private Button filterButton;
+
 
     @FXML
     private Button addButton;
@@ -45,6 +48,8 @@ public class ViewDecksMainMenuFXController {
 
     @FXML
     private Text nameIntro;
+
+    private String currentFilter = "";
 
     @FXML
     private ImageView profileIMG;
@@ -66,73 +71,82 @@ public class ViewDecksMainMenuFXController {
         }
         else {
             for(Deck d: curr.getDecks()){
-                Label nameOfDeck = new Label("Name Of Deck: " + d.getNameOfDeck() + "\nOwner of deck: " + d.getOwnerOfDeck());
-                nameOfDeck.setWrapText(true);
-                nameOfDeck.setMinWidth(300);
-                Button deleteButton = new Button("Delete");
-                deleteButton.setOnAction((ActionEvent event) -> {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Delete Deck");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Are you sure you want to delete this deck?");
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if(result.get() == ButtonType.OK) {
-                        curr.getDecks().remove(d);
-                        try {
-                            actions.updateDeck();
-                            actions.deleteDeck(d.getId());
-                        } catch (ExecutionException e) {
-                            throw new RuntimeException(e);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
+                if(d.getCategory().toLowerCase().contains(currentFilter.toLowerCase())) {
+                    Label nameOfDeck = new Label("Name Of Deck: " + d.getNameOfDeck() + "\nOwner of deck: " + d.getOwnerOfDeck() + " Category: " + d.getCategory());
+                    nameOfDeck.setWrapText(true);
+                    nameOfDeck.setMinWidth(300);
+                    Button deleteButton = new Button("Delete");
+                    deleteButton.setOnAction((ActionEvent event) -> {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Delete Deck");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Are you sure you want to delete this deck?");
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.get() == ButtonType.OK) {
+                            curr.getDecks().remove(d);
+                            try {
+                                actions.updateDeck();
+                            } catch (ExecutionException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                            initialize();
+                        } else {
+                            alert.close();
+
                         }
-                        initialize();
-                    }else {
-                        alert.close();
 
-                    }
+                    });
 
-                });
+                    Button studyButton = new Button("Study");
+                    studyButton.setOnAction((ActionEvent event) -> {
+                        actions.setCurrentDeck(d);
+                        try {
+                            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+                            Scene scene = new Scene(root, 800, 600);
+                            Stage window = (Stage) (addButton.getScene().getWindow());
+                            window.setScene(scene);
+                            window.show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    Button editDeckButton = new Button("Edit Deck");
+                    editDeckButton.setOnAction((ActionEvent event) -> {
+                        actions.setCurrentDeck(d);
+                        try {
+                            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/EditDeck.fxml"));
+                            Scene scene = new Scene(root, 800, 600);
+                            Stage window = (Stage) (addButton.getScene().getWindow());
+                            window.setScene(scene);
+                            window.show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
 
-                Button studyButton = new Button("Study");
-                studyButton.setOnAction((ActionEvent event) -> {
-                    actions.setCurrentDeck(d);
-                    try {
-                        Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
-                        Scene scene = new Scene(root, 800, 600);
-                        Stage window = (Stage) (addButton.getScene().getWindow());
-                        window. setScene(scene);
-                        window.show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-                Button editDeckButton = new Button("Edit Deck");
-                editDeckButton.setOnAction((ActionEvent event) -> {
-                    actions.setCurrentDeck(d);
-                    try {
-                        Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/EditDeck.fxml"));
-                        Scene scene = new Scene(root, 800, 600);
-                        Stage window = (Stage) (addButton.getScene().getWindow());
-                        window. setScene(scene);
-                        window.show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-
-                Button shareButton = new Button("Share");
-                shareButton.setOnAction((ActionEvent event) -> {
-                    actions.setCurrentDeck(d);
-                });
-                HBox buttons = new HBox(new Label(d.getCards().size()+"/10 cards"),deleteButton, studyButton,editDeckButton, shareButton);
-                buttons.setSpacing(10);
-                HBox selection = new HBox(nameOfDeck, buttons);
-                selection.setStyle("-fx-background-color: white;");
-                selection.setSpacing(100);
-                selection.setMinWidth(450);
-                        Decks.getChildren().add(selection);
-
+                    Button shareButton = new Button("Share");
+                    shareButton.setOnAction((ActionEvent event) -> {
+                        actions.setCurrentDeck(d);
+                        try {
+                            Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/ShareScreen.fxml"));
+                            Scene scene = new Scene(root, 800, 600);
+                            Stage window = (Stage) (addButton.getScene().getWindow());
+                            window.setScene(scene);
+                            window.show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    HBox buttons = new HBox(new Label(d.getCards().size() + "/10 cards"), deleteButton, studyButton, editDeckButton, shareButton);
+                    buttons.setSpacing(10);
+                    HBox selection = new HBox(nameOfDeck, buttons);
+                    selection.setStyle("-fx-background-color: white;");
+                    selection.setSpacing(100);
+                    selection.setMinWidth(450);
+                    Decks.getChildren().add(selection);
+                }
             }
         }
     }
@@ -156,6 +170,12 @@ public class ViewDecksMainMenuFXController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void filter(){
+        currentFilter = categoryField.getText();
+        initialize();
     }
 
     @FXML
