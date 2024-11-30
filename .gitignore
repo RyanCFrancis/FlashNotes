@@ -2,7 +2,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-Key.json
+src/main/resources/Key.json
 
 *.json
 
