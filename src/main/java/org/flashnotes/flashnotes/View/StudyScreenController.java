@@ -3,6 +3,8 @@ package org.flashnotes.flashnotes.View;
 import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -15,6 +17,8 @@ import org.flashnotes.flashnotes.Model.Card;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
+
+import java.io.IOException;
 
 public class StudyScreenController implements homeButtonInterface {
 
@@ -99,18 +103,21 @@ public class StudyScreenController implements homeButtonInterface {
     @FXML
     public void initialize() {
         fireBaseActions = FireBaseActions.init();
+//        System.out.println("Printing from study screen init");
         currentUser = fireBaseActions.getCurrentUser();
+//        System.out.println(currentUser);
+        currentDeck = fireBaseActions.getCurrentDeck();
+//        System.out.println(currentDeck);
 //        System.out.println(currentUser.getUsername());
         currentCardIndex = 1;
-        System.out.println("here");
-        System.out.println(currentUser);
+//        System.out.println(currentUser);
         isFront = true;
-        currentDeck = currentUser.getDecks().get(0);
-        currentDeck.getCards().add(new Card("Objects","I dont know ask the professor"));
-        currentDeck.getCards().add(new Card("random","not random"));
-        currentDeck.getCards().add(new Card("dang","dong"));
+//        currentDeck = currentUser.getDecks().get(0);
+//        currentDeck.getCards().add(new Card("Objects","I dont know ask the professor"));
+//        currentDeck.getCards().add(new Card("random","not random"));
+//        currentDeck.getCards().add(new Card("dang","dong"));
 //        System.out.println(currentDeck.getCards().size());
-        currentCard = currentUser.getDecks().get(0).getCards().get(0);
+        currentCard = currentDeck.getCards().get(0);
         index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         card.setText("Front:\n" + currentCard.getFront());
         title.setText(currentDeck.getNameOfDeck());
@@ -215,5 +222,11 @@ public class StudyScreenController implements homeButtonInterface {
            });
         }
         return pauseTransition;
+    }
+
+    @FXML
+    private void goToGame() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
+        anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 }

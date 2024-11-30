@@ -73,6 +73,12 @@ public class MainMenuFXController implements homeButtonInterface {
     }
 
     @FXML
+    public void goViewDecksPick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksPick.fxml"));
+        anchorPane.getScene().setRoot(fxmlLoader.load());
+    }
+
+    @FXML
     public void goCreateDeck() throws IOException {
         if (actions.getCurrentUser().getDecks().size() >= 6){
             System.exit(0); //TODO WARNING THAT NO MORE CAN BE MADE
