@@ -61,7 +61,7 @@ public class MainMenuFXController implements homeButtonInterface {
     @FXML
     public void initialize() {
         actions = FireBaseActions.init();
-        profilePicture.setImage(actions.getCurrentUser().getImg());
+        profilePicture.setImage(new Image(actions.getCurrentUser().getImg().getUrl()));
         username.setText(actions.getCurrentUser().getUsername());
     }
 

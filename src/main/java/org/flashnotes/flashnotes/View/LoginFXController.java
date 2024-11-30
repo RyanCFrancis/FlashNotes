@@ -1,6 +1,7 @@
 package org.flashnotes.flashnotes.View;
 
 import com.google.firebase.auth.FirebaseAuthException;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -18,6 +20,9 @@ public class LoginFXController {
 
     @FXML
     private Label flashLabel1;
+
+    @FXML
+    private VBox main;
 
     @FXML
     private Button loginButton;
@@ -50,18 +55,18 @@ public class LoginFXController {
     @FXML
     public void initialize() {
         fireBaseActions  = FireBaseActions.init();
-        progressIndicator.setVisible(false);
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
         loginButton.setDefaultButton(true);
     }
     @FXML
-    private void handleLogin(ActionEvent event) {
+    private void handleLogin(ActionEvent event){
+        main.getChildren().add(4,new Label("Loading..."));
         String email = usernameTxt.getText().trim();
         String password = passwordTxt.getText();
         boolean loginWorked = true;
 
-        progressIndicator.setVisible(true);
+
 
         try {
             fireBaseActions.login(email, password);
@@ -72,17 +77,18 @@ public class LoginFXController {
         } catch (IllegalArgumentException e) {
             System.out.println("Login error: " + e.getMessage());
             loginWorked = false;
+
         } catch (Exception e) {
             // Handle any other unexpected errors
             System.out.println("Unexpected error during login: " + e.getMessage());
             loginWorked = false;
-        } finally {
-            // After the login attempt, hide the ProgressIndicator
-            progressIndicator.setVisible(false);
         }
+
+
         if (loginWorked){navigateToMainMenu(event);}
 
     }
+
     //Must create event to naviagate menu will copy and paste from 311 classes and will fix when done
     private void navigateToMainMenu(ActionEvent event){
         try {

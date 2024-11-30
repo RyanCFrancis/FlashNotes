@@ -88,7 +88,7 @@ public class FireBaseActions {
 
         List<QueryDocumentSnapshot> documents;
         try {
-            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email).get();
+            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email.toLowerCase()).get();
             documents = future.get().getDocuments();
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("Error retrieving user: " + e.getMessage());
@@ -134,7 +134,7 @@ public class FireBaseActions {
         DocumentReference docRef = fstore.collection("Users").document(UUID.randomUUID().toString());
         Map<String, Object> data = new HashMap<>();
         data.put("id", docRef.getId());
-        data.put("email", email);
+        data.put("email", email.toLowerCase());
         data.put("username", username);
         data.put("password", password);
         data.put("img", imgURL);
@@ -154,7 +154,7 @@ public class FireBaseActions {
      */
     private String uploadImg(File img) throws IOException {
 
-        String blobName = "images/" + img.getName();
+        String blobName = "images/" + img.getName().replace(" ","");
         String mimeType = Files.probeContentType(img.toPath());
 
 
@@ -312,7 +312,7 @@ public class FireBaseActions {
     private String downloadImage(String imageUrl) {
         String fileName;
         try {
-            URL url = new URL(imageUrl);
+            URL url = new URL(imageUrl.replace(" ",""));
             fileName = getFileName(url);
             File file = new File(fileName);
 
