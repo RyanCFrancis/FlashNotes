@@ -65,10 +65,10 @@
                 <!-- Deck 1 -->
                <StackPane alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
                 <children>
-                    <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
-                    <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
-                    <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                    <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 1" textFill="black">
+                    <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" mouseTransparent="true"/>
+                    <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" mouseTransparent="true"/>
+                    <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" mouseTransparent="true"/>
+                    <Label fx:id="DeckOneLabel" onMouseClicked="#goToStudyScreen" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 1" textFill="black" mouseTransparent="false">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -82,7 +82,7 @@
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckTwo" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                    <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 2" textFill="black">
+                    <Label fx:id="DeckTwoLabel"  onMouseClicked="#goToStudyScreen" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 2" textFill="black">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -95,7 +95,7 @@
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                    <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 3" textFill="black">
+                    <Label fx:id="DeckThreeLabel"  onMouseClicked="#goToStudyScreen" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 3" textFill="black">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -115,7 +115,7 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 4" textFill="black">
+                            <Label fx:id="DeckFourLabel"  onMouseClicked="#goToStudyScreen" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" text="Deck 4" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
@@ -129,7 +129,7 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" text="Deck 5" textFill="black">
+                            <Label fx:id="DeckFiveLabel"  onMouseClicked="#goToStudyScreen" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" text="Deck 5" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
@@ -143,7 +143,7 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckSix" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
-                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" text="Deck 6" textFill="black">
+                            <Label fx:id="DeckSixLabel" onMouseClicked="#goToStudyScreen" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" text="Deck 6" textFill="black">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
