@@ -226,6 +226,10 @@ public class StudyScreenController implements homeButtonInterface {
 
     @FXML
     private void goToGame() throws IOException {
+        if (currentDeck.getCards().size() < 5){
+            //TODO ALERT TO MAKE MORE CARDS
+            return;
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
         anchorPane.getScene().setRoot(fxmlLoader.load());
     }

@@ -2,14 +2,10 @@ package org.flashnotes.flashnotes.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
 
@@ -23,11 +19,11 @@ public class NewDeckFXController {
     private TextField nameTxt;
     @FXML
     private TextField catTxt;
-    private FireBaseActions actions;
+    private FireBaseActions fbActions;
 
     @FXML
     private void initialize(){
-        FireBaseActions actions = FireBaseActions.init();
+        this.fbActions = FireBaseActions.init();
     }
 
     @FXML
@@ -46,7 +42,7 @@ public class NewDeckFXController {
 
 
         try {
-            actions.uploadDeck(name,category);
+            this.fbActions.uploadDeck(name,category);
         } catch (ExecutionException | InterruptedException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -63,8 +59,8 @@ public class NewDeckFXController {
         alert.showAndWait();
 
         try {
-            Deck newDeck = new Deck(actions.getCurrentUser().getUsername(),name,category);
-            actions.setCurrentDeck(newDeck);
+            Deck newDeck = new Deck(this.fbActions.getCurrentUser().getUsername(),name,category);
+            this.fbActions.setCurrentDeck(newDeck);
             Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
             anchorPane.getScene().setRoot(root);
 

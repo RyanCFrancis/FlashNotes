@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import org.flashnotes.flashnotes.Model.Deck;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
@@ -26,48 +27,64 @@ public class ViewDecksAddController extends ViewDecksMainMenuFXController {
     @FXML
     private Button deckSixAdd;
 
+    FireBaseActions fbActions;
+    boolean deckPicked;
+    @FXML
+    public void initialize() {
+        fbActions = FireBaseActions.init();
+        deckPicked = false;
+    }
+
+
 
     // Executes when user clicks to select the deck for editing
     public void addDeck(Event event) throws IOException {
         Object source = event.getSource();
-
+        System.out.println(source.toString());
         // Assigns the chosen deck a unique id to keep track of the deck
-        if(source == deckOneAdd)
+        if(source.toString().contains("deckOneAdd"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(0);
-            fireBaseActions.setCurrentDeck(d);
+            Deck d = fbActions.getCurrentUser().getDecks().get(0);
+            fbActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if(source == deckTwoAdd)
+        else if(source.toString().contains("deckTwoAdd"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(1);
-            fireBaseActions.setCurrentDeck(d);
+            Deck d = fbActions.getCurrentUser().getDecks().get(1);
+            fbActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if(source == deckThreeAdd)
+        else if(source.toString().contains("deckThreeAdd"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(2);
-            fireBaseActions.setCurrentDeck(d);
+            Deck d = fbActions.getCurrentUser().getDecks().get(2);
+            fbActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if(source == deckFourAdd)
+        else if(source.toString().contains("deckFourAdd"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(3);
-            fireBaseActions.setCurrentDeck(d);
+            Deck d = fbActions.getCurrentUser().getDecks().get(3);
+            fbActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if(source == deckFiveAdd)
+        else if(source.toString().contains("deckFiveAdd"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(4);
-            fireBaseActions.setCurrentDeck(d);
+            Deck d = fbActions.getCurrentUser().getDecks().get(4);
+            fbActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if (source == deckSixAdd)
+        else if(source.toString().contains("deckSixAdd"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(5);
-            fireBaseActions.setCurrentDeck(d);
+            Deck d = fbActions.getCurrentUser().getDecks().get(5);
+            fbActions.setCurrentDeck(d);
+            deckPicked = true;
         }
 
 
         // If a deck is assigned an id, it will load the MakeCard screen and pass the deckId to its controller
         // makeCardController is commented out until makeCard gets a controller
-        if(currentSelectedDeckId != null)
+        if(deckPicked)
         {
+            deckPicked = false;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
             Parent makeCardView = fxmlLoader.load();
             // makeCardController makeCardController = fxmlLoader.getController();

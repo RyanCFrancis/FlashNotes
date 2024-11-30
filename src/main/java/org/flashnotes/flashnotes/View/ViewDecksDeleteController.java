@@ -9,7 +9,7 @@ import org.flashnotes.flashnotes.Model.Deck;
 
 import java.io.IOException;
 
-public class ViewDecksDeleteController extends ViewDecksMainMenuFXController {
+public class ViewDecksDeleteController extends ViewDecksMainMenuFXController implements homeButtonInterface {
 
     @FXML
     private Button deckOneDelete;
@@ -23,6 +23,8 @@ public class ViewDecksDeleteController extends ViewDecksMainMenuFXController {
     private Button deckFiveDelete;
     @FXML
     private Button deckSixDelete;
+
+
 
 
 
@@ -64,7 +66,7 @@ public class ViewDecksDeleteController extends ViewDecksMainMenuFXController {
         }
 
 
-        // If a deck is assigned an id, it will delete a card in the chosen deck
+        // If a deck is assigned an id, it will delete a chosen deck
 
         if(currentSelectedDeckId != null)
         {

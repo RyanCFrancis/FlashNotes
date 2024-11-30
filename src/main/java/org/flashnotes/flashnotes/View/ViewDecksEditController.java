@@ -10,7 +10,7 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
-public class ViewDecksEditController extends ViewDecksMainMenuFXController {
+public class ViewDecksEditController extends ViewDecksMainMenuFXController implements  homeButtonInterface{
 
     @FXML
     private Button deckOneEdit;
@@ -70,6 +70,7 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController {
         // If a deck is assigned an id, it will enable editing
         if(currentSelectedDeckId != null)
         {
+
             // It would load a screen?
             // It would access the database to pull the saved deck and could allow the user
             // to traverse through it and alter the text?
