@@ -11,6 +11,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -60,6 +61,24 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     private Label DeckTwoLabel;
 
     @FXML
+    private StackPane DeckOneSP;
+
+    @FXML
+    private StackPane DeckTwoSP;
+
+    @FXML
+    private StackPane DeckThreeSP;
+
+    @FXML
+    private StackPane DeckFourSP;
+    @FXML
+    private StackPane DeckFiveSP;
+    @FXML
+    private StackPane DeckSixSP;
+
+
+
+    @FXML
     private Label DeleteLabel;
 
     @FXML
@@ -104,7 +123,7 @@ public class ViewDecksPickFXController implements homeButtonInterface {
             getDeckLabel(i).setText(currentUser.getDecks().get(i).getNameOfDeck());
         }
         for (int i=currentUser.getDecks().size()+1;i<6;i++){
-            getDeckLabel(i).setVisible(false);
+            getDeckSP(i).setVisible(false);
         }
     }
 
@@ -202,6 +221,19 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         }
     }
 
+    // Helper method to get the correct Label based on the index
+    private StackPane getDeckSP(int index) {
+        switch (index) {
+            case 0: return DeckOneSP;
+            case 1: return DeckTwoSP;
+            case 2: return DeckThreeSP;
+            case 3: return DeckFourSP;
+            case 4: return DeckFiveSP;
+            case 5: return DeckSixSP;
+            default: return null; // Return null if index is out of bounds
+        }
+    }
+
     // Helper method to hide all deck labels
     private void hideAllDeckLabels() {
         DeckOneLabel.setVisible(false);
@@ -210,6 +242,24 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         DeckFourLabel.setVisible(false);
         DeckFiveLabel.setVisible(false);
         DeckSixLabel.setVisible(false);
+    }
+
+    private Deck getClickedDeck(String eventText){
+        if (eventText.contains("DeckOneLabel")) {
+            return currentUser.getDecks().get(0);
+        } else if (eventText.contains("DeckTwoLabel")) {
+            return currentUser.getDecks().get(1);
+        } else if (eventText.contains("DeckThreeLabel")) {
+            return currentUser.getDecks().get(2);
+        }else if (eventText.contains("DeckFourLabel")) {
+            return currentUser.getDecks().get(3);
+        }else if (eventText.contains("DeckFiveLabel")) {
+            return currentUser.getDecks().get(4);
+        }else if (eventText.contains("DeckSixLabel")) {
+            return currentUser.getDecks().get(5);
+        }
+
+        return null;
     }
 
 
@@ -237,6 +287,10 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     @FXML
     public void goToStudyScreen(MouseEvent mouseEvent) {
         System.out.println("being Clicked");
+
+        System.out.println(mouseEvent.getSource().toString());
+        currentDeck = getClickedDeck(mouseEvent.getSource().toString());
+        System.out.println(currentDeck.toString());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
             Parent studyScreen = fxmlLoader.load();

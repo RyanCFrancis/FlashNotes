@@ -100,17 +100,19 @@ public class StudyScreenController implements homeButtonInterface {
     public void initialize() {
         fireBaseActions = FireBaseActions.init();
         currentUser = fireBaseActions.getCurrentUser();
+        currentDeck = fireBaseActions.getCurrentDeck();
+        System.out.println(currentDeck.toString());
 //        System.out.println(currentUser.getUsername());
         currentCardIndex = 1;
         System.out.println("here");
         System.out.println(currentUser);
         isFront = true;
-        currentDeck = currentUser.getDecks().get(0);
-        currentDeck.getCards().add(new Card("Objects","I dont know ask the professor"));
-        currentDeck.getCards().add(new Card("random","not random"));
-        currentDeck.getCards().add(new Card("dang","dong"));
+//        currentDeck = currentUser.getDecks().get(0);
+//        currentDeck.getCards().add(new Card("Objects","I dont know ask the professor"));
+//        currentDeck.getCards().add(new Card("random","not random"));
+//        currentDeck.getCards().add(new Card("dang","dong"));
 //        System.out.println(currentDeck.getCards().size());
-        currentCard = currentUser.getDecks().get(0).getCards().get(0);
+        currentCard = currentDeck.getCards().get(0);
         index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         card.setText("Front:\n" + currentCard.getFront());
         title.setText(currentDeck.getNameOfDeck());
