@@ -14,12 +14,11 @@
 
 <!-- <?import javafx.geometry.Insets?> -->
 
-<?import javafx.scene.control.ProgressIndicator?>
 <AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.LoginFXController">
 
 
     <!-- Login Form Container -->
-    <VBox alignment="CENTER" layoutX="265.0" layoutY="90.0" prefHeight="420.0" prefWidth="271.0" spacing="30" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
+    <VBox fx:id="main" alignment="CENTER" layoutX="265.0" layoutY="90.0" prefHeight="420.0" prefWidth="271.0" spacing="30" style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-border-radius: 8; -fx-background-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);">
         <Label fx:id="flashLabel1" prefHeight="17.0" prefWidth="240.0" style="-fx-font-size: 14; -fx-text-fill: black; -fx-font-family: Inter" text="Flash Notes" />
 
         <!-- Logo and Title -->
@@ -45,8 +44,6 @@
                 <Hyperlink id="registerHyperLink" fx:id="registerHereLink" alignment="TOP_CENTER" onAction="#navigateToRegister" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Register here" textAlignment="CENTER" />
             </children>
         </HBox>
-
-        <ProgressIndicator fx:id="progressIndicator" prefHeight="30.0" prefWidth="30.0" visible="false" />
 
 
 
