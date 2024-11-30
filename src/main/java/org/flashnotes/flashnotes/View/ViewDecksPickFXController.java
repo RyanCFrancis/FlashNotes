@@ -99,6 +99,13 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         fireBaseActions = FireBaseActions.init();
         currentUser = fireBaseActions.getCurrentUser();
         System.out.println(currentUser.getUsername());
+
+        for (int i=0;i<currentUser.getDecks().size();i++){
+            getDeckLabel(i).setText(currentUser.getDecks().get(i).getNameOfDeck());
+        }
+        for (int i=currentUser.getDecks().size()+1;i<6;i++){
+            getDeckLabel(i).setVisible(false);
+        }
     }
 
     // Retrieves the anchorPane from homeButtonInterface
