@@ -5,10 +5,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
@@ -19,6 +16,7 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 import org.flashnotes.flashnotes.Model.User;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class StudyScreenController implements homeButtonInterface {
 
@@ -119,7 +117,7 @@ public class StudyScreenController implements homeButtonInterface {
 //        System.out.println(currentDeck.getCards().size());
         currentCard = currentDeck.getCards().get(0);
         index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
-        card.setText("Front:\n" + currentCard.getFront());
+        card.setText(currentCard.getFront());
         title.setText(currentDeck.getNameOfDeck());
 
 
@@ -131,13 +129,13 @@ public class StudyScreenController implements homeButtonInterface {
             currentCardIndex--;
             currentCard = currentDeck.getCards().get(currentCardIndex-1);
             isFront = true;
-            card.setText("Front:\n" + currentCard.getFront());
+            card.setText(currentCard.getFront());
             index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         }else{
             currentCardIndex = currentDeck.getCards().size();
             currentCard = currentDeck.getCards().get(currentCardIndex-1);
             isFront = true;
-            card.setText("Front:\n" + currentCard.getFront());
+            card.setText(currentCard.getFront());
             index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
 
 
@@ -150,13 +148,13 @@ public class StudyScreenController implements homeButtonInterface {
             currentCardIndex++;
             currentCard = currentDeck.getCards().get(currentCardIndex-1);
             isFront = true;
-            card.setText("Front:\n" + currentCard.getFront());
+            card.setText(currentCard.getFront());
             index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         }else{
             currentCardIndex = 1;
             currentCard = currentDeck.getCards().get(0);
             isFront = true;
-            card.setText("Front:\n" + currentCard.getFront());
+            card.setText(currentCard.getFront());
             index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
 
         }
@@ -172,10 +170,10 @@ public class StudyScreenController implements homeButtonInterface {
 
         if(isFront){
             isFront = false;
-            card.setText("Back:\n" + currentCard.getBack());
+            card.setText(currentCard.getBack());
         }else{
             isFront = true;
-            card.setText("Front:\n" + currentCard.getFront());
+            card.setText(currentCard.getFront());
         }
     }
 
@@ -213,12 +211,12 @@ public class StudyScreenController implements homeButtonInterface {
         if(isFront){
             pauseTransition.setOnFinished( e -> {
                 isFront = false;
-               card.setText("Back:\n" + currentCard.getBack());
+               card.setText(currentCard.getBack());
             });
         } else {
             pauseTransition.setOnFinished( e -> {
                 isFront = true;
-                card.setText("Front:\n" + currentCard.getFront());
+                card.setText(currentCard.getFront());
            });
         }
         return pauseTransition;
@@ -227,10 +225,72 @@ public class StudyScreenController implements homeButtonInterface {
     @FXML
     private void goToGame() throws IOException {
         if (currentDeck.getCards().size() < 5){
-            //TODO ALERT TO MAKE MORE CARDS
+
+
+            int difference = (5-currentDeck.getCards().size());
+            String content = "Do you want to add more Cards? or go back to Studying?" +
+                    "\nYou need to add "+difference+" more cards to play";
+            if (difference == 1){
+                content = "Do you want to add more Cards? or go back to Studying?" +
+                        "\nYou need to add one more card to play";
+            }
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You do not have enough Cards to play!");
+            alert.setContentText(content);
+
+            ButtonType buttonStudy = new ButtonType("Study");
+            ButtonType buttonAdd = new ButtonType("Add More");
+            ButtonType buttonCancel = new ButtonType("Home", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll( buttonAdd,buttonStudy,buttonCancel);
+            Optional<ButtonType> ButtonResult = alert.showAndWait();
+
+            if (ButtonResult.get() == buttonStudy) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+                anchorPane.getScene().setRoot(fxmlLoader.load());
+            } else if (ButtonResult.get() == buttonAdd) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+                anchorPane.getScene().setRoot(fxmlLoader.load());
+            } else {
+                //user goes home
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+                anchorPane.getScene().setRoot(fxmlLoader.load());
+            }
             return;
         }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
         anchorPane.getScene().setRoot(fxmlLoader.load());
+    }
+
+    @FXML
+    private void shareDeck(){
+        TextInputDialog dialog = new TextInputDialog("@gmail.com");
+        dialog.setTitle(null);
+        dialog.setHeaderText("Sharing "+fireBaseActions.getCurrentDeck().getNameOfDeck()+" Deck");
+        dialog.setContentText("Please enter their email");
+
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            try {
+                fireBaseActions.shareToUser(dialog.getResult().toLowerCase()
+                        ,fireBaseActions.getCurrentDeck().getId());
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                return;
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Deck created successfully");
+            alert.showAndWait();
+        }
     }
 }

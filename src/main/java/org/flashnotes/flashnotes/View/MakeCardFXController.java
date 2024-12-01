@@ -85,29 +85,68 @@ public class MakeCardFXController implements  homeButtonInterface{
 
         ButtonType buttonAdd = new ButtonType("Add More");
         ButtonType buttonStudy = new ButtonType("Study");
-        ButtonType buttonPlay = new ButtonType("Three");
-        ButtonType buttonCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType buttonPlay = new ButtonType("Play");
+        ButtonType buttonCancel = new ButtonType("Home", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        Optional<ButtonType> ButtonResult = alert.showAndWait();
         alert.getButtonTypes().setAll(buttonAdd, buttonStudy, buttonPlay,buttonCancel);
-
+        Optional<ButtonType> ButtonResult = alert.showAndWait();
 
         if (ButtonResult.get() == buttonAdd){
-            // ... user chose "One"
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().
+                    getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+            anchorPane.getScene().setRoot(fxmlLoader.load());
         } else if (ButtonResult.get() == buttonStudy) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().
+                    getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
             anchorPane.getScene().setRoot(fxmlLoader.load());
         } else if (ButtonResult.get() == buttonPlay) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
+
+            if (fbActions.getCurrentDeck().getCards().size() < 5){
+                int difference = (5-fbActions.getCurrentDeck().getCards().size());
+                String content = "Do you want to add more Cards? or go back to Studying?" +
+                        "\nYou need to add "+difference+" more cards to play";
+                if (difference == 1){
+                    content = "Do you want to add more Cards? or go back to Studying?" +
+                            "\nYou need to add one more card to play";
+                }
+
+                Alert alert2 = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Warning");
+                alert.setHeaderText("You do not have enough Cards to play!");
+                alert.setContentText(content);
+
+                ButtonType buttonStudy2 = new ButtonType("Study");
+                ButtonType buttonAdd2 = new ButtonType("Add More");
+                ButtonType buttonCancel2 = new ButtonType("Home", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                alert.getButtonTypes().setAll( buttonAdd2,buttonStudy2,buttonCancel2);
+                Optional<ButtonType> ButtonResult2 = alert.showAndWait();
+
+                if (ButtonResult2.get() == buttonStudy2) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                            .getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+                    anchorPane.getScene().setRoot(fxmlLoader.load());
+                } else if (ButtonResult2.get() == buttonAdd2) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                            .getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+                    anchorPane.getScene().setRoot(fxmlLoader.load());
+                } else {
+                    //user goes home
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                            .getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+                    anchorPane.getScene().setRoot(fxmlLoader.load());
+                }
+            }
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                    .getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
             anchorPane.getScene().setRoot(fxmlLoader.load());
         } else {
             //user goes home
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                    .getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
             anchorPane.getScene().setRoot(fxmlLoader.load());
         }
-
     }
-
-
 
 }
