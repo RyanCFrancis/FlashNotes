@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
 
@@ -15,7 +16,10 @@
         <Label fx:id="flashLabel2" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="240.0" style="-fx-font-size: 14; -fx-text-fill: black; -fx-font-family: Inter" text="Flash Notes" />
 
         <!-- Logo and Title -->
-        <Label fx:id="registerLabel" style="-fx-font-size: 22; -fx-text-fill: black; -fx-font-weight: regular; -fx-font-family: Inter;" text="Register" />
+        <Label fx:id="registerLabel" style="-fx-font-size: 22; -fx-text-fill: black; -fx-font-weight: regular; -fx-font-family: Inter;" text="Register">
+         <font>
+            <Font name="Inter Regular" size="12.0" />
+         </font></Label>
 
         <!-- Profile Image -->
         <ImageView fx:id="profilePicImgView" blendMode="DARKEN" fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true" visible="true">
@@ -51,7 +55,10 @@
                         <Image url="@Images/upload_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
                     </image>
                 </ImageView>
-                <Hyperlink fx:id="uploadImageHyperLink" alignment="TOP_CENTER" onAction="#openFileChooser" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Upload Image" />
+                <Hyperlink fx:id="uploadImageHyperLink" alignment="TOP_CENTER" onAction="#openFileChooser" style="-fx-font-size: 12; -fx-text-fill: #4CA0FF; -fx-font-family: Inter" text="Upload Image">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font></Hyperlink>
             </children>
         </HBox>
 
@@ -59,14 +66,23 @@
         <Button fx:id="RegisterButton" onAction="#handleRegister" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" styleClass="loginButton" text="Create Account">
             <VBox.margin>
                 <Insets />
-            </VBox.margin></Button>
+            </VBox.margin>
+         <font>
+            <Font name="Inter Regular" size="12.0" />
+         </font></Button>
 
 
         <!-- Sign In Link -->
         <HBox alignment="CENTER" prefHeight="36.0" prefWidth="221.0">
             <children>
-                <Label fx:id="noAccountLabel2" alignment="BOTTOM_LEFT" prefHeight="0.0" prefWidth="147.0" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Already have an account?" textAlignment="CENTER" />
-                <Hyperlink fx:id="signInHyperLink" alignment="TOP_CENTER" onAction="#goToLogin" style="-fx-font-size: 12; -fx-text-fill: #007bff; -fx-font-family: Inter" text="Sign In" />
+                <Label fx:id="noAccountLabel2" alignment="BOTTOM_LEFT" prefHeight="0.0" prefWidth="147.0" style="-fx-font-size: 12; -fx-text-fill: black; -fx-font-family: Inter" text="Already have an account?" textAlignment="CENTER">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font></Label>
+                <Hyperlink fx:id="signInHyperLink" alignment="TOP_CENTER" onAction="#goToLogin" style="-fx-font-size: 12; -fx-text-fill: #007bff; -fx-font-family: Inter" text="Sign In">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font></Hyperlink>
             </children>
         </HBox>
 
