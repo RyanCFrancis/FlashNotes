@@ -49,7 +49,7 @@
          </HBox>
          <Label text="PICK A DECK TO STUDY">
             <font>
-               <Font size="30.0" />
+               <Font name="Inter Regular" size="30.0" />
             </font>
          </Label>
          <HBox alignment="CENTER" prefHeight="120.0" prefWidth="592.0">
@@ -65,7 +65,7 @@
                     <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" mouseTransparent="false" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 1" textFill="black">
 
                         <font>
-                            <Font size="30.0" />
+                            <Font name="Roboto Medium" size="30.0" />
                         </font>
                     </Label>
                 </children>
@@ -83,7 +83,7 @@
                     <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 2" textFill="black">
 
                         <font>
-                            <Font size="30.0" />
+                            <Font name="Roboto Medium" size="30.0" />
                         </font>
                     </Label>
                 </children>
@@ -100,7 +100,7 @@
                     <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 3" textFill="black">
 
                         <font>
-                            <Font size="30.0" />
+                            <Font name="Roboto Medium" size="30.0" />
                         </font>
                     </Label>
                 </children>
@@ -124,7 +124,7 @@
                             <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 4" textFill="black">
 
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                         </children>
@@ -142,7 +142,7 @@
                             <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="95.0" prefWidth="115.0" text="Deck 5" textFill="black">
 
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                         </children>
@@ -160,7 +160,7 @@
                             <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="97.0" prefWidth="115.0" text="Deck 6" textFill="black">
 
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                         </children>

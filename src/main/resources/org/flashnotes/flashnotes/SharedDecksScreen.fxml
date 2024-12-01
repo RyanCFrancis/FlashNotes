@@ -80,7 +80,7 @@
                             <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font size="30.0" name="Roboto Medium" />
                                 </font>
                             </Label>
                         </children>
@@ -94,7 +94,7 @@
                             <Rectangle fx:id="deckTwo" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font size="30.0" name="Roboto Medium" />
                                 </font>
                             </Label>
                         </children>
@@ -107,7 +107,7 @@
                             <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font size="30.0" name="Roboto Medium" />
                                 </font>
                             </Label>
                         </children>
@@ -127,7 +127,7 @@
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font size="30.0" name="Roboto Medium" />
                                 </font>
                             </Label>
                         </children>
@@ -141,7 +141,7 @@
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" />
+                                    <Font size="30.0" name="Roboto Medium" />
                                 </font>
                             </Label>
                         </children>
