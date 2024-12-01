@@ -148,7 +148,7 @@
                <StackPane prefHeight="60.0" prefWidth="100.0">
                    <children>
                        <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#addScreen" width="88.0" />
-                       <Label fx:id="add" onMouseClicked="#addScreen" text="Add" textFill="black">
+                       <Label fx:id="add" onMouseClicked="#addScreen" text="Add A Card" textFill="black">
                            <font>
                                <Font name="Inter Regular" size="22.0" />
                            </font>
