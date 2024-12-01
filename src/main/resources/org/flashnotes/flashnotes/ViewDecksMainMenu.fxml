@@ -171,7 +171,7 @@
                         <StackPane.margin>
                            <Insets right="5.0" />
                         </StackPane.margin></Rectangle>
-                            <Label fx:id="edit" onMouseClicked="#editScreen" prefHeight="28.0" prefWidth="50.0" text="Edit" textFill="black">
+                            <Label fx:id="edit" onMouseClicked="#editScreen" prefHeight="28.0" prefWidth="110.0" text="Edit Deck" textFill="black">
                                 <font>
                                     <Font name="Inter Regular" size="22.0" />
                                 </font>
@@ -187,7 +187,7 @@
                         <StackPane.margin>
                            <Insets right="5.0" />
                         </StackPane.margin></Rectangle>
-                            <Label fx:id="delete" onMouseClicked="#deleteScreen" prefHeight="28.0" prefWidth="78.0" text="Delete" textFill="black">
+                            <Label fx:id="delete" onMouseClicked="#deleteScreen" prefHeight="28.0" prefWidth="130.0" text="Delete Deck" textFill="black">
                                 <font>
                                     <Font name="Inter Regular" size="22.0" />
                                 </font>
