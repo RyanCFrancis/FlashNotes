@@ -26,7 +26,7 @@
          </font></Label>
 
         <!-- Username Field -->
-        <TextField id="usernameText" fx:id="usernameTxt" prefHeight="42.0" prefWidth="190.0" promptText="Username" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
+        <TextField id="usernameText" fx:id="usernameTxt" prefHeight="42.0" prefWidth="190.0" promptText="Email" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         <!-- Password Field -->
         <PasswordField id="passwordText" fx:id="passwordTxt" prefHeight="42.0" prefWidth="190.0" promptText="Password" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
