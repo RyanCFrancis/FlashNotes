@@ -171,7 +171,7 @@
                         <StackPane.margin>
                            <Insets right="5.0" />
                         </StackPane.margin></Rectangle>
-                            <Label fx:id="edit" onMouseClicked="#editScreen" prefHeight="28.0" prefWidth="110.0" text="Edit Deck" textFill="black">
+                            <Label fx:id="edit" onMouseClicked="#editScreen" prefHeight="28.0" prefWidth="103.0" text="Edit Deck" textFill="black">
                                 <font>
                                     <Font name="Inter Regular" size="22.0" />
                                 </font>
