@@ -258,10 +258,39 @@ public class StudyScreenController implements homeButtonInterface {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
                 anchorPane.getScene().setRoot(fxmlLoader.load());
             }
-
             return;
         }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
         anchorPane.getScene().setRoot(fxmlLoader.load());
+    }
+
+    @FXML
+    private void shareDeck(){
+        TextInputDialog dialog = new TextInputDialog("@gmail.com");
+        dialog.setTitle(null);
+        dialog.setHeaderText("Sharing "+fireBaseActions.getCurrentDeck().getNameOfDeck()+" Deck");
+        dialog.setContentText("Please enter their email");
+
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            try {
+                fireBaseActions.shareToUser(dialog.getResult().toLowerCase()
+                        ,fireBaseActions.getCurrentDeck().getId());
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                return;
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Deck created successfully");
+            alert.showAndWait();
+        }
     }
 }

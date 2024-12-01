@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -57,8 +58,24 @@
             <Button fx:id="backButton" onAction="#previousCard" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="←" />
             <Button fx:id="NextButton" onAction="#nextCard" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="→" />
         </HBox>
-
-        <!-- Matching Game Button -->
-        <Button fx:id="MatchingGameButton" onAction="#goToGame" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+      
+              <!-- Matching Game Button -->
+              <Button fx:id="MatchingGameButton" onAction="#goToGame" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="ShareDeckButton" layoutX="239.0" layoutY="10.0" minWidth="152.66666" onAction="#shareDeck" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Share Deck">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
     </VBox>
 </AnchorPane>

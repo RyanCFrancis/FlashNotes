@@ -147,9 +147,6 @@ public class MakeCardFXController implements  homeButtonInterface{
                     .getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
             anchorPane.getScene().setRoot(fxmlLoader.load());
         }
-
     }
-
-
 
 }
