@@ -27,6 +27,9 @@ public class MainRunner extends Application {
 
         FireBaseActions.init();
 
+        // Set the application icon
+        Image appIcon = new Image(getClass().getResource("/org/flashnotes/flashnotes/Images/Cover.jpg").toExternalForm());
+        stage.getIcons().add(appIcon);
 
         Image splashImage = new Image(getClass().getResource("/org/flashnotes/flashnotes/Images/Cover.jpg").toExternalForm());
 
