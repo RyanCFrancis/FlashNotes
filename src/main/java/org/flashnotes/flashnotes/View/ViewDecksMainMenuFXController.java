@@ -114,6 +114,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
 
     public void initialize()
     {
+        boolean deckPicked = false;
         fireBaseActions = FireBaseActions.init();
         currentUser = fireBaseActions.getCurrentUser();
         System.out.println(currentUser.getUsername());

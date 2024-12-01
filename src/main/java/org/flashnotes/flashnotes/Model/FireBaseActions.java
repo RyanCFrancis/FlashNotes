@@ -280,7 +280,7 @@ public class FireBaseActions {
         WriteBatch batch = fstore.batch();
 
         for (Deck deck : currentUser.getDecks()) {
-            System.out.println(deck.getId());
+//            System.out.println(deck.getId());
             DocumentReference deckRef = fstore.collection("Decks").document(deck.getId());
 
 
@@ -300,7 +300,7 @@ public class FireBaseActions {
         try {
 
             commitFuture.get();
-            System.out.println("All decks updated successfully.");
+//            System.out.println("All decks updated successfully.");
         } catch (Exception e) {
             System.out.println("Error updating decks: " + e.getMessage());
             throw new RuntimeException("Error updating decks: " + e.getMessage());

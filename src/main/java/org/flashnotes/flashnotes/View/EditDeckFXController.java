@@ -24,7 +24,7 @@ public class EditDeckFXController {
 
     @FXML
     private void initialize(){
-        FireBaseActions actions = FireBaseActions.init();
+        actions = FireBaseActions.init();
         nameTxt.setText(actions.getCurrentDeck().getNameOfDeck());
         catTxt.setText(actions.getCurrentDeck().getCategory());
         curDeck = actions.getCurrentDeck();

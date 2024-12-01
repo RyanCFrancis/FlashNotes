@@ -32,7 +32,7 @@
                     </Text>
                     <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                         <children>
-                            <Text fx:id="home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                            <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                                 <font>
                                     <Font name="Inter Regular" size="12.0" />
                                 </font>
