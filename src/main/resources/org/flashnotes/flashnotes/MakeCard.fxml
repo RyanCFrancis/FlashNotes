@@ -11,7 +11,7 @@
 <?import javafx.scene.text.*?>
 
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksEditController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MakeCardFXController">
 
 
     <!-- Flash Notes top left -->
@@ -126,7 +126,7 @@
                 <children>
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0">
                         <children>
-                            <Rectangle fx:id="createButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="30.0" width="115.0" />
+                            <Rectangle fx:id="createButtonRect" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="30.0" width="115.0" />
                             <Label onMouseClicked="#createButton" text="Create" textFill="black">
                                 <font>
                                     <Font name="Inter Regular" size="23.0" />
