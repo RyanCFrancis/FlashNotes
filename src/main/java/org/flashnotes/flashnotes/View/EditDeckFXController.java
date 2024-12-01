@@ -63,7 +63,7 @@ public class EditDeckFXController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
         alert.setHeaderText(null);
-        alert.setContentText("Deck created successfully");
+        alert.setContentText("Deck Edited successfully");
         alert.showAndWait();
 
         try {

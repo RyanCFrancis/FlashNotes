@@ -226,11 +226,19 @@ public class StudyScreenController implements homeButtonInterface {
     private void goToGame() throws IOException {
         if (currentDeck.getCards().size() < 5){
 
+
+            int difference = (5-currentDeck.getCards().size());
+            String content = "Do you want to add more Cards? or go back to Studying?" +
+                    "\nYou need to add "+difference+" more cards to play";
+            if (difference == 1){
+                content = "Do you want to add more Cards? or go back to Studying?" +
+                        "\nYou need to add one more card to play";
+            }
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Warning");
             alert.setHeaderText("You do not have enough Cards to play!");
-            alert.setContentText("Do you want to add more Cards? or go back to Studying?" +
-                    "\nYou need to add "+(5-currentDeck.getCards().size())+" more cards to play" );
+            alert.setContentText(content);
 
             ButtonType buttonStudy = new ButtonType("Study");
             ButtonType buttonAdd = new ButtonType("Add More");
