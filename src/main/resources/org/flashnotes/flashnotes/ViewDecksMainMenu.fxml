@@ -2,13 +2,14 @@
 
 <!-- Root Container -->
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksMainMenuFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksMainMenuFXController">
 
     <!-- Flash Notes top left -->
     <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -58,7 +59,7 @@
                     <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                     <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                         <font>
-                            <Font size="30.0" name="Roboto Medium" />
+                            <Font name="Roboto Medium" size="30.0" />
                         </font>
                     </Label>
                 </children>
@@ -85,7 +86,7 @@
                     <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                     <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                         <font>
-                            <Font size="30.0" name="Roboto Medium" />
+                            <Font name="Roboto Medium" size="30.0" />
                         </font>
                     </Label>
                 </children>
@@ -105,7 +106,7 @@
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                         </children>
@@ -119,7 +120,7 @@
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                         </children>
@@ -133,7 +134,7 @@
                             <Rectangle fx:id="deckSix" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                         </children>
@@ -147,11 +148,17 @@
                 <children>
                <StackPane prefHeight="60.0" prefWidth="100.0">
                    <children>
-                       <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#addScreen" width="88.0" />
-                       <Label fx:id="add" onMouseClicked="#addScreen" text="Add" textFill="black">
+                       <Rectangle fx:id="addButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#addScreen" width="148.0">
+                        <StackPane.margin>
+                           <Insets right="5.0" />
+                        </StackPane.margin></Rectangle>
+                       <Label fx:id="add" onMouseClicked="#addScreen" prefHeight="28.0" prefWidth="126.0" text="Add A Card" textFill="black">
                            <font>
                                <Font name="Inter Regular" size="22.0" />
                            </font>
+                        <StackPane.margin>
+                           <Insets />
+                        </StackPane.margin>
                        </Label>
                    </children>
                </StackPane>
@@ -160,8 +167,11 @@
                     <!-- Edit button -->
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="69.0" prefWidth="128.0">
                         <children>
-                            <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#editScreen" width="88.0" />
-                            <Label fx:id="edit" onMouseClicked="#editScreen" text="Edit" textFill="black">
+                            <Rectangle fx:id="editButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#editScreen" width="148.0">
+                        <StackPane.margin>
+                           <Insets right="5.0" />
+                        </StackPane.margin></Rectangle>
+                            <Label fx:id="edit" onMouseClicked="#editScreen" prefHeight="28.0" prefWidth="103.0" text="Edit Deck" textFill="black">
                                 <font>
                                     <Font name="Inter Regular" size="22.0" />
                                 </font>
@@ -173,8 +183,11 @@
                     <!-- Delete button -->
                     <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="100.0">
                         <children>
-                            <Rectangle fx:id="deleteButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#deleteScreen" width="88.0" />
-                            <Label fx:id="delete" onMouseClicked="#deleteScreen" text="Delete" textFill="black">
+                            <Rectangle fx:id="deleteButton" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="34.0" onMouseClicked="#deleteScreen" width="148.0">
+                        <StackPane.margin>
+                           <Insets right="5.0" />
+                        </StackPane.margin></Rectangle>
+                            <Label fx:id="delete" onMouseClicked="#deleteScreen" prefHeight="28.0" prefWidth="130.0" text="Delete Deck" textFill="black">
                                 <font>
                                     <Font name="Inter Regular" size="22.0" />
                                 </font>
