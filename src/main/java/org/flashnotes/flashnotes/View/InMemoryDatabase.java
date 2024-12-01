@@ -131,7 +131,7 @@ public class InMemoryDatabase {
                 throw new RuntimeException("Deck not found: " + deck.getId());
             }
         }
-        System.out.println("All decks updated successfully.");
+//        System.out.println("All decks updated successfully.");
     }
 
     /**
@@ -152,7 +152,7 @@ public class InMemoryDatabase {
         if(sharedUser.getRequest() == null) sharedUser.setRequest(new ArrayList<String>());
 
         sharedUser.getRequest().add(deckId);
-        System.out.println("Deck shared with " + sharedWithEmail);
+//        System.out.println("Deck shared with " + sharedWithEmail);
     }
 
 

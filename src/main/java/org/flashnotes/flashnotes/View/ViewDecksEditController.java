@@ -10,7 +10,7 @@ import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
-public class ViewDecksEditController extends ViewDecksMainMenuFXController {
+public class ViewDecksEditController extends ViewDecksMainMenuFXController implements  homeButtonInterface{
 
     @FXML
     private Button deckOneEdit;
@@ -25,6 +25,9 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController {
     @FXML
     private Button deckSixEdit;
 
+    private Deck d;
+    private boolean deckPicked;
+
 //    maybe not needed?
 //    public void initialize() {
 //        fireBaseActions = FireBaseActions.init();
@@ -38,41 +41,50 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController {
         // Assigns the chosen deck a unique id to keep track of the deck
         if(source == deckOneEdit)
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(0);
+            d = fireBaseActions.getCurrentUser().getDecks().get(0);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
         else if(source == deckTwoEdit)
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(1);
+            d = fireBaseActions.getCurrentUser().getDecks().get(1);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
         else if(source == deckThreeEdit)
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(2);
+            d = fireBaseActions.getCurrentUser().getDecks().get(2);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
         else if(source == deckFourEdit)
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(3);
+            d = fireBaseActions.getCurrentUser().getDecks().get(3);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
         else if(source == deckFiveEdit)
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(4);
+            d = fireBaseActions.getCurrentUser().getDecks().get(4);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
         else if (source == deckSixEdit)
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(5);
+            d = fireBaseActions.getCurrentUser().getDecks().get(5);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
 
         // If a deck is assigned an id, it will enable editing
-        if(currentSelectedDeckId != null)
+        if(deckPicked)
         {
-            // It would load a screen?
-            // It would access the database to pull the saved deck and could allow the user
-            // to traverse through it and alter the text?
+            deckPicked = false;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/EditDeck.fxml"));
+            Parent makeCardView = fxmlLoader.load();
+            // makeCardController makeCardController = fxmlLoader.getController();
+            // makeCardController.setDeckId(currentSelectedDeckId);
+            anchorPane.getScene().setRoot(makeCardView);
         }
     }
 }

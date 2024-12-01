@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+
+<!-- <?import javafx.scene.control.*?> -->
+<!-- <?import javafx.scene.image.*?> -->
+<!-- <?import javafx.scene.layout.*?> -->
+<!-- <?import javafx.scene.text.*?> -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
 
 <AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.StudyScreenController">
 
@@ -59,10 +73,28 @@
             <Button fx:id="NextButton" onAction="#nextCard" style="-fx-font-size: 16px; -fx-background-radius: 15px; -fx-background-color: #f0f0f0;" text="→" />
         </HBox>
 
-        <!-- Matching Game Button -->
-        <Button fx:id="MatchingGameButton" onAction="#goToGame" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game">
-         <font>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+      
+              <!-- Matching Game Button -->
+              <Button fx:id="MatchingGameButton" onAction="#goToGame" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Matching Game">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin><font>
             <Font name="Inter Regular" size="12.0" />
-         </font></Button>
+         </font>
+            </Button>
+            <Button fx:id="ShareDeckButton" layoutX="239.0" layoutY="10.0" minWidth="152.66666" onAction="#shareDeck" style="-fx-background-color: #BA43FF; -fx-text-fill: Black; -fx-font-size: 16px; -fx-padding: 10 20 10 20;" text="Share Deck">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin><font>
+            <Font name="Inter Regular" size="12.0" />
+         </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
     </VBox>
 </AnchorPane>

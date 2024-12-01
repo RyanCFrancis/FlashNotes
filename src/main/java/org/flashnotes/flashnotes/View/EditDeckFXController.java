@@ -24,7 +24,7 @@ public class EditDeckFXController {
 
     @FXML
     private void initialize(){
-        FireBaseActions actions = FireBaseActions.init();
+        actions = FireBaseActions.init();
         nameTxt.setText(actions.getCurrentDeck().getNameOfDeck());
         catTxt.setText(actions.getCurrentDeck().getCategory());
         curDeck = actions.getCurrentDeck();
@@ -63,7 +63,7 @@ public class EditDeckFXController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
         alert.setHeaderText(null);
-        alert.setContentText("Deck created successfully");
+        alert.setContentText("Deck Edited successfully");
         alert.showAndWait();
 
         try {

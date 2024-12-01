@@ -8,8 +8,9 @@ import javafx.scene.control.Button;
 import org.flashnotes.flashnotes.Model.Deck;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
-public class ViewDecksDeleteController extends ViewDecksMainMenuFXController {
+public class ViewDecksDeleteController extends ViewDecksMainMenuFXController implements homeButtonInterface {
 
     @FXML
     private Button deckOneDelete;
@@ -25,52 +26,73 @@ public class ViewDecksDeleteController extends ViewDecksMainMenuFXController {
     private Button deckSixDelete;
 
 
+    private boolean deckPicked;
+    private Deck d;
+
+
+    @FXML
+    public void intialize(){
+        deckPicked = false;
+    }
 
     // If user selects the deck it gets assigned a unique Id
-    public void deleteDeck(Event event) throws IOException {
+    public void deleteDeck(Event event) throws IOException, ExecutionException, InterruptedException {
         Object source = event.getSource();
+//        System.out.println(source.toString());
 
 
-        if(source == deckOneDelete)
+        if(source.toString().contains("deckOneDelete"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(0);
-            fireBaseActions.setCurrentDeck(d);;
-
-        }
-        else if(source == deckTwoDelete)
-        {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(1);
+            d = fireBaseActions.getCurrentUser().getDecks().get(0);
             fireBaseActions.setCurrentDeck(d);
+            this.deckPicked = true;
         }
-        else if(source == deckThreeDelete)
+        else if(source.toString().contains("deckTwoDelete"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(2);
+            d = fireBaseActions.getCurrentUser().getDecks().get(1);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if(source == deckFourDelete)
+        else if(source.toString().contains("deckThreeDelete"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(3);
+            d = fireBaseActions.getCurrentUser().getDecks().get(2);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if(source == deckFiveDelete)
+        else if(source.toString().contains("deckFourDelete"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(4);
+            d = fireBaseActions.getCurrentUser().getDecks().get(3);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
-        else if (source == deckSixDelete)
+        else if(source.toString().contains("deckFiveDelete"))
         {
-            Deck d = fireBaseActions.getCurrentUser().getDecks().get(5);
+            d = fireBaseActions.getCurrentUser().getDecks().get(4);
             fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
+        }
+        else if(source.toString().contains("deckSixDelete"))
+        {
+            d = fireBaseActions.getCurrentUser().getDecks().get(5);
+            fireBaseActions.setCurrentDeck(d);
+            deckPicked = true;
         }
 
 
-        // If a deck is assigned an id, it will delete a card in the chosen deck
+        // If a deck is assigned an id, it will delete a chosen deck
 
-        if(currentSelectedDeckId != null)
+        if(deckPicked)
         {
-            // It would load a screen?
-            // It would allow the user to traverse through the deck?
-            // Or it would delete the entire deck instead?
+//            System.out.println(d.toString());
+            fireBaseActions.getCurrentUser().getDecks().remove(d);
+            fireBaseActions.updateDeck();
+            //TODO POPUP SAYING DECK DELETED
+
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+            Parent makeCardView = fxmlLoader.load();
+            anchorPane.getScene().setRoot(makeCardView);
         }
     }
 }
