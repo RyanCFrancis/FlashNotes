@@ -82,7 +82,9 @@
          <!-- Create Deck -->
          <HBox alignment="CENTER" prefHeight="894.0" prefWidth="1399.0">
             <children>
+
                <StackPane onMouseClicked="#goCreateDeck" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="150.0" prefWidth="200.0">
+
                   <children>
                      <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goCreateDeck" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
@@ -107,14 +109,16 @@
                </StackPane>
 
                <!-- Study Deck -->
-               <StackPane onMouseClicked="#goCreateDeck" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="150.0" prefWidth="200.0">
+
+               <StackPane onMouseClicked="#goViewDecksPick" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="150.0" prefWidth="200.0">
+
                   <children>
                      <Rectangle fx:id="studyDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goViewDecksPick" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
                      </Rectangle>
-                     <Label fx:id="studyDeckLabel" text="STUDY DECK" textFill="black">
+                     <Label fx:id="studyDeckLabel" onMouseClicked="#goViewDecksPick" text="STUDY DECK" textFill="black">
                         <font>
                            <Font name="Roboto Medium" size="23.0" />
                         </font>
@@ -132,7 +136,8 @@
                </StackPane>
 
                <!-- View Decks -->
-               <StackPane onMouseClicked="#goCreateDeck" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="386.0" prefWidth="315.0">
+               <StackPane onMouseClicked="#goToViewDecks" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="386.0" prefWidth="315.0">
+
                   <children>
                      <Rectangle fx:id="viewDeckRectangle" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goToViewDecks" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
