@@ -339,14 +339,16 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     public void goToStudyScreen(MouseEvent mouseEvent) {
 //        System.out.println("being Clicked");
             Deck d = getClickedDeck(mouseEvent.getSource().toString());
-            if(d.getCards().size()== 0){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("No cards to study.");
-                alert.showAndWait();
-                return;
-            }
+
+                if (d.getCards().size() == 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("No cards to study.");
+                    alert.showAndWait();
+                    return;
+                }
+
 //        System.out.println(mouseEvent.getSource().toString());
 
         fireBaseActions.setCurrentDeck(d);
