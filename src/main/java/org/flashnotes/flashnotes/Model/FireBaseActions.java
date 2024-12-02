@@ -31,7 +31,7 @@ public class FireBaseActions {
     private StorageClient storageClient;
     private FirebaseAuth fauth;
     private User currentUser;
-    Card selectedCard;
+    public Card selectedCard;
 
     public Deck getCurrentDeck() {
         return currentDeck;
@@ -100,7 +100,7 @@ public class FireBaseActions {
             String storedPassword = document.getString("password");
 
             if (storedPassword != null && storedPassword.equals(password)) {
-                currentUser = mapDocumentToUser(document);
+                currentUser = mapDocumentToUser(document,false);
             } else {
                 throw new IllegalArgumentException("Email or password is incorrect.");
             }
@@ -108,6 +108,24 @@ public class FireBaseActions {
             throw new IllegalArgumentException("No user found with the provided email.");
         }
 
+    }
+
+    public boolean checkForUser(String email) {
+
+        List<QueryDocumentSnapshot> documents;
+        try {
+            ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("email", email.toLowerCase()).get();
+            documents = future.get().getDocuments();
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error retrieving user: " + e.getMessage());
+            return false;
+        }
+
+        if (documents.isEmpty()) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -280,7 +298,7 @@ public class FireBaseActions {
         WriteBatch batch = fstore.batch();
 
         for (Deck deck : currentUser.getDecks()) {
-//            System.out.println(deck.getId());
+            System.out.println(deck.getId());
             DocumentReference deckRef = fstore.collection("Decks").document(deck.getId());
 
 
@@ -300,7 +318,7 @@ public class FireBaseActions {
         try {
 
             commitFuture.get();
-//            System.out.println("All decks updated successfully.");
+            System.out.println("All decks updated successfully.");
         } catch (Exception e) {
             System.out.println("Error updating decks: " + e.getMessage());
             throw new RuntimeException("Error updating decks: " + e.getMessage());
@@ -347,13 +365,15 @@ public class FireBaseActions {
      * @param document The Firestore document snapshot representing a User.
      * @return The User object populated with data from Firestore.
      */
-    public User mapDocumentToUser(QueryDocumentSnapshot document) {
+    public User mapDocumentToUser(QueryDocumentSnapshot document,boolean forShared) {
         // Basic User information
         String id = document.getString("id");
         String email = document.getString("email");
         String username = document.getString("username");
         User user = new User(id, email, username);
-        currentUser = user;
+        if(!forShared) {
+            currentUser = user;
+        }
         // Deck IDs associated with the User
         List<String> deckIds = (List<String>) document.get("deckIds");
         List<Deck> decks = new ArrayList<>();
@@ -378,17 +398,20 @@ public class FireBaseActions {
         // Convert deck list to array and set in User
         user.setDecks(decks);
 
-        downloadImage(document.getString("img"));
+        if(!forShared) {
+            downloadImage(document.getString("img"));
 
-        // Map shared decks and requests if stored as lists of Strings
-        List<String> sharedDecks = (List<String>) document.get("sharedDecks");
-        if (sharedDecks != null) {
-            user.setSharedDecks(sharedDecks);
-        }
 
-        List<String> requests = (List<String>) document.get("request");
-        if (requests != null) {
-            user.setRequest(requests);
+            // Map shared decks and requests if stored as lists of Strings
+            List<String> sharedDecks = (List<String>) document.get("sharedDecks");
+            if (sharedDecks != null) {
+                user.setSharedDecks(sharedDecks);
+            }
+
+            List<String> requests = (List<String>) document.get("request");
+            if (requests != null) {
+                user.setRequest(requests);
+            }
         }
 
         return user;
@@ -404,7 +427,7 @@ public class FireBaseActions {
             System.out.println("Error retrieving user: " + e.getMessage());
             throw new RuntimeException("Error retrieving user: " + e.getMessage());
         }
-        User otherUser = mapDocumentToUser(documents.get(0));
+        User otherUser = mapDocumentToUser(documents.get(0),true);
         if(otherUser.getDecks().size() == 10){
             throw new RuntimeException("Other users decks are too full");
         }

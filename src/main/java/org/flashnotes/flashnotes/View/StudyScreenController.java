@@ -298,7 +298,7 @@ public class StudyScreenController implements homeButtonInterface {
     private void shareDeck(){
         TextInputDialog dialog = new TextInputDialog("@gmail.com");
         dialog.setTitle(null);
-        dialog.setHeaderText("Sharing "+fireBaseActions.getCurrentDeck().getNameOfDeck()+" Deck");
+        dialog.setHeaderText("Sharing "+currentDeck.getNameOfDeck()+" Deck");
         dialog.setContentText("Please enter their email");
 
 
@@ -306,7 +306,7 @@ public class StudyScreenController implements homeButtonInterface {
         if (result.isPresent()){
             try {
                 fireBaseActions.shareToUser(dialog.getResult().toLowerCase()
-                        ,fireBaseActions.getCurrentDeck().getId());
+                        ,currentDeck.getId());
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
