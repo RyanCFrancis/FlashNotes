@@ -3,12 +3,14 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -43,10 +45,37 @@ public class RegisterFXController {
         setupInitialState();
     }
 
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            RegisterButton.getScene().setCursor(Cursor.HAND);
+        }catch (Exception e){
+
+        }
+        }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try {
+            RegisterButton.getScene().setCursor(Cursor.DEFAULT);
+        }catch (Exception e){
+
+        }
+        }
+
     private void setupInitialState() {
         progressIndicator.setVisible(false); // Initially hide the progress indicator
         setDefaultProfileImage(); // Set a default profile image
-        RegisterButton.setDefaultButton(true); //set enter key to press the register button
+        RegisterButton.setDefaultButton(true);
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            RegisterButton.getScene().setCursor(Cursor.DEFAULT);
+        });
+
     }
 
     private void setDefaultProfileImage() {
@@ -134,6 +163,8 @@ public class RegisterFXController {
             e.printStackTrace();  // Print the exception for debugging
         }
     }
+
+
 
     @FXML
     private void openFileChooser(ActionEvent event) {

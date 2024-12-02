@@ -4,11 +4,13 @@ import com.google.firebase.auth.FirebaseAuthException;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -42,7 +44,14 @@ public class MainRunner extends Application {
         scene = new Scene(root, 800, 600); // Set the desired width and height
 
         stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setResizable(false);
         stage.show();
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+
 
 
         // Add a fade-in and fade-out transition for splash screen
@@ -80,6 +89,7 @@ public class MainRunner extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
+            primaryStage.centerOnScreen();
         }catch(Exception e){
             e.printStackTrace();
         }

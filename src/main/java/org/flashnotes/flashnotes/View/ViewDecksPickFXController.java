@@ -3,8 +3,10 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -132,8 +134,35 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     FireBaseActions fireBaseActions;
 
     @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            vBox.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+        }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try {
+            vBox.getScene().setCursor(Cursor.DEFAULT);
+        } catch (Exception e) {
+
+        }
+        }
+
+    @FXML
     public void initialize()
     {
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            vBox.getScene().setCursor(Cursor.DEFAULT);
+        });
+
         fireBaseActions = FireBaseActions.init();
         currentUser = fireBaseActions.getCurrentUser();
         System.out.println(currentUser.getUsername());
@@ -309,9 +338,18 @@ public class ViewDecksPickFXController implements homeButtonInterface {
     @FXML
     public void goToStudyScreen(MouseEvent mouseEvent) {
 //        System.out.println("being Clicked");
-
+            Deck d = getClickedDeck(mouseEvent.getSource().toString());
+            if(d.getCards().size()== 0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("No cards to study.");
+                alert.showAndWait();
+                return;
+            }
 //        System.out.println(mouseEvent.getSource().toString());
-        fireBaseActions.setCurrentDeck(getClickedDeck(mouseEvent.getSource().toString()));
+
+        fireBaseActions.setCurrentDeck(d);
 //        currentDeck = fireBaseActions.getCurrentDeck();
 //        System.out.println("Deck:"+currentDeck.toString());
         try {
@@ -320,9 +358,9 @@ public class ViewDecksPickFXController implements homeButtonInterface {
 
             // Create and show the new stage
             Stage stage = new Stage();
-            stage.setScene(new Scene(studyScreen));
+            stage.setScene(new Scene(studyScreen,800,600));
             stage.show();
-
+            stage.setResizable(false);
             // Close the current stage
             ((Stage) anchorPane.getScene().getWindow()).close();
 

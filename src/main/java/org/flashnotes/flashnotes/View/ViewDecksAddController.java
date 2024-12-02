@@ -3,9 +3,11 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -71,8 +73,35 @@ public class ViewDecksAddController extends ViewDecksMainMenuFXController {
     FireBaseActions fbActions;
     boolean deckPicked;
     private Deck d;
+
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            deckSixAdd.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+        }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try {
+            deckSixAdd.getScene().setCursor(Cursor.DEFAULT);
+        }catch (Exception e){
+
+        }
+        }
     @FXML
     public void initialize() {
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            deckSixAdd.getScene().setCursor(Cursor.DEFAULT);
+        });
+
         fbActions = FireBaseActions.init();
         deckPicked = false;
 

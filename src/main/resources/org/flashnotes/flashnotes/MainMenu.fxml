@@ -2,15 +2,23 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MainMenuFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MainMenuFXController">
 
    <!-- Flash Notes top left -->
    <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -24,7 +32,7 @@
                </Text>
                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                   <children>
-                     <Text fx:id="home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                     <Text fx:id="home" onMouseEntered="#changeToHand" onMouseExited="#changeBack" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                         <font>
                            <Font name="Inter Regular" size="12.0" />
                         </font>
@@ -32,7 +40,7 @@
                      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="22.0" />
 
                      <!-- Menu button and drop down -->
-                     <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
+                     <MenuButton fx:id="menuButton" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="40" prefWidth="40" text="">
                              <graphic>
                      <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -74,7 +82,9 @@
          <!-- Create Deck -->
          <HBox alignment="CENTER" prefHeight="894.0" prefWidth="1399.0">
             <children>
-               <StackPane prefHeight="150.0" prefWidth="200.0" onMouseClicked="#goCreateDeck" >
+
+               <StackPane onMouseClicked="#goCreateDeck" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="150.0" prefWidth="200.0">
+
                   <children>
                      <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goCreateDeck" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
@@ -99,7 +109,9 @@
                </StackPane>
 
                <!-- Study Deck -->
-               <StackPane prefHeight="150.0" prefWidth="200.0" onMouseClicked="#goViewDecksPick" >
+
+               <StackPane onMouseClicked="#goViewDecksPick" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="150.0" prefWidth="200.0">
+
                   <children>
                      <Rectangle fx:id="studyDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goViewDecksPick" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
@@ -124,7 +136,8 @@
                </StackPane>
 
                <!-- View Decks -->
-               <StackPane prefHeight="386.0" prefWidth="315.0" onMouseClicked="#goToViewDecks" >
+               <StackPane onMouseClicked="#goToViewDecks" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="386.0" prefWidth="315.0">
+
                   <children>
                      <Rectangle fx:id="viewDeckRectangle" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goToViewDecks" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>

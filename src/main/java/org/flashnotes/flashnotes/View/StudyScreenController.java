@@ -4,8 +4,10 @@ import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
@@ -115,13 +117,41 @@ public class StudyScreenController implements homeButtonInterface {
 //        currentDeck.getCards().add(new Card("random","not random"));
 //        currentDeck.getCards().add(new Card("dang","dong"));
 //        System.out.println(currentDeck.getCards().size());
+
         currentCard = currentDeck.getCards().get(0);
         index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         card.setText(currentCard.getFront());
         title.setText(currentDeck.getNameOfDeck());
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            title.getScene().setCursor(Cursor.DEFAULT);
+        });
 
 
-   }
+
+    }
+
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            title.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+        }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try {
+            title.getScene().setCursor(Cursor.DEFAULT);
+        }catch (Exception e) {
+
+        }
+        }
 
     @FXML
     public void previousCard(){

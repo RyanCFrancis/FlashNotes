@@ -3,11 +3,13 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -110,10 +112,38 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
     FireBaseActions fireBaseActions;
 
 
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            menuIcon.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
 
+        }
+            }
 
+    @FXML
+    void changeBack(MouseEvent event) {
+        try{
+            menuIcon.getScene().setCursor(Cursor.DEFAULT);
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    @FXML
     public void initialize()
     {
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            vBox.getScene().setCursor(Cursor.DEFAULT);
+        });
+
         boolean deckPicked = false;
         fireBaseActions = FireBaseActions.init();
         currentUser = fireBaseActions.getCurrentUser();

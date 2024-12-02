@@ -28,7 +28,7 @@
     -fx-font-size: 15px;
     -fx-stroke-type: outside;
     -fx-stroke-width: 0;
-    -fx-font: black;
+    -fx-text-fill: black;
 }
 
 /* home label */
@@ -37,7 +37,7 @@
     -fx-font-size: 15px;
     -fx-stroke-type: outside;
     -fx-stroke-width: 0;
-    -fx-font: black;
+    -fx-text-fill: black;
 }
 
 
