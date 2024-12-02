@@ -61,14 +61,6 @@ public class LoginFXController {
     //just for later implementation when event handlers are set up
     @FXML
     public void initialize() {
-        new Thread(() -> {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            loginButton.getScene().setCursor(Cursor.DEFAULT);
-        });
         fireBaseActions  = FireBaseActions.init();
         loginButton.setOnAction(event -> handleLogin(event));
         registerHereLink.setOnAction(event -> navigateToRegister(event));
@@ -137,6 +129,7 @@ public class LoginFXController {
             window.setScene(scene);
             window.setResizable(false);
 //            window.initStyle(StageStyle.UNDECORATED); hide border and titlebar
+            loginButton.getScene().setCursor(Cursor.DEFAULT);
             window.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -171,6 +164,7 @@ public class LoginFXController {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setResizable(false);
             window.setScene(scene);
+            loginButton.getScene().setCursor(Cursor.DEFAULT);
             window.show();
         } catch (Exception e) {
             e.printStackTrace();

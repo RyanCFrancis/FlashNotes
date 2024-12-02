@@ -201,6 +201,7 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksMainMenu.fxml"));
             Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(mainMenuView);
 
         } catch (IOException e) {
@@ -357,7 +358,7 @@ public class ViewDecksPickFXController implements homeButtonInterface {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
             Parent studyScreen = fxmlLoader.load();
-
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             // Create and show the new stage
             Stage stage = new Stage();
             stage.setScene(new Scene(studyScreen,800,600));

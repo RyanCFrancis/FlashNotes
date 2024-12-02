@@ -50,14 +50,6 @@ public class MakeCardFXController implements  homeButtonInterface{
     private void initialize() {
         fbActions = FireBaseActions.init();
         currDeck = fbActions.getCurrentDeck();
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            frontText.getScene().setCursor(Cursor.DEFAULT);
-        });
     }
 
     @FXML
@@ -122,10 +114,12 @@ public class MakeCardFXController implements  homeButtonInterface{
         if (ButtonResult.get() == buttonAdd){
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().
                     getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+            frontText.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(fxmlLoader.load());
         } else if (ButtonResult.get() == buttonStudy) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().
                     getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+            frontText.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(fxmlLoader.load());
         } else if (ButtonResult.get() == buttonPlay) {
 
@@ -153,26 +147,31 @@ public class MakeCardFXController implements  homeButtonInterface{
                 if (ButtonResult2.get() == buttonStudy2) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                             .getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+                    frontText.getScene().setCursor(Cursor.DEFAULT);
                     anchorPane.getScene().setRoot(fxmlLoader.load());
                 } else if (ButtonResult2.get() == buttonAdd2) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                             .getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+                    frontText.getScene().setCursor(Cursor.DEFAULT);
                     anchorPane.getScene().setRoot(fxmlLoader.load());
                 } else {
                     //user goes home
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                             .getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+                    frontText.getScene().setCursor(Cursor.DEFAULT);
                     anchorPane.getScene().setRoot(fxmlLoader.load());
                 }
             }
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                     .getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
+            frontText.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(fxmlLoader.load());
         } else {
             //user goes home
             FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                     .getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+            frontText.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(fxmlLoader.load());
         }
     }

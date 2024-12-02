@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,6 +26,7 @@ public interface homeButtonInterface {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
             Parent mainMenuView = fxmlLoader.load();
             Scene currentScene = ((Node)event.getSource()).getScene();
+            currentScene.setCursor(Cursor.DEFAULT);
             currentScene.setRoot(mainMenuView);
             //Scene mainMenuScene = new Scene(mainMenuView, 800, 600);
             //getAnchorPane().getScene().setRoot(mainMenuView);

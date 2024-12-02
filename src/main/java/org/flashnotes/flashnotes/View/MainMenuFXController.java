@@ -63,14 +63,6 @@ public class MainMenuFXController implements homeButtonInterface {
     @FXML
     private void initialize() {
         actions = FireBaseActions.init();
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            vBox.getScene().setCursor(Cursor.DEFAULT);
-        });
         profilePicture.setImage(new Image(actions.getCurrentUser().getImg().getUrl()));
         username.setText(actions.getCurrentUser().getUsername());
     }
@@ -79,12 +71,14 @@ public class MainMenuFXController implements homeButtonInterface {
     @FXML
     public void goToViewDecks() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksMainMenu.fxml"));
+        viewDeckLabel.getScene().setCursor(Cursor.DEFAULT);
         anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 
     @FXML
     public void goViewDecksPick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksPick.fxml"));
+        viewDeckLabel.getScene().setCursor(Cursor.DEFAULT);
         anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 
@@ -100,6 +94,7 @@ public class MainMenuFXController implements homeButtonInterface {
         }
         //TODO GO TO CREATEDECK FXML
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/NewDeck.fxml"));
+        viewDeckLabel.getScene().setCursor(Cursor.DEFAULT);
         if(anchorPane.getScene() != null) {
             anchorPane.getScene().setRoot(fxmlLoader.load());
         }

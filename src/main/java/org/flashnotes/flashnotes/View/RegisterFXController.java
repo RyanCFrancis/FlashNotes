@@ -67,14 +67,7 @@ public class RegisterFXController {
         progressIndicator.setVisible(false); // Initially hide the progress indicator
         setDefaultProfileImage(); // Set a default profile image
         RegisterButton.setDefaultButton(true);
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            RegisterButton.getScene().setCursor(Cursor.DEFAULT);
-        });
+
 
     }
 
@@ -145,6 +138,7 @@ public class RegisterFXController {
             Scene scene = new Scene(root, 800, 600);
             Stage window = (Stage) (usernameTxt.getScene().getWindow());
             window.setScene(scene);
+            RegisterButton.getScene().setCursor(Cursor.DEFAULT);
             window.show();
         } catch (Exception e) {
             e.printStackTrace();

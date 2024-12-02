@@ -3,6 +3,7 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import org.flashnotes.flashnotes.Model.Deck;
@@ -92,6 +93,7 @@ public class ViewDecksDeleteController extends ViewDecksMainMenuFXController imp
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
             Parent makeCardView = fxmlLoader.load();
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(makeCardView);
         }
     }

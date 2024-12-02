@@ -3,6 +3,7 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import org.flashnotes.flashnotes.Model.Deck;
@@ -84,6 +85,8 @@ public class ViewDecksEditController extends ViewDecksMainMenuFXController imple
             Parent makeCardView = fxmlLoader.load();
             // makeCardController makeCardController = fxmlLoader.getController();
             // makeCardController.setDeckId(currentSelectedDeckId);
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
+
             anchorPane.getScene().setRoot(makeCardView);
         }
     }

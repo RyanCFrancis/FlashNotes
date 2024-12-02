@@ -227,6 +227,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksMainMenu.fxml"));
             Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(mainMenuView);
 
         } catch (IOException e) {
@@ -259,6 +260,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksAdd.fxml"));
             Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(mainMenuView);
 
         } catch(IOException e)
@@ -277,6 +279,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksDelete.fxml"));
             Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(mainMenuView);
 
         } catch(IOException e)
@@ -295,6 +298,7 @@ public class ViewDecksMainMenuFXController implements homeButtonInterface {
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksEdit.fxml"));
             Parent mainMenuView = fxmlLoader.load();
+            anchorPane.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(mainMenuView);
 
         } catch(IOException e)

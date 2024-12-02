@@ -26,14 +26,7 @@ public class NewDeckFXController {
     @FXML
     private void initialize(){
 
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            nameTxt.getScene().setCursor(Cursor.DEFAULT);
-        });
+
 
         this.fbActions = FireBaseActions.init();
     }
@@ -93,6 +86,7 @@ public class NewDeckFXController {
             Deck newDeck = new Deck(this.fbActions.getCurrentUser().getUsername(),name,category);
             this.fbActions.setCurrentDeck(newDeck);
             Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+            nameTxt.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(root);
 
         } catch (Exception e) {
@@ -105,6 +99,7 @@ public class NewDeckFXController {
 
     public void goBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+        nameTxt.getScene().setCursor(Cursor.DEFAULT);
         anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 }

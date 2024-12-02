@@ -413,7 +413,7 @@ public class FireBaseActions {
                 user.setRequest(requests);
             }
         }
-
+        System.out.println(user);
         return user;
     }
 

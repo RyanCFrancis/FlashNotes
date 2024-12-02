@@ -104,14 +104,6 @@ public class MatchingGameController implements homeButtonInterface {
     @FXML
     void initialize() {
         actions = FireBaseActions.init();
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            vBox.getScene().setCursor(Cursor.DEFAULT);
-        });
 
         // deck = a.getCurrentDeck();
 //       InMemoryDatabase db = new InMemoryDatabase();

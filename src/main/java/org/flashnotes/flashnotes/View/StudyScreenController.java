@@ -122,14 +122,6 @@ public class StudyScreenController implements homeButtonInterface {
         index.setText(currentCardIndex +"/" + currentDeck.getCards().size() + " cards");
         card.setText(currentCard.getFront());
         title.setText(currentDeck.getNameOfDeck());
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            title.getScene().setCursor(Cursor.DEFAULT);
-        });
 
 
 
@@ -279,18 +271,22 @@ public class StudyScreenController implements homeButtonInterface {
 
             if (ButtonResult.get() == buttonStudy) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/StudyScreen.fxml"));
+                title.getScene().setCursor(Cursor.DEFAULT);
                 anchorPane.getScene().setRoot(fxmlLoader.load());
             } else if (ButtonResult.get() == buttonAdd) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MakeCard.fxml"));
+                title.getScene().setCursor(Cursor.DEFAULT);
                 anchorPane.getScene().setRoot(fxmlLoader.load());
             } else {
                 //user goes home
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MainMenu.fxml"));
+                title.getScene().setCursor(Cursor.DEFAULT);
                 anchorPane.getScene().setRoot(fxmlLoader.load());
             }
             return;
         }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/MatchingScreen.fxml"));
+        title.getScene().setCursor(Cursor.DEFAULT);
         anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 
@@ -319,7 +315,7 @@ public class StudyScreenController implements homeButtonInterface {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
-            alert.setContentText("Deck created successfully");
+            alert.setContentText("Deck shared successfully");
             alert.showAndWait();
         }
     }

@@ -93,14 +93,7 @@ public class ViewDecksAddController extends ViewDecksMainMenuFXController {
         }
     @FXML
     public void initialize() {
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            deckSixAdd.getScene().setCursor(Cursor.DEFAULT);
-        });
+
 
         fbActions = FireBaseActions.init();
         deckPicked = false;
@@ -211,6 +204,7 @@ public class ViewDecksAddController extends ViewDecksMainMenuFXController {
             Parent makeCardView = fxmlLoader.load();
             // makeCardController makeCardController = fxmlLoader.getController();
             // makeCardController.setDeckId(currentSelectedDeckId);
+            deckSixAdd.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(makeCardView);
         }
     }

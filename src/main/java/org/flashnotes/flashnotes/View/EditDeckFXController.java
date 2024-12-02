@@ -30,14 +30,7 @@ public class EditDeckFXController {
         nameTxt.setText(actions.getCurrentDeck().getNameOfDeck());
         catTxt.setText(actions.getCurrentDeck().getCategory());
         curDeck = actions.getCurrentDeck();
-        new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            catTxt.getScene().setCursor(Cursor.DEFAULT);
-        });
+
     }
 
     @FXML
@@ -99,6 +92,7 @@ public class EditDeckFXController {
             Deck newDeck = new Deck(actions.getCurrentUser().getUsername(),name,category);
             actions.setCurrentDeck(newDeck);
             Parent root = FXMLLoader.load(MainRunner.class.getResource("/org/flashnotes/flashnotes/ViewDecksMainMenu.fxml"));
+            catTxt.getScene().setCursor(Cursor.DEFAULT);
             anchorPane.getScene().setRoot(root);
 
         } catch (Exception e) {
@@ -111,6 +105,7 @@ public class EditDeckFXController {
 
     public void goBack() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/ViewDecksMainMenu.fxml"));
+        catTxt.getScene().setCursor(Cursor.DEFAULT);
         anchorPane.getScene().setRoot(fxmlLoader.load());
     }
 }
