@@ -57,7 +57,7 @@
 
                 <!-- Deck 1 -->
 
-               <StackPane fx:id="DeckOneSP" alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
+               <StackPane fx:id="DeckOneSP" alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0" onMouseClicked="#goToStudyScreen" >
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" mouseTransparent="true" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" mouseTransparent="true" width="120.0" />
@@ -73,7 +73,7 @@
 
                 <!-- Deck 2 -->
 
-               <StackPane fx:id="DeckTwoSP" alignment="BOTTOM_CENTER" prefHeight="126.0" prefWidth="170.0">
+               <StackPane fx:id="DeckTwoSP" alignment="BOTTOM_CENTER" prefHeight="126.0" prefWidth="170.0" onMouseClicked="#goToStudyScreen" >
 
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
@@ -90,7 +90,7 @@
                </StackPane>
 
 
-               <StackPane fx:id="DeckThreeSP" alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0">
+               <StackPane fx:id="DeckThreeSP" alignment="BOTTOM_CENTER" prefHeight="120.0" prefWidth="150.0" onMouseClicked="#goToStudyScreen" >
 
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
@@ -114,7 +114,7 @@
 
                     <!-- Deck 4 -->
 
-                    <StackPane fx:id="DeckFourSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="150.0">
+                    <StackPane fx:id="DeckFourSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="150.0" onMouseClicked="#goToStudyScreen" >
 
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
@@ -132,7 +132,7 @@
 
                     <!-- Deck 5 -->
 
-                    <StackPane fx:id="DeckFiveSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="170.0">
+                    <StackPane fx:id="DeckFiveSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="126.0" prefWidth="170.0" onMouseClicked="#goToStudyScreen" >
 
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />
@@ -150,7 +150,7 @@
 
                     <!-- Deck 6 -->
 
-                    <StackPane fx:id="DeckSixSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="124.0" prefWidth="150.0">
+                    <StackPane fx:id="DeckSixSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="124.0" prefWidth="150.0" onMouseClicked="#goToStudyScreen" >
 
                         <children>
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" width="120.0" />

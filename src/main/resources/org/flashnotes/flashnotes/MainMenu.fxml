@@ -74,14 +74,14 @@
          <!-- Create Deck -->
          <HBox alignment="CENTER" prefHeight="894.0" prefWidth="1399.0">
             <children>
-               <StackPane prefHeight="150.0" prefWidth="200.0">
+               <StackPane prefHeight="150.0" prefWidth="200.0" onMouseClicked="#goCreateDeck" >
                   <children>
                      <Rectangle fx:id="createDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goCreateDeck" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
                      </Rectangle>
-                     <Label fx:id="createDeckLabel" prefHeight="30.0" prefWidth="150.0" text="CREATE DECK" textFill="black">
+                     <Label fx:id="createDeckLabel" onMouseClicked="#goCreateDeck" prefHeight="30.0" prefWidth="150.0" text="CREATE DECK" textFill="black">
                         <font>
                            <Font name="Roboto Medium" size="23.0" />
                         </font>
@@ -99,14 +99,14 @@
                </StackPane>
 
                <!-- Study Deck -->
-               <StackPane prefHeight="150.0" prefWidth="200.0">
+               <StackPane prefHeight="150.0" prefWidth="200.0" onMouseClicked="#goViewDecksPick" >
                   <children>
                      <Rectangle fx:id="studyDeck" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goViewDecksPick" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
                            <DropShadow color="gray" offsetX="5" offsetY="5" radius="10" />
                         </effect>
                      </Rectangle>
-                     <Label fx:id="studyDeckLabel" text="STUDY DECK" textFill="black">
+                     <Label fx:id="studyDeckLabel" onMouseClicked="#goViewDecksPick" text="STUDY DECK" textFill="black">
                         <font>
                            <Font name="Roboto Medium" size="23.0" />
                         </font>
@@ -124,7 +124,7 @@
                </StackPane>
 
                <!-- View Decks -->
-               <StackPane prefHeight="386.0" prefWidth="315.0">
+               <StackPane prefHeight="386.0" prefWidth="315.0" onMouseClicked="#goToViewDecks" >
                   <children>
                      <Rectangle fx:id="viewDeckRectangle" arcHeight="28.0" arcWidth="28.0" fill="#4da0ff" height="130.0" onMouseClicked="#goToViewDecks" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="170.0">
                         <effect>
