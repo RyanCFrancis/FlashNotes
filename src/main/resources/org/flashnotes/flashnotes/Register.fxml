@@ -2,13 +2,21 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
+<AnchorPane maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.RegisterFXController">
 
 
     <!-- Login Form Container -->
@@ -63,7 +71,7 @@
         </HBox>
 
         <!-- Register Button -->
-        <Button fx:id="RegisterButton" onAction="#handleRegister" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" styleClass="loginButton" text="Create Account">
+        <Button fx:id="RegisterButton" onAction="#handleRegister" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 20; -fx-background-radius: 50; -fx-font-family: Inter;" styleClass="loginButton" text="Create Account">
             <VBox.margin>
                 <Insets />
             </VBox.margin>

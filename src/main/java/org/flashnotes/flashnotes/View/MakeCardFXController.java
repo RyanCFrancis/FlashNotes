@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.flashnotes.flashnotes.Model.Card;
@@ -48,7 +50,33 @@ public class MakeCardFXController implements  homeButtonInterface{
     private void initialize() {
         fbActions = FireBaseActions.init();
         currDeck = fbActions.getCurrentDeck();
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            frontText.getScene().setCursor(Cursor.DEFAULT);
+        });
     }
+
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            frontText.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try {
+            frontText.getScene().setCursor(Cursor.DEFAULT);
+        }catch (Exception e) {
+
+        }
+        }
 
 
     @FXML

@@ -2,16 +2,23 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MakeCardFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MakeCardFXController">
 
 
     <!-- Flash Notes top left -->
@@ -26,7 +33,7 @@
                     </Text>
                     <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                         <children>
-                            <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                            <Text fx:id="home" onMouseClicked="#home" onMouseEntered="#changeToHand" onMouseExited="#changeBack" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                                 <font>
                                     <Font name="Inter Regular" size="12.0" />
                                 </font>
@@ -38,7 +45,7 @@
                             <!-- Menu button and drop down -->
                             <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
                                 <graphic>
-                                    <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" onMouseEntered="#changeToHand" onMouseExited="#changeBack" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@Images/MenuIcon.png" />
                                         </image>
@@ -124,7 +131,7 @@
             <!-- Create Button -->
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="88.0" prefWidth="147.0">
                 <children>
-                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="208.0">
+                    <StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="100.0" prefWidth="208.0">
                         <children>
                             <Rectangle fx:id="createButtonRect" arcHeight="40.0" arcWidth="40.0" fill="#BA43FF" height="30.0" width="115.0" />
                             <Label onMouseClicked="#createButton" text="Create" textFill="black">

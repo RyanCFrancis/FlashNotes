@@ -2,9 +2,11 @@ package org.flashnotes.flashnotes.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -28,6 +30,33 @@ public class EditDeckFXController {
         nameTxt.setText(actions.getCurrentDeck().getNameOfDeck());
         catTxt.setText(actions.getCurrentDeck().getCategory());
         curDeck = actions.getCurrentDeck();
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            catTxt.getScene().setCursor(Cursor.DEFAULT);
+        });
+    }
+
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            catTxt.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try{
+            catTxt.getScene().setCursor(Cursor.DEFAULT);
+        }catch (Exception e) {
+
+        }
+
     }
 
     @FXML

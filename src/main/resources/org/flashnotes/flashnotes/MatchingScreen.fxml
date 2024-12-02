@@ -2,13 +2,20 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MatchingGameController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.MatchingGameController">
 
     <!-- Flash Notes top left -->
     <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -22,7 +29,7 @@
                     </Text>
                     <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                         <children>
-                            <Text fx:id="home" onMousePressed="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                            <Text fx:id="home" onMouseEntered="#changeToHand" onMouseExited="#changeBack" onMousePressed="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                                 <font>
                                     <Font name="Inter Regular" size="12.0" />
                                 </font>
@@ -76,12 +83,12 @@
                </VBox>
                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0">
                   <children>
-                     <Button fx:id="AnswerTwoButton" contentDisplay="TOP" maxWidth="216.0" mnemonicParsing="false" onAction="#checkTwo" prefHeight="150.0" prefWidth="216.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 20px;" text="Button" wrapText="true">
+                     <Button fx:id="AnswerTwoButton" contentDisplay="TOP" maxWidth="216.0" mnemonicParsing="false" onAction="#checkTwo" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="150.0" prefWidth="216.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 20px;" text="Button" wrapText="true">
                         <font>
                            <Font name="Inter Regular" size="10.0" />
                         </font>
                      </Button>
-                     <Button fx:id="AnswerOneButton" maxWidth="215.0" mnemonicParsing="false" onAction="#checkOne" prefHeight="157.0" prefWidth="215.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 20px;" text="Button" wrapText="true">
+                     <Button fx:id="AnswerOneButton" maxWidth="215.0" mnemonicParsing="false" onAction="#checkOne" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="157.0" prefWidth="215.0" style="-fx-background-color: #4da0ff; -fx-background-radius: 20px;" text="Button" wrapText="true">
                         <VBox.margin>
                            <Insets top="20.0" />
                         </VBox.margin>
@@ -95,7 +102,7 @@
         </HBox>
          <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="144.0">
             <children>
-               <Button fx:id="nextCard" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToNextCard" style="-fx-background-color: #ba43ff; -fx-border-radius: 10px;" text="Next card">
+               <Button fx:id="nextCard" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToNextCard" onMouseEntered="#changeToHand" onMouseExited="#changeBack" style="-fx-background-color: #ba43ff; -fx-border-radius: 10px;" text="Next card">
                   <font>
                      <Font name="Inter Regular" size="12.0" />
                   </font></Button>

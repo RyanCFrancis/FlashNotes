@@ -8,6 +8,8 @@ module org.flashnotes.flashnotes {
     requires com.google.api.apicommon;
     requires google.cloud.storage;
     requires google.cloud.core;
+    requires java.desktop;
+    requires org.slf4j;
 
     opens org.flashnotes.flashnotes to javafx.fxml;
 //    exports org.flashnotes.flashnotes.Firebase;

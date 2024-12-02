@@ -2,13 +2,22 @@
 
 <!-- Root Container -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksDeleteController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksDeleteController">
 
     <!-- Flash Notes top left -->
     <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -22,7 +31,7 @@
                     </Text>
                     <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="542.0">
                         <children>
-                            <Text fx:id="home" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
+                            <Text fx:id="home" onMouseClicked="#home" onMouseEntered="#changeToHand" onMouseExited="#changeBack" strokeType="OUTSIDE" strokeWidth="0.0" text="home">
                                 <font>
                                     <Font name="Inter Regular" size="12.0" />
                                 </font>
@@ -32,7 +41,7 @@
                             <!-- Menu button and drop down -->
                             <MenuButton fx:id="menuButton" prefHeight="40" prefWidth="40" text="">
                                 <graphic>
-                                    <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="menuIcon" fitHeight="18.0" fitWidth="28.0" onMouseEntered="#changeToHand" onMouseExited="#changeBack" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@Images/MenuIcon.png" />
                                         </image>
@@ -50,7 +59,7 @@
             <!-- Back Arrow -->
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="624.0">
                 <children>
-                    <StackPane prefHeight="30.0" prefWidth="22.0">
+                    <StackPane onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="30.0" prefWidth="22.0">
                         <children>
                             <Circle fx:id="backButton" fill="#BA43FF" onMouseClicked="#backButton" radius="15.0" />
                             <ImageView fitHeight="19.0" fitWidth="20.0" onMouseClicked="#backButton" pickOnBounds="true" preserveRatio="true">
@@ -75,7 +84,7 @@
                             <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                             <Button fx:id="deckOneDelete" onMouseClicked="#deleteDeck" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
@@ -90,7 +99,7 @@
                             <Rectangle fx:id="deckTwo" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                             <Button fx:id="deckTwoDelete" onMouseClicked="#deleteDeck" prefHeight="73.0" prefWidth="76.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
@@ -104,7 +113,7 @@
                             <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                             <Button fx:id="deckThreeDelete" onMouseClicked="#deleteDeck" prefHeight="73.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
@@ -125,7 +134,7 @@
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="117.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                             <Button fx:id="deckFourDelete" onMouseClicked="#deleteDeck" prefHeight="78.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
@@ -140,7 +149,7 @@
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="115.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                             <Button fx:id="deckFiveDelete" onMouseClicked="#deleteDeck" prefHeight="81.0" prefWidth="77.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />
@@ -155,7 +164,7 @@
                             <Rectangle fx:id="deck6" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
                             <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="97.0" prefWidth="115.0" textFill="black">
                                 <font>
-                                    <Font size="30.0" name="Roboto Medium" />
+                                    <Font name="Roboto Medium" size="30.0" />
                                 </font>
                             </Label>
                             <Button fx:id="deckSixDelete" onMouseClicked="#deleteDeck" prefHeight="80.0" prefWidth="60.0" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 25;" text="X" StackPane.alignment="TOP_LEFT" />

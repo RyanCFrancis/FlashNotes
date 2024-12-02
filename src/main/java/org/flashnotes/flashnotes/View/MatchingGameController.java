@@ -3,6 +3,7 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -81,12 +82,36 @@ public class MatchingGameController implements homeButtonInterface {
     @Override
     public void menuExit(Event event) { homeButtonInterface.super.menuExit(event); }
 
+    @FXML
+    void changeToHand(MouseEvent event) {
+        try{  title.getScene().setCursor(Cursor.HAND);} catch (Exception e) {
 
+        }
+
+    }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try{
+            title.getScene().setCursor(Cursor.DEFAULT);
+        } catch (Exception e) {
+
+        }
+
+    }
 
 
     @FXML
     void initialize() {
         actions = FireBaseActions.init();
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            vBox.getScene().setCursor(Cursor.DEFAULT);
+        });
 
         // deck = a.getCurrentDeck();
 //       InMemoryDatabase db = new InMemoryDatabase();

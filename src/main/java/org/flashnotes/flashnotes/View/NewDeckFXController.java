@@ -2,9 +2,11 @@ package org.flashnotes.flashnotes.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.flashnotes.flashnotes.Model.Deck;
 import org.flashnotes.flashnotes.Model.FireBaseActions;
@@ -23,11 +25,40 @@ public class NewDeckFXController {
 
     @FXML
     private void initialize(){
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            nameTxt.getScene().setCursor(Cursor.DEFAULT);
+        });
+
         this.fbActions = FireBaseActions.init();
     }
 
     @FXML
+    void changeToHand(MouseEvent event) {
+        try {
+            nameTxt.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
+    void changeBack(MouseEvent event) {
+        try {
+            nameTxt.getScene().setCursor(Cursor.DEFAULT);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
     public void createButton(){
+
         String name = nameTxt.getText();
         String category = catTxt.getText();
 

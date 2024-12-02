@@ -1,10 +1,8 @@
 package org.flashnotes.flashnotes.Model;
 
 import javafx.scene.image.Image;
-import org.flashnotes.flashnotes.ViewModel.SharedDeckDTO;
 
 import java.io.File;
-import java.util.List;
 import java.util.List;
 
 public class User {

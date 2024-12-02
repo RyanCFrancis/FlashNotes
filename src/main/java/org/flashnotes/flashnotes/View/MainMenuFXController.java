@@ -3,7 +3,9 @@ package org.flashnotes.flashnotes.View;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -61,6 +63,14 @@ public class MainMenuFXController implements homeButtonInterface {
     @FXML
     private void initialize() {
         actions = FireBaseActions.init();
+        new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            vBox.getScene().setCursor(Cursor.DEFAULT);
+        });
         profilePicture.setImage(new Image(actions.getCurrentUser().getImg().getUrl()));
         username.setText(actions.getCurrentUser().getUsername());
     }
@@ -80,15 +90,19 @@ public class MainMenuFXController implements homeButtonInterface {
 
     @FXML
     public void goCreateDeck() throws IOException {
-        if (actions.getCurrentUser().getDecks().size() >= 6){
-            System.exit(0); //TODO WARNING THAT NO MORE CAN BE MADE
+        if (actions.getCurrentUser().getDecks().size() >= 6) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Too many decks!");
+            alert.showAndWait();
+            return;
         }
-
-
-
         //TODO GO TO CREATEDECK FXML
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/NewDeck.fxml"));
-        anchorPane.getScene().setRoot(fxmlLoader.load());
+        if(anchorPane.getScene() != null) {
+            anchorPane.getScene().setRoot(fxmlLoader.load());
+        }
     }
 
 
@@ -97,6 +111,24 @@ public class MainMenuFXController implements homeButtonInterface {
     public AnchorPane getAnchorPane()
     {
         return anchorPane;
+    }
+
+    @FXML
+    void changeToHand(){
+        try {
+            username.getScene().setCursor(Cursor.HAND);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @FXML
+    void changeBack(){
+        try {
+            username.getScene().setCursor(Cursor.DEFAULT);
+        } catch (Exception e) {
+
+        }
     }
 
 

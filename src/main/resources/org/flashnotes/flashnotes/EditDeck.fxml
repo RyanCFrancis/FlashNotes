@@ -2,14 +2,17 @@
 
 <!-- Root Container -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <!-- <?import javafx.geometry.Insets?> -->
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.EditDeckFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.EditDeckFXController">
 
 
     <!-- Login Form Container -->
@@ -26,7 +29,7 @@
       <TextField id="usernameText" fx:id="catTxt" layoutX="35.0" layoutY="190.0" prefHeight="42.0" prefWidth="190.0" promptText="Category Name" style="-fx-padding: 10; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-background-color: DBE8F4; -fx-font-size: 14;" />
 
         <!-- Login Button -->
-        <Button fx:id="editButton" onAction="#editButton" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Edit Deck">
+        <Button fx:id="editButton" onAction="#editButton" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Edit Deck">
             <VBox.margin>
                 <Insets top="10.0" />
             </VBox.margin>
@@ -34,7 +37,7 @@
             <Font name="Inter Regular" size="12.0" />
          </font>
         </Button>
-      <Button fx:id="goBackButton" layoutX="74.0" layoutY="309.0" onAction="#goBack" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Go Back">
+      <Button fx:id="goBackButton" layoutX="74.0" layoutY="309.0" onAction="#goBack" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="36.0" prefWidth="143.0" style="-fx-background-color: #4CA0FF; -fx-text-fill: black; -fx-font-size: 18; -fx-background-radius: 50; -fx-font-family: Inter" styleClass="loginButton" text="Go Back">
          <font>
             <Font name="Inter Regular" size="12.0" />
          </font></Button>
