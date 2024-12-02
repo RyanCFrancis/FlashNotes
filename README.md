@@ -20,7 +20,7 @@ A JavaFX based Studycard App made in CSC
 | Backend Lead | Charles |
 | Fullstack Developer | Chris |
 | Aesthetic Director | Peter |
-| User-Interface Designer | Francis |
+| User-Interface Designer and QA Lead | Francis |
 
 
 
