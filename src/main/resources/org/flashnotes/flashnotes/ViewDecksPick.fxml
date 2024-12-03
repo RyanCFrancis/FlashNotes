@@ -2,20 +2,13 @@
 
 <!-- Root Container -->
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksPickFXController">
+<AnchorPane fx:id="anchorPane" maxHeight="600" maxWidth="800" minHeight="600" minWidth="800" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DBE8F4;" stylesheets="@../../../Template.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.flashnotes.flashnotes.View.ViewDecksPickFXController">
 
     <!-- Flash Notes top left -->
     <VBox fx:id="vBox" alignment="TOP_RIGHT" layoutX="75.0" layoutY="75.0" prefHeight="450.0" prefWidth="650.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 8; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -65,13 +58,13 @@
                 <!-- Deck 1 -->
 
 
-               <StackPane fx:id="DeckOneSP" onMouseClicked="#goToStudyScreen" alignment="BOTTOM_CENTER" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="120.0" prefWidth="150.0">
+               <StackPane fx:id="DeckOneSP" alignment="BOTTOM_CENTER" onMouseClicked="#goToStudyScreen" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="120.0" prefWidth="150.0">
 
                 <children>
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="1582FF" height="120.0" mouseTransparent="true" width="120.0" />
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" mouseTransparent="true" width="120.0" />
                     <Rectangle fx:id="deckOne" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" mouseTransparent="true" width="120.0" />
-                    <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" mouseTransparent="false" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 1" textFill="black">
+                    <Label fx:id="DeckOneLabel" alignment="CENTER" contentDisplay="CENTER" mouseTransparent="false" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" textFill="black" wrapText="true">
 
                         <font>
                             <Font name="Roboto Medium" size="30.0" />
@@ -83,7 +76,7 @@
                 <!-- Deck 2 -->
 
 
-               <StackPane fx:id="DeckTwoSP" onMouseClicked="#goToStudyScreen" alignment="BOTTOM_CENTER" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="126.0" prefWidth="170.0">
+               <StackPane fx:id="DeckTwoSP" alignment="BOTTOM_CENTER" onMouseClicked="#goToStudyScreen" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="126.0" prefWidth="170.0" >
 
 
                 <children>
@@ -91,7 +84,7 @@
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckTwo" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
 
-                    <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 2" textFill="black">
+                    <Label fx:id="DeckTwoLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" textFill="black" wrapText="true" >
 
                         <font>
                             <Font name="Roboto Medium" size="30.0" />
@@ -102,7 +95,7 @@
 
 
 
-               <StackPane fx:id="DeckThreeSP" onMouseClicked="#goToStudyScreen" alignment="BOTTOM_CENTER" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="120.0" prefWidth="150.0">
+               <StackPane fx:id="DeckThreeSP" alignment="BOTTOM_CENTER" onMouseClicked="#goToStudyScreen" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="120.0" prefWidth="150.0">
 
 
                 <children>
@@ -110,7 +103,7 @@
                     <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                     <Rectangle fx:id="deckThree" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
 
-                    <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 3" textFill="black">
+                    <Label fx:id="DeckThreeLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" textFill="black" wrapText="true" >
 
                         <font>
                             <Font name="Roboto Medium" size="30.0" />
@@ -127,7 +120,7 @@
 
                     <!-- Deck 4 -->
 
-                    <StackPane fx:id="DeckFourSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#changeToHand" onMouseExited="#changeBack" onMouseClicked="#goToStudyScreen"  prefHeight="126.0" prefWidth="150.0">
+                    <StackPane fx:id="DeckFourSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#goToStudyScreen" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="126.0" prefWidth="150.0">
 
 
                         <children>
@@ -135,7 +128,7 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFour" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
 
-                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" text="Deck 4" textFill="black">
+                            <Label fx:id="DeckFourLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="94.0" prefWidth="117.0" textFill="black" wrapText="true" >
 
                                 <font>
                                     <Font name="Roboto Medium" size="30.0" />
@@ -147,7 +140,7 @@
                     <!-- Deck 5 -->
 
 
-                    <StackPane fx:id="DeckFiveSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#changeToHand" onMouseClicked="#goToStudyScreen" onMouseExited="#changeBack" prefHeight="126.0" prefWidth="170.0">
+                    <StackPane fx:id="DeckFiveSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#goToStudyScreen" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="126.0" prefWidth="170.0">
 
 
                         <children>
@@ -155,7 +148,7 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckFive" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
 
-                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="95.0" prefWidth="115.0" text="Deck 5" textFill="black">
+                            <Label fx:id="DeckFiveLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="95.0" prefWidth="115.0" textFill="black" wrapText="true" >
 
                                 <font>
                                     <Font name="Roboto Medium" size="30.0" />
@@ -167,7 +160,7 @@
                     <!-- Deck 6 -->
 
 
-                    <StackPane fx:id="DeckSixSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseEntered="#changeToHand" onMouseClicked="#goToStudyScreen" onMouseExited="#changeBack" prefHeight="124.0" prefWidth="150.0">
+                    <StackPane fx:id="DeckSixSP" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#goToStudyScreen" onMouseEntered="#changeToHand" onMouseExited="#changeBack" prefHeight="124.0" prefWidth="150.0">
 
 
                         <children>
@@ -175,7 +168,7 @@
                             <Rectangle arcHeight="28.0" arcWidth="28.0" fill="2B8EFF" height="110.0" layoutX="57.0" layoutY="12.0" width="120.0" />
                             <Rectangle fx:id="deckSix" arcHeight="28.0" arcWidth="28.0" fill="4DA0FF" height="100.0" layoutX="57.0" layoutY="32.0" width="120.0" />
 
-                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="97.0" prefWidth="115.0" text="Deck 6" textFill="black">
+                            <Label fx:id="DeckSixLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#goToStudyScreen" prefHeight="97.0" prefWidth="115.0" textFill="black" wrapText="true" >
 
                                 <font>
                                     <Font name="Roboto Medium" size="30.0" />
