@@ -319,7 +319,7 @@ public class StudyScreenController implements homeButtonInterface {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
-            alert.setContentText("Deck created successfully");
+            alert.setContentText("Deck Shared successfully");
             alert.showAndWait();
         }
     }
