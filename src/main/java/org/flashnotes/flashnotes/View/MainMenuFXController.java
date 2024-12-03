@@ -140,5 +140,8 @@ public class MainMenuFXController implements homeButtonInterface {
     @Override
     public void menuExit(Event event) { homeButtonInterface.super.menuExit(event); }
 
+    @FXML
+    public void logout(Event event) { homeButtonInterface.super.logout(vBox); }
+
 }
 

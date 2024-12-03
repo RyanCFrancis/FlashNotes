@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import org.flashnotes.flashnotes.Model.FireBaseActions;
 
 import java.io.IOException;
 
@@ -46,4 +47,24 @@ public interface homeButtonInterface {
             e.printStackTrace();
         }
     }
+
+    default void logout(Node event)
+    {
+        FireBaseActions.init().logout();
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/flashnotes/flashnotes/Login.fxml"));
+            Parent mainMenuView = fxmlLoader.load();
+            Scene currentScene = event.getScene();
+            currentScene.setRoot(mainMenuView);
+            //Scene mainMenuScene = new Scene(mainMenuView, 800, 600);
+            //getAnchorPane().getScene().setRoot(mainMenuView);
+        } catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
 }

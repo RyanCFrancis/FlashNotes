@@ -50,6 +50,7 @@
                              </graphic>
                         <items>
                            <MenuItem fx:id="exit" onAction="#menuExit" text="Exit" />
+                           <MenuItem fx:id="exit1" onAction="#logout" text="logout" />
                         </items>
                      </MenuButton>
                   </children>
