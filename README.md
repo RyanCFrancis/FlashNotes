@@ -2,6 +2,8 @@
 
 A JavaFX based Studycard App made in CSC
 
+![Card Flipping](https://github.com/RyanCFrancis/FlashNotes/blob/master/CardFlip.gif)
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
