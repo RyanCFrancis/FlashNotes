@@ -27,9 +27,13 @@ A JavaFX based Studycard App made in CSC325
 
 ## Features
 -Create Studycard Decks to study for School
+
 -Use a Cloud Backend to access your Decks from anywhere
+
 -Share Decks with others to Study with
+
 -Enjoy an aesthetically pleasing and simple UI
+
 
 ## Tech-Stack
 Frontend: JavaFX
